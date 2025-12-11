@@ -6,11 +6,11 @@ colors:
   background: "#fafaf9"
   text: "#2d2d2d"
 typography:
-  heading_font: "Playfair Display"
-  body_font: "Lora"
-  accent_font: "Karla"
+  heading_font: Poppins
+  body_font: Lora
+  accent_font: Karla
 branding:
-  site_name: "The Handmade Kitchen"
+  site_name: The Handmade Kitchen
   logo: ""
   favicon: ""
 carousel:
@@ -20,6 +20,6 @@ carousel:
   slide4_image: ""
 background:
   use_pattern: false
-  pattern_type: "none"
+  pattern_type: none
   bg_image: ""
 ---
