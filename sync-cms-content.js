@@ -1,163 +1,166 @@
-<details>
-<summary>Click to expand complete script (copy all of this)</summary>
-````javascript
 const fs = require('fs');
 const path = require('path');
-// Configuration
+
+// Paths
 const CONTENT_DIR = './content';
-const RECIPES_DIR = path.join(CONTENT_DIR, 'recipes');
-const BLOG_DIR = path.join(CONTENT_DIR, 'blog');
-const SHOP_DIR = path.join(CONTENT_DIR, 'shop');
-const DESIGN_FILE = path.join(CONTENT_DIR, 'settings', 'design.md');
 const OUTPUT_FILE = './full-content-data.js';
-const DESIGN_OUTPUT_FILE = './design-settings.js';
-// Parse YAML frontmatter with proper nested object support
-function parseFrontmatter(content) {
-const match = content.match(/^---\n([\s\S]*?)\n---/);
-if (!match) return { frontmatter: {}, content };
-const yaml = match[1];
-const body = content.slice(match[0].length).trim();
-const lines = yaml.split('\n');
-const result = {};
-let currentObj = result;
-let stack = [result];
-let lastIndent = 0;
-lines.forEach(line => {
-if (!line.trim()) return;
-const indent = line.search(/\S/);
-const trimmed = line.trim();
+const DESIGN_OUTPUT = './design-settings.js';
 
-// Handle indent changes
-if (indent < lastIndent) {
-  const levels = Math.floor((lastIndent - indent) / 2);
-  for (let i = 0; i < levels; i++) {
-    stack.pop();
-  }
-  currentObj = stack[stack.length - 1];
+// Simple frontmatter parser
+function parseFrontmatter(text) {
+  const match = text.match(/^---\n([\s\S]*?)\n---/);
+  if (!match) return { data: {}, content: text };
+  
+  const yaml = match[1];
+  const content = text.slice(match[0].length).trim();
+  const data = {};
+  
+  const lines = yaml.split('\n');
+  let currentKey = null;
+  let currentObj = data;
+  const stack = [data];
+  
+  lines.forEach((line, idx) => {
+    if (!line.trim()) return;
+    
+    const indent = line.search(/\S/);
+    const trimmed = line.trim();
+    
+    if (trimmed.includes(':')) {
+      const [key, ...valueParts] = trimmed.split(':');
+      let value = valueParts.join(':').trim();
+      
+      // Clean quotes
+      value = value.replace(/^["']|["']$/g, '');
+      
+      // Convert booleans
+      if (value === 'true') value = true;
+      if (value === 'false') value = false;
+      if (value === '') value = null;
+      
+      // Check if next line is indented (nested object)
+      const nextLine = lines[idx + 1];
+      const hasNested = nextLine && nextLine.search(/\S/) > indent;
+      
+      if (hasNested && !value) {
+        // This is a parent key
+        currentObj[key.trim()] = {};
+        currentKey = key.trim();
+      } else {
+        // Simple value
+        if (currentKey && indent > 0) {
+          // Nested value
+          if (!data[currentKey]) data[currentKey] = {};
+          data[currentKey][key.trim()] = value;
+        } else {
+          // Top level
+          data[key.trim()] = value;
+          currentKey = null;
+        }
+      }
+    }
+  });
+  
+  return { data, content };
 }
 
-if (trimmed.includes(':')) {
-  const colonIndex = trimmed.indexOf(':');
-  const key = trimmed.slice(0, colonIndex).trim();
-  let value = trimmed.slice(colonIndex + 1).trim();
-  
-  // Remove quotes
-  if ((value.startsWith('"') && value.endsWith('"')) || 
-      (value.startsWith("'") && value.endsWith("'"))) {
-    value = value.slice(1, -1);
-  }
-  
-  // Handle boolean values
-  if (value === 'true') value = true;
-  if (value === 'false') value = false;
-  
-  // Handle empty values
-  if (value === '') value = null;
-  
-  // Check if this is a parent key (no value or nested items coming)
-  const nextLine = lines[lines.indexOf(line) + 1];
-  const isParent = !value || (nextLine && nextLine.search(/\S/) > indent);
-  
-  if (isParent && !value) {
-    currentObj[key] = {};
-    stack.push(currentObj[key]);
-    currentObj = currentObj[key];
-  } else {
-    currentObj[key] = value || null;
-  }
-}
-
-lastIndent = indent;
-});
-return { frontmatter: result, content: body };
-}
 // Format functions
-function formatRecipe(filename, content) {
-const { frontmatter } = parseFrontmatter(content);
-return {
-id: filename.replace('.md', ''),
-title: frontmatter.title || 'Untitled',
-description: frontmatter.description || '',
-image: frontmatter.image || '',
-category: frontmatter.category || 'Uncategorized',
-prepTime: frontmatter.prep_time || '',
-cookTime: frontmatter.cook_time || '',
-totalTime: frontmatter.total_time || '',
-servings: frontmatter.servings || '',
-ingredients: frontmatter.ingredients || [],
-instructions: frontmatter.instructions || [],
-notes: frontmatter.notes || ''
-};
+function formatRecipe(file, text) {
+  const { data } = parseFrontmatter(text);
+  return {
+    id: file.replace('.md', ''),
+    title: data.title || 'Untitled',
+    description: data.description || '',
+    image: data.image || '',
+    category: data.category || 'Uncategorized',
+    prepTime: data.prep_time || '',
+    cookTime: data.cook_time || '',
+    totalTime: data.total_time || '',
+    servings: data.servings || '',
+    ingredients: data.ingredients || [],
+    instructions: data.instructions || [],
+    notes: data.notes || ''
+  };
 }
-function formatBlogPost(filename, content) {
-const { frontmatter, content: body } = parseFrontmatter(content);
-return {
-id: filename.replace('.md', ''),
-title: frontmatter.title || 'Untitled',
-excerpt: frontmatter.excerpt || '',
-content: body || '',
-image: frontmatter.featured_image || frontmatter.image || '',
-category: frontmatter.category || 'Uncategorized',
-date: frontmatter.date || new Date().toISOString(),
-author: frontmatter.author || 'The Handmade Kitchen'
-};
+
+function formatBlog(file, text) {
+  const { data, content } = parseFrontmatter(text);
+  return {
+    id: file.replace('.md', ''),
+    title: data.title || 'Untitled',
+    excerpt: data.excerpt || '',
+    content: content || '',
+    image: data.featured_image || data.image || '',
+    category: data.category || 'Uncategorized',
+    date: data.date || new Date().toISOString(),
+    author: data.author || 'The Handmade Kitchen'
+  };
 }
-function formatShopItem(filename, content) {
-const { frontmatter } = parseFrontmatter(content);
-return {
-id: filename.replace('.md', ''),
-title: frontmatter.title || 'Untitled',
-description: frontmatter.description || '',
-price: frontmatter.price || '',
-image: frontmatter.image || '',
-link: frontmatter.link || '#'
-};
+
+function formatShop(file, text) {
+  const { data } = parseFrontmatter(text);
+  return {
+    id: file.replace('.md', ''),
+    title: data.title || 'Untitled',
+    description: data.description || '',
+    price: data.price || '',
+    image: data.image || '',
+    link: data.link || '#'
+  };
 }
+
 // Read directory
 function readDir(dir, formatter) {
-if (!fs.existsSync(dir)) return [];
-return fs.readdirSync(dir)
-.filter(f => f.endsWith('.md'))
-.map(f => formatter(f, fs.readFileSync(path.join(dir, f), 'utf-8')));
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => {
+      const text = fs.readFileSync(path.join(dir, f), 'utf-8');
+      return formatter(f, text);
+    });
 }
-// Read design settings
-function readDesignSettings() {
-if (!fs.existsSync(DESIGN_FILE)) {
-console.log('⚠️  design.md not found, using defaults');
-return { colors: {}, typography: {}, branding: {}, carousel: {}, background: {} };
-}
-const content = fs.readFileSync(DESIGN_FILE, 'utf-8');
-const { frontmatter } = parseFrontmatter(content);
-console.log('📖 Read design.md - found:', Object.keys(frontmatter));
-console.log('   Colors:', frontmatter.colors ? Object.keys(frontmatter.colors).length + ' settings' : 'none');
-console.log('   Typography:', frontmatter.typography ? Object.keys(frontmatter.typography).length + ' fonts' : 'none');
-return frontmatter;
-}
-// Generate files
-function generateContentFile(recipes, posts, shop) {
-const content = // Auto-generated: ${new Date().toISOString()} const contentData = {   recipes: ${JSON.stringify(recipes, null, 2)},   blogPosts: ${JSON.stringify(posts, null, 2)},   shopItems: ${JSON.stringify(shop, null, 2)} }; ;
-fs.writeFileSync(OUTPUT_FILE, content);
-}
-function generateDesignFile(settings) {
-const content = // Auto-generated: ${new Date().toISOString()} const designSettings = ${JSON.stringify(settings, null, 2)}; ;
-fs.writeFileSync(DESIGN_OUTPUT_FILE, content);
-console.log('✅ Generated design-settings.js with', Object.keys(settings).length, 'sections');
-}
-// Main
-function syncContent() {
-console.log('🔄 Syncing Netlify CMS content...');
-const recipes = readDir(RECIPES_DIR, formatRecipe);
-const posts = readDir(BLOG_DIR, formatBlogPost);
-const shop = readDir(SHOP_DIR, formatShopItem);
-generateContentFile(recipes, posts, shop);
-console.log('✅ Generated ./full-content-data.js');
-console.log('   -', recipes.length, 'recipes');
-console.log('   -', posts.length, 'blog posts');
-console.log('   -', shop.length, 'shop items');
-const design = readDesignSettings();
-generateDesignFile(design);
-console.log('✅ Sync complete!');
-}
-syncContent();
 
-</details>
+// Main sync
+console.log('🔄 Syncing content...');
+
+const recipes = readDir(path.join(CONTENT_DIR, 'recipes'), formatRecipe);
+const blog = readDir(path.join(CONTENT_DIR, 'blog'), formatBlog);
+const shop = readDir(path.join(CONTENT_DIR, 'shop'), formatShop);
+
+// Write content file
+const contentJS = `const contentData = {
+  recipes: ${JSON.stringify(recipes, null, 2)},
+  blogPosts: ${JSON.stringify(blog, null, 2)},
+  shopItems: ${JSON.stringify(shop, null, 2)}
+};
+`;
+fs.writeFileSync(OUTPUT_FILE, contentJS);
+console.log('✅ Content:', recipes.length, 'recipes,', blog.length, 'posts,', shop.length, 'shop');
+
+// Read design settings
+let designData = { colors: {}, typography: {}, branding: {}, carousel: {}, background: {} };
+const designFile = path.join(CONTENT_DIR, 'settings', 'design.md');
+
+if (fs.existsSync(designFile)) {
+  const designText = fs.readFileSync(designFile, 'utf-8');
+  const { data } = parseFrontmatter(designText);
+  
+  if (data.colors) designData.colors = data.colors;
+  if (data.typography) designData.typography = data.typography;
+  if (data.branding) designData.branding = data.branding;
+  if (data.carousel) designData.carousel = data.carousel;
+  if (data.background) designData.background = data.background;
+  
+  console.log('📖 Design:', Object.keys(data).length, 'sections');
+  if (data.colors) console.log('   Colors:', Object.keys(data.colors).join(', '));
+  if (data.typography) console.log('   Fonts:', Object.keys(data.typography).join(', '));
+}
+
+// Write design file
+const designJS = `const designSettings = ${JSON.stringify(designData, null, 2)};
+`;
+fs.writeFileSync(DESIGN_OUTPUT, designJS);
+console.log('✅ Design settings generated');
+console.log('✅ Sync complete!');
+```
+
