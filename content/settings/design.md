@@ -7,8 +7,8 @@ colors:
   text: "#151414"
 typography:
   heading_font: Josefin Sans
-  body_font: Nunito
-  accent_font: Poppins
+  body_font: Merriweather
+  accent_font: Karla
 branding:
   site_name: The Handmade Kitchen
   logo: ""
