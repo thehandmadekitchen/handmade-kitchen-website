@@ -3,7 +3,7 @@ colors:
   primary: "#587c31"
   secondary: "#8fa893"
   accent: "#a89377"
-  background: "#f20404"
+  background: "#d80707"
   text: "#151414"
 typography:
   heading_font: Cormorant Garamond
