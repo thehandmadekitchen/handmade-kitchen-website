@@ -9,7 +9,7 @@ const designSettings = {
   "typography": {
     "heading_font": "Josefin Sans",
     "body_font": "Nunito",
-    "accent_font": "Karla"
+    "accent_font": "Poppins"
   },
   "branding": {
     "site_name": "The Handmade Kitchen",
