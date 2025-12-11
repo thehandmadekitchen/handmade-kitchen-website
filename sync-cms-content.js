@@ -1,12 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Paths
-const CONTENT_DIR = './content';
-const OUTPUT_FILE = './full-content-data.js';
-const DESIGN_OUTPUT = './design-settings.js';
-
-// Simple frontmatter parser
+// Parse frontmatter
 function parseFrontmatter(text) {
   const match = text.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return { data: {}, content: text };
@@ -15,48 +10,41 @@ function parseFrontmatter(text) {
   const content = text.slice(match[0].length).trim();
   const data = {};
   
-  const lines = yaml.split('\n');
-  let currentKey = null;
-  let currentObj = data;
-  const stack = [data];
+  let currentSection = null;
   
-  lines.forEach((line, idx) => {
+  yaml.split('\n').forEach(line => {
     if (!line.trim()) return;
     
     const indent = line.search(/\S/);
     const trimmed = line.trim();
     
     if (trimmed.includes(':')) {
-      const [key, ...valueParts] = trimmed.split(':');
-      let value = valueParts.join(':').trim();
+      const colonIdx = trimmed.indexOf(':');
+      const key = trimmed.substring(0, colonIdx).trim();
+      let value = trimmed.substring(colonIdx + 1).trim();
       
-      // Clean quotes
-      value = value.replace(/^["']|["']$/g, '');
+      // Remove quotes
+      if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
       
       // Convert booleans
       if (value === 'true') value = true;
       if (value === 'false') value = false;
-      if (value === '') value = null;
       
-      // Check if next line is indented (nested object)
-      const nextLine = lines[idx + 1];
-      const hasNested = nextLine && nextLine.search(/\S/) > indent;
-      
-      if (hasNested && !value) {
-        // This is a parent key
-        currentObj[key.trim()] = {};
-        currentKey = key.trim();
-      } else {
-        // Simple value
-        if (currentKey && indent > 0) {
-          // Nested value
-          if (!data[currentKey]) data[currentKey] = {};
-          data[currentKey][key.trim()] = value;
+      if (indent === 0) {
+        // Top level
+        if (value === '' || value === null) {
+          data[key] = {};
+          currentSection = key;
         } else {
-          // Top level
-          data[key.trim()] = value;
-          currentKey = null;
+          data[key] = value;
+          currentSection = null;
         }
+      } else if (currentSection) {
+        // Nested
+        if (!data[currentSection]) data[currentSection] = {};
+        data[currentSection][key] = value || null;
       }
     }
   });
@@ -64,11 +52,11 @@ function parseFrontmatter(text) {
   return { data, content };
 }
 
-// Format functions
-function formatRecipe(file, text) {
+// Format recipe
+function formatRecipe(filename, text) {
   const { data } = parseFrontmatter(text);
   return {
-    id: file.replace('.md', ''),
+    id: filename.replace('.md', ''),
     title: data.title || 'Untitled',
     description: data.description || '',
     image: data.image || '',
@@ -83,13 +71,14 @@ function formatRecipe(file, text) {
   };
 }
 
-function formatBlog(file, text) {
+// Format blog post
+function formatBlog(filename, text) {
   const { data, content } = parseFrontmatter(text);
   return {
-    id: file.replace('.md', ''),
+    id: filename.replace('.md', ''),
     title: data.title || 'Untitled',
     excerpt: data.excerpt || '',
-    content: content || '',
+    content: content,
     image: data.featured_image || data.image || '',
     category: data.category || 'Uncategorized',
     date: data.date || new Date().toISOString(),
@@ -97,10 +86,11 @@ function formatBlog(file, text) {
   };
 }
 
-function formatShop(file, text) {
+// Format shop item
+function formatShop(filename, text) {
   const { data } = parseFrontmatter(text);
   return {
-    id: file.replace('.md', ''),
+    id: filename.replace('.md', ''),
     title: data.title || 'Untitled',
     description: data.description || '',
     price: data.price || '',
@@ -110,57 +100,92 @@ function formatShop(file, text) {
 }
 
 // Read directory
-function readDir(dir, formatter) {
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir)
-    .filter(f => f.endsWith('.md'))
-    .map(f => {
-      const text = fs.readFileSync(path.join(dir, f), 'utf-8');
-      return formatter(f, text);
-    });
+function readDirectory(dirPath, formatter) {
+  if (!fs.existsSync(dirPath)) {
+    return [];
+  }
+  
+  const files = fs.readdirSync(dirPath);
+  const items = [];
+  
+  for (const file of files) {
+    if (file.endsWith('.md')) {
+      const filePath = path.join(dirPath, file);
+      const text = fs.readFileSync(filePath, 'utf-8');
+      items.push(formatter(file, text));
+    }
+  }
+  
+  return items;
 }
 
-// Main sync
-console.log('🔄 Syncing content...');
-
-const recipes = readDir(path.join(CONTENT_DIR, 'recipes'), formatRecipe);
-const blog = readDir(path.join(CONTENT_DIR, 'blog'), formatBlog);
-const shop = readDir(path.join(CONTENT_DIR, 'shop'), formatShop);
-
-// Write content file
-const contentJS = `const contentData = {
-  recipes: ${JSON.stringify(recipes, null, 2)},
-  blogPosts: ${JSON.stringify(blog, null, 2)},
-  shopItems: ${JSON.stringify(shop, null, 2)}
-};
-`;
-fs.writeFileSync(OUTPUT_FILE, contentJS);
-console.log('✅ Content:', recipes.length, 'recipes,', blog.length, 'posts,', shop.length, 'shop');
-
-// Read design settings
-let designData = { colors: {}, typography: {}, branding: {}, carousel: {}, background: {} };
-const designFile = path.join(CONTENT_DIR, 'settings', 'design.md');
-
-if (fs.existsSync(designFile)) {
-  const designText = fs.readFileSync(designFile, 'utf-8');
-  const { data } = parseFrontmatter(designText);
+// Main sync function
+function syncContent() {
+  console.log('🔄 Starting sync...');
   
-  if (data.colors) designData.colors = data.colors;
-  if (data.typography) designData.typography = data.typography;
-  if (data.branding) designData.branding = data.branding;
-  if (data.carousel) designData.carousel = data.carousel;
-  if (data.background) designData.background = data.background;
+  // Read content
+  const recipes = readDirectory('./content/recipes', formatRecipe);
+  const blog = readDirectory('./content/blog', formatBlog);
+  const shop = readDirectory('./content/shop', formatShop);
   
-  console.log('📖 Design:', Object.keys(data).length, 'sections');
-  if (data.colors) console.log('   Colors:', Object.keys(data.colors).join(', '));
-  if (data.typography) console.log('   Fonts:', Object.keys(data.typography).join(', '));
+  console.log('Found:', recipes.length, 'recipes,', blog.length, 'blog posts,', shop.length, 'shop items');
+  
+  // Generate content file
+  const contentData = {
+    recipes: recipes,
+    blogPosts: blog,
+    shopItems: shop
+  };
+  
+  const contentJS = 'const contentData = ' + JSON.stringify(contentData, null, 2) + ';\n';
+  fs.writeFileSync('./full-content-data.js', contentJS);
+  console.log('✅ Generated full-content-data.js');
+  
+  // Read design settings
+  const designPath = './content/settings/design.md';
+  let designData = {
+    colors: {},
+    typography: {},
+    branding: {},
+    carousel: {},
+    background: {}
+  };
+  
+  if (fs.existsSync(designPath)) {
+    console.log('📖 Reading design.md...');
+    const designText = fs.readFileSync(designPath, 'utf-8');
+    const { data } = parseFrontmatter(designText);
+    
+    if (data.colors) {
+      designData.colors = data.colors;
+      console.log('   Colors:', Object.keys(data.colors).length, 'settings');
+    }
+    if (data.typography) {
+      designData.typography = data.typography;
+      console.log('   Typography:', Object.keys(data.typography).length, 'fonts');
+    }
+    if (data.branding) {
+      designData.branding = data.branding;
+    }
+    if (data.carousel) {
+      designData.carousel = data.carousel;
+    }
+    if (data.background) {
+      designData.background = data.background;
+    }
+  } else {
+    console.log('⚠️  design.md not found');
+  }
+  
+  // Generate design file
+  const designJS = 'const designSettings = ' + JSON.stringify(designData, null, 2) + ';\n';
+  fs.writeFileSync('./design-settings.js', designJS);
+  console.log('✅ Generated design-settings.js');
+  
+  console.log('✅ Sync complete!');
 }
 
-// Write design file
-const designJS = `const designSettings = ${JSON.stringify(designData, null, 2)};
-`;
-fs.writeFileSync(DESIGN_OUTPUT, designJS);
-console.log('✅ Design settings generated');
-console.log('✅ Sync complete!');
-```
+// Run sync
+syncContent();
+
 
