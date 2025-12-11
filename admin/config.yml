@@ -1,0 +1,90 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # RECIPES
+  - name: "recipes"
+    label: "Recipes"
+    folder: "content/recipes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Easy Kid Snacks", "Breakfasts", "Lunches", "Dinners", "Appetizers", "Desserts"]}
+      - {label: "Prep/Cook Time", name: "time", widget: "string", hint: "e.g., 25 min"}
+      - {label: "Servings", name: "servings", widget: "string", hint: "e.g., 4 servings"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Ingredients", name: "ingredients", widget: "list"}
+      - {label: "Instructions", name: "instructions", widget: "list"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+
+  # BLOG POSTS
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Meal Planning Systems", "Mom Hacks", "Lifestyle"]}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
+
+  # SHOP ITEMS
+  - name: "shop"
+    label: "Shop Products"
+    folder: "content/shop"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Product Type", name: "type", widget: "string", hint: "e.g., Digital Planner, eBook"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Price", name: "price", widget: "string", hint: "e.g., $27"}
+      - {label: "Product Icon", name: "icon", widget: "string", hint: "Emoji like 📋 or 📚"}
+      - {label: "Buy Link", name: "link", widget: "string", hint: "Your Gumroad or product link"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+
+  # SITE SETTINGS
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "content/settings/about.md"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Main Content", name: "body", widget: "markdown"}
+          
+      - label: "Home Page"
+        name: "home"
+        file: "content/settings/home.md"
+        fields:
+          - {label: "Hero Title", name: "hero_title", widget: "string"}
+          - {label: "Hero Subtitle", name: "hero_subtitle", widget: "string"}
+          - {label: "Welcome Title", name: "welcome_title", widget: "string"}
+          - {label: "Welcome Subtitle", name: "welcome_subtitle", widget: "string"}
+          - {label: "Feature 1 Title", name: "feature1_title", widget: "string"}
+          - {label: "Feature 1 Text", name: "feature1_text", widget: "text"}
+          - {label: "Feature 2 Title", name: "feature2_title", widget: "string"}
+          - {label: "Feature 2 Text", name: "feature2_text", widget: "text"}
+          - {label: "Feature 3 Title", name: "feature3_title", widget: "string"}
+          - {label: "Feature 3 Text", name: "feature3_text", widget: "text"}
+          
+      - label: "Contact Info"
+        name: "contact"
+        file: "content/settings/contact.md"
+        fields:
+          - {label: "Email", name: "email", widget: "string", required: false}
+          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+          - {label: "Pinterest URL", name: "pinterest", widget: "string", required: false}
+          - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+          - {label: "TikTok URL", name: "tiktok", widget: "string", required: false}
