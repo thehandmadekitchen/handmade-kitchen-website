@@ -1,3 +1,4 @@
+yaml
 name: Auto-Sync CMS Content
 
 on:
@@ -5,7 +6,7 @@ on:
     branches: [ main ]
     paths:
       - 'content/**'
-      - 'content/settings/**'
+     
 
 jobs:
   sync-content:
