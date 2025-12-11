@@ -2,11 +2,11 @@
 colors:
   primary: "#587c31"
   secondary: "#8fa893"
-  accent: "#ecdfd1"
-  background: "#161614"
+  accent: "#a89377"
+  background: "#f2f0ea"
   text: "#2d2d2d"
 typography:
-  heading_font: Bebas Neue
+  heading_font: Cormorant Garamond
   body_font: Lora
   accent_font: Karla
 branding:
