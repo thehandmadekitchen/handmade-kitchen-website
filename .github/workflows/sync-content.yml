@@ -1,4 +1,3 @@
-yaml
 name: Auto-Sync CMS Content
 
 on:
@@ -6,7 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'content/**'
-     
+      - 'content/settings/**'
 
 jobs:
   sync-content:
@@ -45,15 +44,3 @@ jobs:
           commit_user_name: "CMS Auto-Sync Bot"
           commit_user_email: "cms-bot@handmade-kitchen.local"
           commit_author: "CMS Auto-Sync Bot <cms-bot@handmade-kitchen.local>"
-      
-      - name: Summary
-        if: steps.verify-changed-files.outputs.changed == 'true'
-        run: |
-          echo "✅ CMS content synced successfully!"
-          echo "📝 Updated files: full-content-data.js, design-settings.js"
-          echo "🚀 Netlify will automatically rebuild your site"
-      
-      - name: No changes
-        if: steps.verify-changed-files.outputs.changed == 'false'
-        run: |
-          echo "ℹ️ No content changes detected - sync not needed"
