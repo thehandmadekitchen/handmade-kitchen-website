@@ -1,0 +1,30 @@
+{
+  "id": "honey-chocolate-chip-cookies",
+  "title": "Honey Sweetened Chocolate Chip Cookies",
+  "category": "Desserts",
+  "time": "25 min",
+  "servings": "24 cookies",
+  "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800",
+  "ingredients": [
+    "1/2 cup butter, softened",
+    "1/2 cup honey",
+    "2 eggs",
+    "2 teaspoons vanilla",
+    "2 cups flour",
+    "1 teaspoon baking soda",
+    "1/2 teaspoon salt",
+    "1 1/2 cups dark chocolate chips (70% cacao)"
+  ],
+  "instructions": [
+    "Preheat oven to 350°F and line baking sheets.",
+    "Cream butter and honey until fluffy.",
+    "Beat in eggs and vanilla.",
+    "Mix flour, baking soda, and salt in separate bowl.",
+    "Gradually add dry to wet ingredients.",
+    "Fold in chocolate chips.",
+    "Drop spoonfuls on baking sheet.",
+    "Bake 10-12 minutes until golden.",
+    "Cool on pan 5 minutes before transferring to wire rack.",
+    "These taste like regular cookies but with natural sweetness!"
+  ]
+}

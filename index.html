@@ -86,17 +86,27 @@
             position: relative;
         }
         
-        .dropdown-content {
-            display: none;
+        /* Add invisible bridge for hover */
+        .nav-dropdown::after {
+            content: '';
             position: absolute;
             top: 100%;
             left: 0;
+            right: 0;
+            height: 20px;
+            background: transparent;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
             background: white;
-            min-width: 200px;
+            min-width: 220px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             border-radius: 8px;
             padding: 0.5rem 0;
-            margin-top: 0.5rem;
             z-index: 1000;
         }
         
@@ -107,6 +117,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
+            white-space: nowrap;
         }
         
         .dropdown-content a:hover {
@@ -114,7 +125,8 @@
             color: var(--olive);
         }
         
-        .nav-dropdown:hover .dropdown-content {
+        .nav-dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
             display: block;
         }
         
