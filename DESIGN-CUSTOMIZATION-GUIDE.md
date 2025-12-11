@@ -40,39 +40,86 @@ Change the entire color scheme of your website:
 
 ### ✍️ Typography (Fonts)
 
+**📖 VISUAL PREVIEW AVAILABLE!**
+Open `font-preview.html` in your browser to see ALL fonts with real examples!
+Or visit: `https://your-site.netlify.app/font-preview.html` after deployment
+
 Choose from professional Google Fonts:
 
 **Heading Font** (Default: Playfair Display)
 - Used for: All titles, section headers, recipe names
-- Options:
-  - **Playfair Display** - Elegant serif (current)
-  - **Merriweather** - Classic, readable serif
-  - **Cormorant Garamond** - Refined, sophisticated
-  - **Libre Baskerville** - Traditional, bookish
-  - **Montserrat** - Modern, clean sans-serif
+- **12 Options:**
+  - **Playfair Display** - Elegant, sophisticated serif (current)
+  - **Merriweather** - Classic, highly readable serif
+  - **Cormorant Garamond** - Refined, delicate serif
+  - **Libre Baskerville** - Traditional, bookish serif
+  - **Crimson Text** - Elegant, literary serif
+  - **Cardo** - Classic, academic serif
+  - **Spectral** - Modern, editorial serif
+  - **Vollkorn** - Strong, robust serif
+  - **Montserrat** - Clean, geometric sans-serif
+  - **Poppins** - Modern, friendly sans-serif
+  - **Josefin Sans** - Stylish, vintage sans-serif
+  - **Bebas Neue** - Bold, impactful (ALL CAPS style)
 
 **Body Font** (Default: Lora)
 - Used for: All paragraphs, descriptions, instructions
-- Options:
-  - **Lora** - Beautiful, readable serif (current)
-  - **Merriweather** - Classic serif
-  - **Open Sans** - Clean, modern sans-serif
-  - **Karla** - Friendly sans-serif
-  - **Source Sans Pro** - Professional sans-serif
+- **11 Options:**
+  - **Lora** - Beautiful, highly readable serif (current)
+  - **Merriweather** - Classic, easy-to-read serif
+  - **Crimson Text** - Elegant reading serif
+  - **Spectral** - Modern, comfortable serif
+  - **Cardo** - Traditional book serif
+  - **Open Sans** - Clean, professional sans-serif
+  - **Karla** - Friendly, approachable sans-serif
+  - **Source Sans Pro** - Technical, professional sans-serif
+  - **Nunito** - Soft, rounded sans-serif
+  - **Work Sans** - Modern, neutral sans-serif
+  - **Inter** - Contemporary, clean sans-serif
 
 **Accent Font** (Default: Karla)
 - Used for: Navigation, buttons, labels
-- Options:
-  - **Karla** - Friendly, approachable (current)
-  - **Montserrat** - Modern, geometric
-  - **Raleway** - Elegant, thin
-  - **Open Sans** - Clean, professional
+- **10 Options:**
+  - **Karla** - Friendly, geometric sans-serif (current)
+  - **Montserrat** - Modern, clean sans-serif
+  - **Raleway** - Elegant, thin sans-serif
+  - **Open Sans** - Professional, versatile sans-serif
+  - **Poppins** - Modern, rounded sans-serif
+  - **Nunito** - Soft, friendly sans-serif
+  - **Work Sans** - Neutral, professional sans-serif
+  - **Inter** - Clean, contemporary sans-serif
+  - **Roboto** - Google's classic sans-serif
+  - **Lato** - Warm, humanist sans-serif
 
 **💡 Font Pairing Tips:**
 - Serif heading + Serif body = Traditional, elegant
 - Serif heading + Sans body = Modern, clean
 - Sans heading + Serif body = Contemporary
 - Sans heading + Sans body = Minimalist, modern
+
+**🎨 Recommended Pairings:**
+See the full list in `font-preview.html`!
+
+1. **Elegant & Sophisticated** (current)
+   - Heading: Playfair Display • Body: Lora • Accent: Karla
+
+2. **Classic Homestead**
+   - Heading: Libre Baskerville • Body: Merriweather • Accent: Open Sans
+
+3. **Modern Minimalist**
+   - Heading: Montserrat • Body: Open Sans • Accent: Montserrat
+
+4. **Fresh & Contemporary**
+   - Heading: Poppins • Body: Nunito • Accent: Poppins
+
+5. **Editorial & Literary**
+   - Heading: Crimson Text • Body: Crimson Text • Accent: Work Sans
+
+6. **Vintage Artisan**
+   - Heading: Josefin Sans • Body: Lora • Accent: Josefin Sans
+
+7. **Rustic & Warm**
+   - Heading: Vollkorn • Body: Spectral • Accent: Lato
 
 ---
 
