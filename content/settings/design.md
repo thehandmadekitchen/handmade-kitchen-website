@@ -3,7 +3,7 @@ colors:
   primary: "#587c31"
   secondary: "#8fa893"
   accent: "#ecdfd1"
-  background: "#fafaf9"
+  background: "#f2efdd"
   text: "#2d2d2d"
 typography:
   heading_font: Bebas Neue
