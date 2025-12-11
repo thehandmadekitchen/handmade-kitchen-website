@@ -3,11 +3,11 @@ colors:
   primary: "#587c31"
   secondary: "#8fa893"
   accent: "#a89377"
-  background: "#fbf1db"
+  background: "#fff9ee"
   text: "#151414"
 typography:
-  heading_font: Cormorant Garamond
-  body_font: Lora
+  heading_font: Josefin Sans
+  body_font: Nunito
   accent_font: Karla
 branding:
   site_name: The Handmade Kitchen
