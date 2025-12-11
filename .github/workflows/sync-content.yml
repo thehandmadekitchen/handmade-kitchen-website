@@ -40,7 +40,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "🔄 Auto-sync: Update content from CMS"
-          file_pattern: "full-content-data.js design-settings.js"
+          file_pattern: "full-content-data.js design-settings.js rss.xml"
           commit_user_name: "CMS Auto-Sync Bot"
           commit_user_email: "cms-bot@handmade-kitchen.local"
           commit_author: "CMS Auto-Sync Bot <cms-bot@handmade-kitchen.local>"
