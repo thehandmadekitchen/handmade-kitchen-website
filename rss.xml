@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Handmade Kitchen Blog</title>
+    <link>https://tubular-kulfi-20dd81.netlify.app</link>
+    <description>Clean eating recipes and meal planning tips for busy families</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Dec 2025 22:51:27 GMT</lastBuildDate>
+    <atom:link href="https://tubular-kulfi-20dd81.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title><![CDATA[The 5-Meal Framework That Changed Everything]]></title>
+      <description><![CDATA[Stop trying to plan 21 different dinners. Here's why rotating just 5]]></description>
+      <link>https://tubular-kulfi-20dd81.netlify.app/blog-post.html?id=5-meal-framework</link>
+      <guid>https://tubular-kulfi-20dd81.netlify.app/blog-post.html?id=5-meal-framework</guid>
+      <pubDate>Tue, 10 Dec 2024 10:00:00 GMT</pubDate>
+      <author>noreply@handmadekitchen.com (The Handmade Kitchen)</author>
+      <enclosure url="/images/uploads/win_20210125_11_25_10_pro.jpg" type="image/jpeg"/>
+    </item>
+
+    <item>
+      <title><![CDATA[My Simple Sunday Meal Prep Routine]]></title>
+      <description><![CDATA[Spend 2 hours on Sunday to make your weeknights so much easier. Here's exactly what I do.]]></description>
+      <link>https://tubular-kulfi-20dd81.netlify.app/blog-post.html?id=meal-prep-sunday</link>
+      <guid>https://tubular-kulfi-20dd81.netlify.app/blog-post.html?id=meal-prep-sunday</guid>
+      <pubDate>Thu, 05 Dec 2024 09:00:00 GMT</pubDate>
+      <author>noreply@handmadekitchen.com (The Handmade Kitchen)</author>
+      
+    </item>
+
+    <item>
+      <title><![CDATA[Essential Pantry Staples for Clean Eating]]></title>
+      <description><![CDATA[Stock your pantry with these real-food essentials and you'll always be ready to make a wholesome meal.]]></description>
+      <link>https://tubular-kulfi-20dd81.netlify.app/blog-post.html?id=pantry-staples</link>
+      <guid>https://tubular-kulfi-20dd81.netlify.app/blog-post.html?id=pantry-staples</guid>
+      <pubDate>Fri, 06 Dec 2024 10:00:00 GMT</pubDate>
+      <author>noreply@handmadekitchen.com (The Handmade Kitchen)</author>
+      
+    </item>
+  </channel>
+</rss>
