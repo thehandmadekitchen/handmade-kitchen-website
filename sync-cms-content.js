@@ -1,240 +1,163 @@
-#!/usr/bin/env node
-
-/**
- * Netlify CMS Content Sync Script
- * 
- * This script automatically converts content from Netlify CMS (markdown files)
- * into the JavaScript format used by the website (full-content-data.js)
- * 
- * Run this script after adding/editing content in Netlify CMS:
- * node sync-cms-content.js
- */
-
+<details>
+<summary>Click to expand complete script (copy all of this)</summary>
+````javascript
 const fs = require('fs');
 const path = require('path');
-
-// Directories
-const RECIPES_DIR = './content/recipes';
-const BLOG_DIR = './content/blog';
-const SHOP_DIR = './content/shop';
-const DESIGN_SETTINGS_FILE = './content/settings/design.md';
+// Configuration
+const CONTENT_DIR = './content';
+const RECIPES_DIR = path.join(CONTENT_DIR, 'recipes');
+const BLOG_DIR = path.join(CONTENT_DIR, 'blog');
+const SHOP_DIR = path.join(CONTENT_DIR, 'shop');
+const DESIGN_FILE = path.join(CONTENT_DIR, 'settings', 'design.md');
 const OUTPUT_FILE = './full-content-data.js';
 const DESIGN_OUTPUT_FILE = './design-settings.js';
+// Parse YAML frontmatter with proper nested object support
+function parseFrontmatter(content) {
+const match = content.match(/^---\n([\s\S]*?)\n---/);
+if (!match) return { frontmatter: {}, content };
+const yaml = match[1];
+const body = content.slice(match[0].length).trim();
+const lines = yaml.split('\n');
+const result = {};
+let currentObj = result;
+let stack = [result];
+let lastIndent = 0;
+lines.forEach(line => {
+if (!line.trim()) return;
+const indent = line.search(/\S/);
+const trimmed = line.trim();
 
-/**
- * Parse markdown frontmatter and content
- */
-function parseMarkdown(fileContent) {
-  const lines = fileContent.split('\n');
-  const data = {};
-  let inFrontmatter = false;
-  let contentLines = [];
+// Handle indent changes
+if (indent < lastIndent) {
+  const levels = Math.floor((lastIndent - indent) / 2);
+  for (let i = 0; i < levels; i++) {
+    stack.pop();
+  }
+  currentObj = stack[stack.length - 1];
+}
+
+if (trimmed.includes(':')) {
+  const colonIndex = trimmed.indexOf(':');
+  const key = trimmed.slice(0, colonIndex).trim();
+  let value = trimmed.slice(colonIndex + 1).trim();
   
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    
-    if (line.trim() === '---') {
-      if (!inFrontmatter) {
-        inFrontmatter = true;
-      } else {
-        inFrontmatter = false;
-        // Remaining lines are content
-        contentLines = lines.slice(i + 1);
-        break;
-      }
-      continue;
-    }
-    
-    if (inFrontmatter) {
-      const match = line.match(/^(\w+):\s*(.+)$/);
-      if (match) {
-        const key = match[1];
-        let value = match[2].trim();
-        
-        // Handle different value types
-        if (value.startsWith('[') && value.endsWith(']')) {
-          // Array - remove brackets and split
-          value = value.slice(1, -1).split(',').map(v => v.trim().replace(/['"]/g, ''));
-        } else if (value.startsWith('"') && value.endsWith('"')) {
-          // String - remove quotes
-          value = value.slice(1, -1);
-        } else if (value === 'true') {
-          value = true;
-        } else if (value === 'false') {
-          value = false;
-        }
-        
-        data[key] = value;
-      }
-    }
+  // Remove quotes
+  if ((value.startsWith('"') && value.endsWith('"')) || 
+      (value.startsWith("'") && value.endsWith("'"))) {
+    value = value.slice(1, -1);
   }
   
-  // Join content lines
-  data.content = contentLines.join('\n').trim();
+  // Handle boolean values
+  if (value === 'true') value = true;
+  if (value === 'false') value = false;
   
-  return data;
-}
-
-/**
- * Read all markdown files from a directory
- */
-function readMarkdownFiles(directory) {
-  if (!fs.existsSync(directory)) {
-    console.log(`Directory ${directory} does not exist, skipping...`);
-    return [];
+  // Handle empty values
+  if (value === '') value = null;
+  
+  // Check if this is a parent key (no value or nested items coming)
+  const nextLine = lines[lines.indexOf(line) + 1];
+  const isParent = !value || (nextLine && nextLine.search(/\S/) > indent);
+  
+  if (isParent && !value) {
+    currentObj[key] = {};
+    stack.push(currentObj[key]);
+    currentObj = currentObj[key];
+  } else {
+    currentObj[key] = value || null;
   }
-  
-  const files = fs.readdirSync(directory);
-  const markdownFiles = files.filter(f => f.endsWith('.md'));
-  
-  return markdownFiles.map(filename => {
-    const filepath = path.join(directory, filename);
-    const content = fs.readFileSync(filepath, 'utf-8');
-    return parseMarkdown(content);
-  });
 }
 
-/**
- * Convert recipe data to JavaScript format
- */
-function formatRecipe(data) {
-  return {
-    title: data.title || 'Untitled Recipe',
-    category: data.category || 'Uncategorized',
-    time: data.time || '30 min',
-    servings: data.servings || '4 servings',
-    image: data.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
-    ingredients: data.ingredients || [],
-    instructions: data.instructions || []
-  };
+lastIndent = indent;
+});
+return { frontmatter: result, content: body };
 }
-
-/**
- * Convert blog post data to JavaScript format
- */
-function formatBlogPost(data) {
-  return {
-    title: data.title || 'Untitled Post',
-    category: data.category || 'Uncategorized',
-    excerpt: data.excerpt || '',
-    image: data.image || 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800',
-    content: data.content || data.body || ''
-  };
-}
-
-/**
- * Convert shop item data to JavaScript format
- */
-function formatShopItem(data) {
-  return {
-    title: data.title || 'Untitled Product',
-    type: data.type || 'Digital Product',
-    description: data.description || '',
-    price: data.price || '$0',
-    icon: data.icon || '📦',
-    featured: data.featured || false
-  };
-}
-
-/**
- * Generate the full-content-data.js file
- */
-function generateContentFile(recipes, blogPosts, shopItems) {
-  const jsContent = `const contentData = {
-  recipes: ${JSON.stringify(recipes, null, 2).replace(/"([^"]+)":/g, '$1:')},
-  blogPosts: ${JSON.stringify(blogPosts, null, 2).replace(/"([^"]+)":/g, '$1:')},
-  shopItems: ${JSON.stringify(shopItems, null, 2).replace(/"([^"]+)":/g, '$1:')}
+// Format functions
+function formatRecipe(filename, content) {
+const { frontmatter } = parseFrontmatter(content);
+return {
+id: filename.replace('.md', ''),
+title: frontmatter.title || 'Untitled',
+description: frontmatter.description || '',
+image: frontmatter.image || '',
+category: frontmatter.category || 'Uncategorized',
+prepTime: frontmatter.prep_time || '',
+cookTime: frontmatter.cook_time || '',
+totalTime: frontmatter.total_time || '',
+servings: frontmatter.servings || '',
+ingredients: frontmatter.ingredients || [],
+instructions: frontmatter.instructions || [],
+notes: frontmatter.notes || ''
 };
-`;
-  
-  fs.writeFileSync(OUTPUT_FILE, jsContent, 'utf-8');
-  console.log(`✅ Generated ${OUTPUT_FILE}`);
-  console.log(`   - ${recipes.length} recipes`);
-  console.log(`   - ${blogPosts.length} blog posts`);
-  console.log(`   - ${shopItems.length} shop items`);
 }
-
-/**
- * Read and process design settings
- */
+function formatBlogPost(filename, content) {
+const { frontmatter, content: body } = parseFrontmatter(content);
+return {
+id: filename.replace('.md', ''),
+title: frontmatter.title || 'Untitled',
+excerpt: frontmatter.excerpt || '',
+content: body || '',
+image: frontmatter.featured_image || frontmatter.image || '',
+category: frontmatter.category || 'Uncategorized',
+date: frontmatter.date || new Date().toISOString(),
+author: frontmatter.author || 'The Handmade Kitchen'
+};
+}
+function formatShopItem(filename, content) {
+const { frontmatter } = parseFrontmatter(content);
+return {
+id: filename.replace('.md', ''),
+title: frontmatter.title || 'Untitled',
+description: frontmatter.description || '',
+price: frontmatter.price || '',
+image: frontmatter.image || '',
+link: frontmatter.link || '#'
+};
+}
+// Read directory
+function readDir(dir, formatter) {
+if (!fs.existsSync(dir)) return [];
+return fs.readdirSync(dir)
+.filter(f => f.endsWith('.md'))
+.map(f => formatter(f, fs.readFileSync(path.join(dir, f), 'utf-8')));
+}
+// Read design settings
 function readDesignSettings() {
-  if (!fs.existsSync(DESIGN_SETTINGS_FILE)) {
-    console.log('⚠️  Design settings file not found, using defaults');
-    return null;
-  }
-  
-  const content = fs.readFileSync(DESIGN_SETTINGS_FILE, 'utf-8');
-  const data = parseMarkdown(content);
-  
-  // Parse the nested objects from the frontmatter
-  const settings = {
-    colors: {},
-    typography: {},
-    branding: {},
-    carousel: {},
-    background: {}
-  };
-  
-  // Extract nested settings
-  Object.keys(data).forEach(key => {
-    if (key.startsWith('colors.')) {
-      settings.colors[key.replace('colors.', '')] = data[key];
-    } else if (key.startsWith('typography.')) {
-      settings.typography[key.replace('typography.', '')] = data[key];
-    } else if (key.startsWith('branding.')) {
-      settings.branding[key.replace('branding.', '')] = data[key];
-    } else if (key.startsWith('carousel.')) {
-      settings.carousel[key.replace('carousel.', '')] = data[key];
-    } else if (key.startsWith('background.')) {
-      settings.background[key.replace('background.', '')] = data[key];
-    }
-  });
-  
-  return settings;
+if (!fs.existsSync(DESIGN_FILE)) {
+console.log('⚠️  design.md not found, using defaults');
+return { colors: {}, typography: {}, branding: {}, carousel: {}, background: {} };
 }
-
-/**
- * Generate design-settings.js file
- */
-function generateDesignSettingsFile(settings) {
-  if (!settings) {
-    console.log('⚠️  Skipping design settings generation');
-    return;
-  }
-  
-  const jsContent = `// Auto-generated design settings from Netlify CMS
-const designSettings = ${JSON.stringify(settings, null, 2)};
-`;
-  
-  fs.writeFileSync(DESIGN_OUTPUT_FILE, jsContent, 'utf-8');
-  console.log(`✅ Generated ${DESIGN_OUTPUT_FILE}`);
+const content = fs.readFileSync(DESIGN_FILE, 'utf-8');
+const { frontmatter } = parseFrontmatter(content);
+console.log('📖 Read design.md - found:', Object.keys(frontmatter));
+console.log('   Colors:', frontmatter.colors ? Object.keys(frontmatter.colors).length + ' settings' : 'none');
+console.log('   Typography:', frontmatter.typography ? Object.keys(frontmatter.typography).length + ' fonts' : 'none');
+return frontmatter;
 }
-
-/**
- * Main sync function
- */
+// Generate files
+function generateContentFile(recipes, posts, shop) {
+const content = // Auto-generated: ${new Date().toISOString()} const contentData = {   recipes: ${JSON.stringify(recipes, null, 2)},   blogPosts: ${JSON.stringify(posts, null, 2)},   shopItems: ${JSON.stringify(shop, null, 2)} }; ;
+fs.writeFileSync(OUTPUT_FILE, content);
+}
+function generateDesignFile(settings) {
+const content = // Auto-generated: ${new Date().toISOString()} const designSettings = ${JSON.stringify(settings, null, 2)}; ;
+fs.writeFileSync(DESIGN_OUTPUT_FILE, content);
+console.log('✅ Generated design-settings.js with', Object.keys(settings).length, 'sections');
+}
+// Main
 function syncContent() {
-  console.log('🔄 Syncing Netlify CMS content...\n');
-  
-  // Read markdown files
-  const recipesData = readMarkdownFiles(RECIPES_DIR);
-  const blogData = readMarkdownFiles(BLOG_DIR);
-  const shopData = readMarkdownFiles(SHOP_DIR);
-  
-  // Format data
-  const recipes = recipesData.map(formatRecipe);
-  const blogPosts = blogData.map(formatBlogPost);
-  const shopItems = shopData.map(formatShopItem);
-  
-  // Read design settings
-  const designSettings = readDesignSettings();
-  
-  // Generate output files
-  generateContentFile(recipes, blogPosts, shopItems);
-  generateDesignSettingsFile(designSettings);
-  
-  console.log('\n✅ Sync complete!');
+console.log('🔄 Syncing Netlify CMS content...');
+const recipes = readDir(RECIPES_DIR, formatRecipe);
+const posts = readDir(BLOG_DIR, formatBlogPost);
+const shop = readDir(SHOP_DIR, formatShopItem);
+generateContentFile(recipes, posts, shop);
+console.log('✅ Generated ./full-content-data.js');
+console.log('   -', recipes.length, 'recipes');
+console.log('   -', posts.length, 'blog posts');
+console.log('   -', shop.length, 'shop items');
+const design = readDesignSettings();
+generateDesignFile(design);
+console.log('✅ Sync complete!');
 }
-
-// Run the sync
 syncContent();
+
+</details>
