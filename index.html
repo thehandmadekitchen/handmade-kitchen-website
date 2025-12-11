@@ -487,6 +487,13 @@
             gap: 2.5rem;
         }
         
+        /* SHOP GRID */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
         /* NEWSLETTER */
         .newsletter {
             background: linear-gradient(135deg, var(--olive) 0%, var(--clay) 100%);
@@ -1088,6 +1095,14 @@
                         <a class="cta-button" onclick="showSection('blog')">Read the Blog</a>
                     </div>
                 </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=1600&h=600&fit=crop" alt="Digital Resources">
+                    <div class="carousel-content">
+                        <h1>Tools to Make Life Easier</h1>
+                        <p>Meal planners, recipe guides, and printables for busy families</p>
+                        <a class="cta-button" onclick="showSection('shop')">Shop Now</a>
+                    </div>
+                </div>
             </div>
             <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
             <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
@@ -1095,6 +1110,7 @@
                 <span class="dot active" onclick="currentSlide(0)"></span>
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
             </div>
         </div>
 
@@ -1122,10 +1138,20 @@
                         <h3>Breakfasts</h3>
                         <p>Start your day right</p>
                     </div>
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('lunches')">
+                        <div class="category-icon">🥗</div>
+                        <h3>Lunches</h3>
+                        <p>Quick and satisfying midday meals</p>
+                    </div>
                     <div class="category-card" onclick="showSection('recipes'); filterRecipes('dinners')">
                         <div class="category-icon">🍽️</div>
                         <h3>Dinners</h3>
                         <p>Family-friendly main dishes</p>
+                    </div>
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('appetizers')">
+                        <div class="category-icon">🧀</div>
+                        <h3>Appetizers</h3>
+                        <p>Perfect starters and party bites</p>
                     </div>
                     <div class="category-card" onclick="showSection('recipes'); filterRecipes('desserts')">
                         <div class="category-icon">🍰</div>
@@ -1142,6 +1168,15 @@
                     <a class="view-all-link" onclick="showSection('blog')">View All →</a>
                 </div>
                 <div id="latestBlogPosts" class="blog-preview-grid"></div>
+            </div>
+
+            <!-- Shop Products -->
+            <div class="home-section">
+                <div class="section-header">
+                    <h2 class="section-title">Digital Resources</h2>
+                    <a class="view-all-link" onclick="showSection('shop')">View All →</a>
+                </div>
+                <div id="shopProducts" class="shop-grid"></div>
             </div>
 
             <!-- Newsletter -->
@@ -1453,14 +1488,15 @@
       function loadHomepageContent() {
         loadLatestRecipes();
         loadLatestBlogPosts();
+        loadShopProducts();
       }
       
       function loadLatestRecipes() {
         const container = document.getElementById('latestRecipes');
         if (!container) return;
         
-        // Get first 6 recipes
-        const latestRecipes = contentData.recipes.slice(0, 6);
+        // Get first 4 recipes
+        const latestRecipes = contentData.recipes.slice(0, 4);
         
         container.innerHTML = latestRecipes.map((recipe, index) => 
           createRecipeCard(recipe, index)
@@ -1477,6 +1513,16 @@
         container.innerHTML = latestPosts.map((post, index) => 
           createBlogCard(post, index)
         ).join('');
+      }
+      
+      function loadShopProducts() {
+        const container = document.getElementById('shopProducts');
+        if (!container) return;
+        
+        // Get all shop items
+        const shopItems = contentData.shopItems || [];
+        
+        container.innerHTML = shopItems.map(item => createShopCard(item)).join('');
       }
       
       // ===== CONTENT DATA AND LOADING FUNCTIONS =====
