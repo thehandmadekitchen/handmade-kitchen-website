@@ -1,8 +1,8 @@
 ---
 colors:
-  primary: "#2c5f4f"
+  primary: "#587c31"
   secondary: "#8fa893"
-  accent: "#d4a574"
+  accent: "#ecdfd1"
   background: "#fafaf9"
   text: "#2d2d2d"
 typography:
