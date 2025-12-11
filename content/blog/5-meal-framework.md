@@ -1,8 +1,10 @@
 ---
-title: "The 5-Meal Framework That Changed Everything"
-category: "Meal Planning Systems"
-excerpt: "Stop trying to plan 21 different dinners. Here's why rotating just 5 solid meals will transform your week and free up mental energy for things that actually matter."
-image: "/images/uploads/meal-planning-placeholder.jpg"
+title: The 5-Meal Framework That Changed Everything
+category: Meal Planning Systems
+excerpt: Stop trying to plan 21 different dinners. Here's why rotating just 5
+  solid meals will transform your week and free up mental energy for things that
+  actually matter.
+image: /images/uploads/win_20210125_11_25_10_pro.jpg
 date: 2024-12-10T10:00:00.000Z
 featured: true
 ---
