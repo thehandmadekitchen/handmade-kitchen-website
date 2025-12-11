@@ -3,7 +3,7 @@ colors:
   primary: "#587c31"
   secondary: "#8fa893"
   accent: "#a89377"
-  background: "#fff9ee"
+  background: "#fbf8f4"
   text: "#151414"
 typography:
   heading_font: Josefin Sans
