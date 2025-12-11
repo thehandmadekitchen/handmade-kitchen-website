@@ -6,7 +6,7 @@ colors:
   background: "#f2f0ea"
   text: "#151414"
 typography:
-  heading_font: Cormorant Garamond
+  heading_font: Bebas Neue
   body_font: Lora
   accent_font: Karla
 branding:
