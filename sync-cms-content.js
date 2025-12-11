@@ -17,7 +17,9 @@ const path = require('path');
 const RECIPES_DIR = './content/recipes';
 const BLOG_DIR = './content/blog';
 const SHOP_DIR = './content/shop';
+const DESIGN_SETTINGS_FILE = './content/settings/design.md';
 const OUTPUT_FILE = './full-content-data.js';
+const DESIGN_OUTPUT_FILE = './design-settings.js';
 
 /**
  * Parse markdown frontmatter and content
@@ -153,6 +155,62 @@ function generateContentFile(recipes, blogPosts, shopItems) {
 }
 
 /**
+ * Read and process design settings
+ */
+function readDesignSettings() {
+  if (!fs.existsSync(DESIGN_SETTINGS_FILE)) {
+    console.log('⚠️  Design settings file not found, using defaults');
+    return null;
+  }
+  
+  const content = fs.readFileSync(DESIGN_SETTINGS_FILE, 'utf-8');
+  const data = parseMarkdown(content);
+  
+  // Parse the nested objects from the frontmatter
+  const settings = {
+    colors: {},
+    typography: {},
+    branding: {},
+    carousel: {},
+    background: {}
+  };
+  
+  // Extract nested settings
+  Object.keys(data).forEach(key => {
+    if (key.startsWith('colors.')) {
+      settings.colors[key.replace('colors.', '')] = data[key];
+    } else if (key.startsWith('typography.')) {
+      settings.typography[key.replace('typography.', '')] = data[key];
+    } else if (key.startsWith('branding.')) {
+      settings.branding[key.replace('branding.', '')] = data[key];
+    } else if (key.startsWith('carousel.')) {
+      settings.carousel[key.replace('carousel.', '')] = data[key];
+    } else if (key.startsWith('background.')) {
+      settings.background[key.replace('background.', '')] = data[key];
+    }
+  });
+  
+  return settings;
+}
+
+/**
+ * Generate design-settings.js file
+ */
+function generateDesignSettingsFile(settings) {
+  if (!settings) {
+    console.log('⚠️  Skipping design settings generation');
+    return;
+  }
+  
+  const jsContent = `// Auto-generated design settings from Netlify CMS
+const designSettings = ${JSON.stringify(settings, null, 2)};
+`;
+  
+  fs.writeFileSync(DESIGN_OUTPUT_FILE, jsContent, 'utf-8');
+  console.log(`✅ Generated ${DESIGN_OUTPUT_FILE}`);
+}
+
+/**
  * Main sync function
  */
 function syncContent() {
@@ -168,8 +226,12 @@ function syncContent() {
   const blogPosts = blogData.map(formatBlogPost);
   const shopItems = shopData.map(formatShopItem);
   
-  // Generate output file
+  // Read design settings
+  const designSettings = readDesignSettings();
+  
+  // Generate output files
   generateContentFile(recipes, blogPosts, shopItems);
+  generateDesignSettingsFile(designSettings);
   
   console.log('\n✅ Sync complete!');
 }

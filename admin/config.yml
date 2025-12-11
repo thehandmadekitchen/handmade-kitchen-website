@@ -88,3 +88,86 @@ collections:
           - {label: "Pinterest URL", name: "pinterest", widget: "string", required: false}
           - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
           - {label: "TikTok URL", name: "tiktok", widget: "string", required: false}
+          
+      - label: "Design Settings"
+        name: "design"
+        file: "content/settings/design.md"
+        fields:
+          - label: "Colors"
+            name: "colors"
+            widget: "object"
+            fields:
+              - {label: "Primary Color (Olive Green)", name: "primary", widget: "color", default: "#2c5f4f", hint: "Main brand color - headers, buttons"}
+              - {label: "Secondary Color (Sage)", name: "secondary", widget: "color", default: "#8fa893", hint: "Accents and hover states"}
+              - {label: "Accent Color (Gold)", name: "accent", widget: "color", default: "#d4a574", hint: "Highlights and CTAs"}
+              - {label: "Background Color", name: "background", widget: "color", default: "#fafaf9", hint: "Page background"}
+              - {label: "Text Color", name: "text", widget: "color", default: "#2d2d2d", hint: "Main text color"}
+          
+          - label: "Typography"
+            name: "typography"
+            widget: "object"
+            fields:
+              - label: "Heading Font"
+                name: "heading_font"
+                widget: "select"
+                options: 
+                  - {label: "Playfair Display (Elegant Serif)", value: "Playfair Display"}
+                  - {label: "Merriweather (Classic Serif)", value: "Merriweather"}
+                  - {label: "Cormorant Garamond (Refined Serif)", value: "Cormorant Garamond"}
+                  - {label: "Libre Baskerville (Traditional Serif)", value: "Libre Baskerville"}
+                  - {label: "Montserrat (Modern Sans)", value: "Montserrat"}
+                default: "Playfair Display"
+              
+              - label: "Body Font"
+                name: "body_font"
+                widget: "select"
+                options:
+                  - {label: "Lora (Readable Serif)", value: "Lora"}
+                  - {label: "Merriweather (Classic)", value: "Merriweather"}
+                  - {label: "Open Sans (Clean Sans)", value: "Open Sans"}
+                  - {label: "Karla (Friendly Sans)", value: "Karla"}
+                  - {label: "Source Sans Pro (Professional)", value: "Source Sans Pro"}
+                default: "Lora"
+              
+              - label: "Accent Font"
+                name: "accent_font"
+                widget: "select"
+                options:
+                  - {label: "Karla (Sans-serif)", value: "Karla"}
+                  - {label: "Montserrat (Modern)", value: "Montserrat"}
+                  - {label: "Raleway (Elegant)", value: "Raleway"}
+                  - {label: "Open Sans (Clean)", value: "Open Sans"}
+                default: "Karla"
+          
+          - label: "Logo & Branding"
+            name: "branding"
+            widget: "object"
+            fields:
+              - {label: "Site Name", name: "site_name", widget: "string", default: "The Handmade Kitchen"}
+              - {label: "Site Logo", name: "logo", widget: "image", required: false, hint: "Upload a logo image (optional)"}
+              - {label: "Favicon", name: "favicon", widget: "image", required: false, hint: "Small icon for browser tab"}
+          
+          - label: "Carousel Images"
+            name: "carousel"
+            widget: "object"
+            fields:
+              - {label: "Slide 1 Image", name: "slide1_image", widget: "image", required: false}
+              - {label: "Slide 2 Image", name: "slide2_image", widget: "image", required: false}
+              - {label: "Slide 3 Image", name: "slide3_image", widget: "image", required: false}
+              - {label: "Slide 4 Image", name: "slide4_image", widget: "image", required: false}
+          
+          - label: "Background Settings"
+            name: "background"
+            widget: "object"
+            fields:
+              - {label: "Use Pattern Background", name: "use_pattern", widget: "boolean", default: false}
+              - label: "Pattern Type"
+                name: "pattern_type"
+                widget: "select"
+                required: false
+                options:
+                  - {label: "None", value: "none"}
+                  - {label: "Subtle Dots", value: "dots"}
+                  - {label: "Light Grid", value: "grid"}
+                  - {label: "Diagonal Lines", value: "lines"}
+              - {label: "Background Image", name: "bg_image", widget: "image", required: false, hint: "Full page background (use sparingly)"}

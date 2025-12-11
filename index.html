@@ -1022,6 +1022,7 @@
             }
         }
     </style>
+    <script src="design-settings.js"></script>
 </head>
 <body>
     <!-- NAVIGATION -->
@@ -1305,6 +1306,182 @@
 
     <!-- JAVASCRIPT -->
     <script>
+      // ===== APPLY DESIGN SETTINGS =====
+      function applyDesignSettings() {
+        if (typeof designSettings === 'undefined') {
+          console.log('Design settings not loaded, using defaults');
+          return;
+        }
+        
+        // Apply Colors as CSS Variables
+        if (designSettings.colors) {
+          const root = document.documentElement;
+          if (designSettings.colors.primary) {
+            root.style.setProperty('--olive', designSettings.colors.primary);
+          }
+          if (designSettings.colors.secondary) {
+            root.style.setProperty('--sage', designSettings.colors.secondary);
+          }
+          if (designSettings.colors.accent) {
+            root.style.setProperty('--gold', designSettings.colors.accent);
+          }
+          if (designSettings.colors.background) {
+            root.style.setProperty('--off-white', designSettings.colors.background);
+            document.body.style.backgroundColor = designSettings.colors.background;
+          }
+          if (designSettings.colors.text) {
+            root.style.setProperty('--charcoal', designSettings.colors.text);
+          }
+        }
+        
+        // Apply Typography
+        if (designSettings.typography) {
+          // Load Google Fonts
+          const fonts = [];
+          if (designSettings.typography.heading_font) {
+            fonts.push(designSettings.typography.heading_font.replace(/ /g, '+'));
+          }
+          if (designSettings.typography.body_font) {
+            fonts.push(designSettings.typography.body_font.replace(/ /g, '+'));
+          }
+          if (designSettings.typography.accent_font) {
+            fonts.push(designSettings.typography.accent_font.replace(/ /g, '+'));
+          }
+          
+          if (fonts.length > 0) {
+            const fontLink = document.createElement('link');
+            fontLink.href = `https://fonts.googleapis.com/css2?${fonts.map(f => 'family=' + f + ':wght@400;600;700').join('&')}&display=swap`;
+            fontLink.rel = 'stylesheet';
+            document.head.appendChild(fontLink);
+          }
+          
+          // Apply font families
+          const style = document.createElement('style');
+          let css = '';
+          
+          if (designSettings.typography.heading_font) {
+            css += `
+              h1, h2, h3, h4, h5, h6,
+              .section-title,
+              .recipe-title,
+              .blog-post-title,
+              .post-title,
+              .category-card h3,
+              .carousel-content h1 {
+                font-family: '${designSettings.typography.heading_font}', serif !important;
+              }
+            `;
+          }
+          
+          if (designSettings.typography.body_font) {
+            css += `
+              body,
+              .card-description,
+              .post-content,
+              .blog-post-body,
+              .recipe-section {
+                font-family: '${designSettings.typography.body_font}', serif !important;
+              }
+            `;
+          }
+          
+          if (designSettings.typography.accent_font) {
+            css += `
+              .nav-link,
+              .filter-btn,
+              .cta-button,
+              button,
+              .category-card p {
+                font-family: '${designSettings.typography.accent_font}', sans-serif !important;
+              }
+            `;
+          }
+          
+          style.textContent = css;
+          document.head.appendChild(style);
+        }
+        
+        // Apply Branding
+        if (designSettings.branding) {
+          if (designSettings.branding.site_name) {
+            const logoElement = document.querySelector('.logo');
+            if (logoElement) {
+              logoElement.textContent = designSettings.branding.site_name;
+            }
+          }
+          
+          if (designSettings.branding.logo && designSettings.branding.logo !== '') {
+            const logoElement = document.querySelector('.logo');
+            if (logoElement) {
+              logoElement.innerHTML = `<img src="${designSettings.branding.logo}" alt="${designSettings.branding.site_name || 'Logo'}" style="max-height: 50px;">`;
+            }
+          }
+          
+          if (designSettings.branding.favicon && designSettings.branding.favicon !== '') {
+            const favicon = document.querySelector('link[rel="icon"]');
+            if (favicon) {
+              favicon.href = designSettings.branding.favicon;
+            } else {
+              const newFavicon = document.createElement('link');
+              newFavicon.rel = 'icon';
+              newFavicon.href = designSettings.branding.favicon;
+              document.head.appendChild(newFavicon);
+            }
+          }
+        }
+        
+        // Apply Carousel Images
+        if (designSettings.carousel) {
+          const slides = document.querySelectorAll('.carousel-slide img');
+          if (designSettings.carousel.slide1_image && slides[0]) {
+            slides[0].src = designSettings.carousel.slide1_image;
+          }
+          if (designSettings.carousel.slide2_image && slides[1]) {
+            slides[1].src = designSettings.carousel.slide2_image;
+          }
+          if (designSettings.carousel.slide3_image && slides[2]) {
+            slides[2].src = designSettings.carousel.slide3_image;
+          }
+          if (designSettings.carousel.slide4_image && slides[3]) {
+            slides[3].src = designSettings.carousel.slide4_image;
+          }
+        }
+        
+        // Apply Background Settings
+        if (designSettings.background) {
+          if (designSettings.background.use_pattern && designSettings.background.pattern_type !== 'none') {
+            let pattern = '';
+            switch (designSettings.background.pattern_type) {
+              case 'dots':
+                pattern = 'radial-gradient(circle, #00000008 1px, transparent 1px)';
+                document.body.style.backgroundImage = pattern;
+                document.body.style.backgroundSize = '20px 20px';
+                break;
+              case 'grid':
+                pattern = 'linear-gradient(#00000008 1px, transparent 1px), linear-gradient(90deg, #00000008 1px, transparent 1px)';
+                document.body.style.backgroundImage = pattern;
+                document.body.style.backgroundSize = '30px 30px';
+                break;
+              case 'lines':
+                pattern = 'repeating-linear-gradient(45deg, transparent, transparent 10px, #00000005 10px, #00000005 20px)';
+                document.body.style.backgroundImage = pattern;
+                break;
+            }
+          }
+          
+          if (designSettings.background.bg_image && designSettings.background.bg_image !== '') {
+            document.body.style.backgroundImage = `url('${designSettings.background.bg_image}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+          }
+        }
+        
+        console.log('✅ Design settings applied');
+      }
+      
+      // Apply settings when page loads
+      document.addEventListener('DOMContentLoaded', applyDesignSettings);
+      
       // Toggle mobile menu
       function toggleMobileMenu() {
         const navMenu = document.getElementById('navMenu');
