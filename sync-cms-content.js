@@ -185,7 +185,52 @@ function syncContent() {
   console.log('✅ Sync complete!');
 }
 
-// Run sync
-syncContent();
+// Generate RSS feed for blog
+function generateRSSFeed(blogPosts) {
+  const siteUrl = 'https://tubular-kulfi-20dd81.netlify.app';
+  const now = new Date().toUTCString();
+  
+  const items = blogPosts.map(post => {
+    const postUrl = `${siteUrl}/blog-post.html?id=${post.id}`;
+    const pubDate = new Date(post.date).toUTCString();
+    
+    return `
+    <item>
+      <title><![CDATA[${post.title}]]></title>
+      <description><![CDATA[${post.excerpt || post.content.substring(0, 200)}]]></description>
+      <link>${postUrl}</link>
+      <guid>${postUrl}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <author>noreply@handmadekitchen.com (${post.author})</author>
+      ${post.image ? `<enclosure url="${post.image}" type="image/jpeg"/>` : ''}
+    </item>`;
+  }).join('\n');
+  
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Handmade Kitchen Blog</title>
+    <link>${siteUrl}</link>
+    <description>Clean eating recipes and meal planning tips for busy families</description>
+    <language>en-us</language>
+    <lastBuildDate>${now}</lastBuildDate>
+    <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
+    ${items}
+  </channel>
+</rss>`;
+  
+  fs.writeFileSync('./rss.xml', rss);
+  console.log('✅ Generated rss.xml');
+}
 
+// Run sync
+function runSync() {
+  syncContent();
+  
+  // Generate RSS after content is synced
+  const blog = readDirectory('./content/blog', formatBlog);
+  generateRSSFeed(blog);
+}
+
+runSync();
 
