@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - The Handmade Kitchen</title>
     
-        <!-- Fonts -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Design Settings -->
     <script src="design-settings.js"></script>
-    
     
     <style>
         * {
@@ -21,7 +20,7 @@
         }
         
         :root {
-            --olive: #2c5f4;
+            --olive: #2c5f4f;
             --sage: #8fa893;
             --gold: #d4a574;
             --off-white: #fafaf9;
@@ -33,11 +32,6 @@
             line-height: 1.6;
             color: var(--charcoal);
             background: var(--off-white);
-        }
-        
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--olive);
         }
         
         /* Navigation */
@@ -84,7 +78,6 @@
             color: var(--olive);
         }
         
-        /* Dropdown */
         .dropdown {
             position: relative;
         }
@@ -361,7 +354,7 @@
                 if (designSettings.typography.heading_font) {
                     fonts.push(designSettings.typography.heading_font);
                     const style = document.createElement('style');
-                    style.textContent = `h1, h2, h3, h4, h5, h6, .logo { font-family: '${designSettings.typography.heading_font}', serif !important; }`;
+                    style.textContent = `h1, h2, h3, .logo { font-family: '${designSettings.typography.heading_font}', serif !important; }`;
                     document.head.appendChild(style);
                 }
                 
