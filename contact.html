@@ -359,7 +359,7 @@
                 if (designSettings.typography.heading_font) {
                     fonts.push(designSettings.typography.heading_font);
                     const style = document.createElement('style');
-                    style.textContent = `h1, h2, h3, .logo { font-family: '${designSettings.typography.heading_font}', serif !important; }`;
+                    style.textContent = `h1, h2, h3, h4, h5, h6, .logo { font-family: '${designSettings.typography.heading_font}', serif !important; }`;
                     document.head.appendChild(style);
                 }
                 
