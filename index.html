@@ -8,7 +8,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Design Settings (loads colors, fonts, logo) -->
+    <!-- Design Settings -->
     <script src="design-settings.js"></script>
     
     <style>
@@ -79,6 +79,41 @@
         }
         
         .nav-links a:hover {
+            color: var(--olive);
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--off-white);
             color: var(--olive);
         }
         
@@ -326,7 +361,6 @@
             background: linear-gradient(135deg, var(--olive) 0%, #3d7a65 100%);
             padding: 80px 20px;
             text-align: center;
-            color: white;
         }
         
         .newsletter-container {
@@ -395,8 +429,28 @@
             <a href="index.html" class="logo">The Handmade Kitchen</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#recipes">Recipes</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li class="dropdown">
+                    <a href="#recipes">Recipes ▾</a>
+                    <div class="dropdown-content">
+                        <a href="recipe-detail.html?category=Kid%20Snacks">Kid Snacks</a>
+                        <a href="recipe-detail.html?category=Breakfasts">Breakfasts</a>
+                        <a href="recipe-detail.html?category=Lunches">Lunches</a>
+                        <a href="recipe-detail.html?category=Dinners">Dinners</a>
+                        <a href="recipe-detail.html?category=Appetizers">Appetizers</a>
+                        <a href="recipe-detail.html?category=Desserts">Desserts</a>
+                        <a href="recipe-detail.html">All Recipes</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#blog">Blog ▾</a>
+                    <div class="dropdown-content">
+                        <a href="blog-post.html?category=Meal%20Planning">Meal Planning</a>
+                        <a href="blog-post.html?category=Kitchen%20Tips">Kitchen Tips</a>
+                        <a href="blog-post.html?category=Clean%20Eating">Clean Eating</a>
+                        <a href="blog-post.html?category=Family%20Life">Family Life</a>
+                        <a href="blog-post.html">All Posts</a>
+                    </div>
+                </li>
                 <li><a href="#shop">Shop</a></li>
             </ul>
         </div>
@@ -532,195 +586,89 @@
     <script src="full-content-data.js"></script>
     
     <script>
-        // Apply Design Settings Function
+        // Apply Design Settings
         function applyDesignSettings() {
-            if (typeof designSettings === 'undefined') {
-                console.log('Design settings not loaded yet');
-                return;
-            }
+            if (typeof designSettings === 'undefined') return;
+            
+            const root = document.documentElement;
             
             // Apply colors
             if (designSettings.colors) {
-                const root = document.documentElement;
-                if (designSettings.colors.primary_color) {
-                    root.style.setProperty('--olive', designSettings.colors.primary_color);
-                }
-                if (designSettings.colors.secondary_color) {
-                    root.style.setProperty('--sage', designSettings.colors.secondary_color);
-                }
-                if (designSettings.colors.accent_color) {
-                    root.style.setProperty('--gold', designSettings.colors.accent_color);
-                }
+                if (designSettings.colors.primary_color) root.style.setProperty('--olive', designSettings.colors.primary_color);
+                if (designSettings.colors.secondary_color) root.style.setProperty('--sage', designSettings.colors.secondary_color);
+                if (designSettings.colors.accent_color) root.style.setProperty('--gold', designSettings.colors.accent_color);
                 if (designSettings.colors.background_color) {
                     root.style.setProperty('--off-white', designSettings.colors.background_color);
                     document.body.style.background = designSettings.colors.background_color;
                 }
-                if (designSettings.colors.text_color) {
-                    root.style.setProperty('--charcoal', designSettings.colors.text_color);
-                }
+                if (designSettings.colors.text_color) root.style.setProperty('--charcoal', designSettings.colors.text_color);
             }
             
-            // Apply typography (fonts)
+            // Apply fonts
             if (designSettings.typography) {
-                const fontLinks = [];
+                const fonts = [];
                 
                 if (designSettings.typography.heading_font) {
-                    const headingFont = designSettings.typography.heading_font;
-                    fontLinks.push(headingFont);
-                    document.documentElement.style.setProperty('--heading-font', `'${headingFont}', serif`);
-                    
-                    // Inject CSS for headings
-                    const headingStyle = document.createElement('style');
-                    headingStyle.textContent = `
-                        h1, h2, h3, h4, h5, h6, .logo {
-                            font-family: '${headingFont}', serif !important;
-                        }
-                    `;
-                    document.head.appendChild(headingStyle);
+                    fonts.push(designSettings.typography.heading_font);
+                    const style = document.createElement('style');
+                    style.textContent = `h1, h2, h3, h4, h5, h6, .logo { font-family: '${designSettings.typography.heading_font}', serif !important; }`;
+                    document.head.appendChild(style);
                 }
                 
                 if (designSettings.typography.body_font) {
-                    const bodyFont = designSettings.typography.body_font;
-                    fontLinks.push(bodyFont);
-                    
-                    const bodyStyle = document.createElement('style');
-                    bodyStyle.textContent = `
-                        body, p, .recipe-description, .recipe-info {
-                            font-family: '${bodyFont}', serif !important;
-                        }
-                    `;
-                    document.head.appendChild(bodyStyle);
+                    fonts.push(designSettings.typography.body_font);
+                    const style = document.createElement('style');
+                    style.textContent = `body, p, .recipe-description { font-family: '${designSettings.typography.body_font}', serif !important; }`;
+                    document.head.appendChild(style);
                 }
                 
                 if (designSettings.typography.accent_font) {
-                    const accentFont = designSettings.typography.accent_font;
-                    fontLinks.push(accentFont);
-                    
-                    const accentStyle = document.createElement('style');
-                    accentStyle.textContent = `
-                        .nav-links a, .cta-button, .recipe-category, .category-name {
-                            font-family: '${accentFont}', sans-serif !important;
-                        }
-                    `;
-                    document.head.appendChild(accentStyle);
+                    fonts.push(designSettings.typography.accent_font);
+                    const style = document.createElement('style');
+                    style.textContent = `.nav-links a, .cta-button, .recipe-category, .category-name { font-family: '${designSettings.typography.accent_font}', sans-serif !important; }`;
+                    document.head.appendChild(style);
                 }
                 
-                // Load Google Fonts dynamically
-                if (fontLinks.length > 0) {
-                    const uniqueFonts = [...new Set(fontLinks)];
-                    const fontUrl = 'https://fonts.googleapis.com/css2?family=' + 
-                        uniqueFonts.map(f => f.replace(/ /g, '+')).join('&family=') + 
-                        '&display=swap';
-                    const fontLink = document.createElement('link');
-                    fontLink.href = fontUrl;
-                    fontLink.rel = 'stylesheet';
-                    document.head.appendChild(fontLink);
+                // Load fonts
+                if (fonts.length > 0) {
+                    const uniqueFonts = [...new Set(fonts)];
+                    const fontUrl = 'https://fonts.googleapis.com/css2?family=' + uniqueFonts.map(f => f.replace(/ /g, '+')).join('&family=') + '&display=swap';
+                    const link = document.createElement('link');
+                    link.href = fontUrl;
+                    link.rel = 'stylesheet';
+                    document.head.appendChild(link);
                 }
-            }
-            
-            // Apply logo
-            if (designSettings.branding && designSettings.branding.site_logo) {
-                const logoElements = document.querySelectorAll('.logo');
-                logoElements.forEach(logo => {
-                    logo.innerHTML = `<img src="${designSettings.branding.site_logo}" alt="Logo" style="height: 40px;">`;
-                });
-            }
-            
-            // Apply favicon
-            if (designSettings.branding && designSettings.branding.favicon) {
-                let favicon = document.querySelector('link[rel="icon"]');
-                if (!favicon) {
-                    favicon = document.createElement('link');
-                    favicon.rel = 'icon';
-                    document.head.appendChild(favicon);
-                }
-                favicon.href = designSettings.branding.favicon;
             }
             
             // Apply carousel images
             if (designSettings.carousel) {
                 const slides = document.querySelectorAll('.carousel-slide img');
-                if (designSettings.carousel.slide1_image && slides[0]) {
-                    slides[0].src = designSettings.carousel.slide1_image;
-                }
-                if (designSettings.carousel.slide2_image && slides[1]) {
-                    slides[1].src = designSettings.carousel.slide2_image;
-                }
-                if (designSettings.carousel.slide3_image && slides[2]) {
-                    slides[2].src = designSettings.carousel.slide3_image;
-                }
-                if (designSettings.carousel.slide4_image && slides[3]) {
-                    slides[3].src = designSettings.carousel.slide4_image;
-                }
+                if (designSettings.carousel.slide1_image && slides[0]) slides[0].src = designSettings.carousel.slide1_image;
+                if (designSettings.carousel.slide2_image && slides[1]) slides[1].src = designSettings.carousel.slide2_image;
+                if (designSettings.carousel.slide3_image && slides[2]) slides[2].src = designSettings.carousel.slide3_image;
+                if (designSettings.carousel.slide4_image && slides[3]) slides[3].src = designSettings.carousel.slide4_image;
             }
-            
-            // Apply background pattern/image
-            if (designSettings.background) {
-                if (designSettings.background.use_pattern && designSettings.background.pattern_type !== 'none') {
-                    // Apply pattern based on type
-                    const patterns = {
-                        dots: 'radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px)',
-                        grid: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
-                        lines: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px)'
-                    };
-                    
-                    if (patterns[designSettings.background.pattern_type]) {
-                        document.body.style.backgroundImage = patterns[designSettings.background.pattern_type];
-                        document.body.style.backgroundSize = '20px 20px';
-                    }
-                }
-                
-                if (designSettings.background.background_image) {
-                    document.body.style.backgroundImage = `url(${designSettings.background.background_image})`;
-                    document.body.style.backgroundSize = 'cover';
-                    document.body.style.backgroundAttachment = 'fixed';
-                }
-            }
-            
-            console.log('✅ Design settings applied!');
         }
         
-        // Apply design settings on load
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof applyDesignSettings === 'function') {
-                applyDesignSettings();
-            }
-            
-            loadHomepageContent();
-            initCarousel();
-        });
-        
-        // Carousel functionality
+        // Carousel
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
         
         function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
             currentSlide = (n + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
         }
         
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-        
         function initCarousel() {
-            // Auto-advance every 5 seconds
-            setInterval(nextSlide, 5000);
-            
-            // Dot navigation
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    showSlide(parseInt(dot.dataset.slide));
-                });
-            });
+            setInterval(() => showSlide(currentSlide + 1), 5000);
+            dots.forEach(dot => dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.slide))));
         }
         
-        // Load homepage content
+        // Load content
         function loadHomepageContent() {
             loadLatestRecipes();
             loadLatestBlog();
@@ -729,15 +677,14 @@
         
         function loadLatestRecipes() {
             const container = document.getElementById('latest-recipes');
-            const recipes = contentData.recipes.slice(0, 4); // Show 4 recipes
-            
-            container.innerHTML = recipes.map(recipe => `
-                <div class="recipe-card" onclick="window.location.href='recipe-detail.html?id=${recipe.id}'">
-                    <img src="${recipe.image}" alt="${recipe.title}">
+            const recipes = contentData.recipes.slice(0, 4);
+            container.innerHTML = recipes.map(r => `
+                <div class="recipe-card" onclick="window.location.href='recipe-detail.html?id=${r.id}'">
+                    <img src="${r.image}" alt="${r.title}">
                     <div class="recipe-info">
-                        <div class="recipe-category">${recipe.category}</div>
-                        <h3 class="recipe-title">${recipe.title}</h3>
-                        <p class="recipe-description">${recipe.description}</p>
+                        <div class="recipe-category">${r.category}</div>
+                        <h3 class="recipe-title">${r.title}</h3>
+                        <p class="recipe-description">${r.description}</p>
                     </div>
                 </div>
             `).join('');
@@ -745,15 +692,14 @@
         
         function loadLatestBlog() {
             const container = document.getElementById('latest-blog');
-            const posts = contentData.blogPosts.slice(0, 3); // Show 3 posts
-            
-            container.innerHTML = posts.map(post => `
-                <div class="blog-card" onclick="window.location.href='blog-post.html?id=${post.id}'">
-                    <img src="${post.image}" alt="${post.title}">
+            const posts = contentData.blogPosts.slice(0, 3);
+            container.innerHTML = posts.map(p => `
+                <div class="blog-card" onclick="window.location.href='blog-post.html?id=${p.id}'">
+                    <img src="${p.image}" alt="${p.title}">
                     <div class="recipe-info">
-                        <div class="recipe-category">${post.category}</div>
-                        <h3 class="recipe-title">${post.title}</h3>
-                        <p class="recipe-description">${post.excerpt}</p>
+                        <div class="recipe-category">${p.category}</div>
+                        <h3 class="recipe-title">${p.title}</h3>
+                        <p class="recipe-description">${p.excerpt}</p>
                     </div>
                 </div>
             `).join('');
@@ -761,14 +707,13 @@
         
         function loadShopProducts() {
             const container = document.getElementById('shop-products');
-            
             container.innerHTML = contentData.shopItems.map(item => `
                 <div class="shop-card">
                     <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                     <h3>${item.title}</h3>
                     <p style="color: #666; margin: 1rem 0;">${item.description}</p>
                     <div class="shop-price">${item.price}</div>
-                    <a href="${item.link}" class="cta-button" style="display: inline-block; margin-top: 1rem;">Get It Now</a>
+                    <a href="${item.link}" class="cta-button">Get It Now</a>
                 </div>
             `).join('');
         }
@@ -776,6 +721,13 @@
         function filterByCategory(category) {
             window.location.href = `recipe-detail.html?category=${encodeURIComponent(category)}`;
         }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            applyDesignSettings();
+            loadHomepageContent();
+            initCarousel();
+        });
     </script>
 </body>
 </html>
