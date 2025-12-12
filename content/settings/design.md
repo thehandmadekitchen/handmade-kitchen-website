@@ -14,7 +14,7 @@ branding:
   logo: ""
   favicon: ""
 carousel:
-  slide1_image: https://unsplash.com/photos/a-top-view-of-unrecognizable-woman-baking-biscuits-desktop-concept-QBwntmUP7gk
+  slide1_image: /images/uploads/lauren-gray-zqh5l1jws5m-unsplash.jpg
   slide2_image: ""
   slide3_image: ""
   slide4_image: ""
