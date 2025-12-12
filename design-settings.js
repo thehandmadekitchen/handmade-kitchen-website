@@ -9,7 +9,7 @@ const designSettings = {
   "typography": {
     "heading_font": "Playfair Display",
     "body_font": "Merriweather",
-    "accent_font": "Karla"
+    "accent_font": "Work Sans"
   },
   "branding": {
     "site_name": "The Handmade Kitchen",
