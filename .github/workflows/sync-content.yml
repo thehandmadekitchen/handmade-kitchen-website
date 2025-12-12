@@ -187,21 +187,3 @@ function syncContent() {
 
 // Run sync
 syncContent();
-```
-
-5. **Make sure you got ALL of it** - scroll to the bottom, should end with `syncContent();`
-6. Commit message: `Complete working sync script`
-7. Click **"Commit changes"**
-
----
-
-## After You Commit:
-
-1. Go to **Actions** tab
-2. It should run successfully this time
-3. Look for output like:
-```
-   📖 Reading design.md...
-      Colors: 5 settings
-      Typography: 3 fonts
-   ✅ Generated design-settings.js
