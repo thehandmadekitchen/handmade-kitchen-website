@@ -17,7 +17,7 @@ const designSettings = {
     "favicon": null
   },
   "carousel": {
-    "slide1_image": null,
+    "slide1_image": "https://unsplash.com/photos/a-top-view-of-unrecognizable-woman-baking-biscuits-desktop-concept-QBwntmUP7gk",
     "slide2_image": null,
     "slide3_image": null,
     "slide4_image": null
