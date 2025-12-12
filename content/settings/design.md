@@ -2,7 +2,7 @@
 colors:
   primary: "#6c785e"
   secondary: "#d3c9b2"
-  accent: "#7c6e5a"
+  accent: "#8e7e67"
   background: "#f8f2e9"
   text: "#322c2c"
 typography:
