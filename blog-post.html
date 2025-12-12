@@ -3,72 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post - The Handmade Kitchen</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Blog - The Handmade Kitchen</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Design Settings -->
+    <script src="design-settings.js"></script>
+    
     <style>
-        :root {
-            --olive: #2c5f4f;
-            --sage: #8fa893;
-            --cream: #f5f1e8;
-            --charcoal: #2d2d2d;
-            --off-white: #fafaf9;
-            --gold: #d4a574;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        :root {
+            --olive: #2c5f4f;
+            --sage: #8fa893;
+            --gold: #d4a574;
+            --off-white: #fafaf9;
+            --charcoal: #2d2d2d;
+        }
+        
         body {
-            font-family: 'Karla', sans-serif;
-            line-height: 1.8;
+            font-family: 'Lora', serif;
+            line-height: 1.6;
             color: var(--charcoal);
             background: var(--off-white);
         }
         
+        /* Navigation - Same as homepage */
         nav {
-            position: fixed;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
-            width: 100%;
-            background: var(--off-white);
-            padding: 1.5rem 5%;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
         
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--olive);
             text-decoration: none;
         }
         
-        .back-button {
-            padding: 0.75rem 1.5rem;
-            background: var(--olive);
-            color: white;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--charcoal);
             text-decoration: none;
-            border-radius: 25px;
+            font-family: 'Karla', sans-serif;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
         }
         
-        .back-button:hover {
-            background: var(--sage);
-            transform: translateY(-2px);
+        .nav-links a:hover {
+            color: var(--olive);
         }
         
-        .post-container {
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--off-white);
+            color: var(--olive);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--olive) 0%, #3d7a65 100%);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Single Post View */
+        .post-detail {
             max-width: 800px;
-            margin: 100px auto 60px;
+            margin: 60px auto;
             padding: 0 20px;
         }
         
@@ -80,6 +148,14 @@
             margin-bottom: 2rem;
         }
         
+        .post-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
         .post-category {
             display: inline-block;
             background: var(--gold);
@@ -87,7 +163,17 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .post-date {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .post-author {
+            color: #666;
+            font-size: 0.95rem;
         }
         
         .post-title {
@@ -99,115 +185,353 @@
         }
         
         .post-excerpt {
-            font-family: 'Lora', serif;
             font-size: 1.3rem;
             color: #666;
+            margin-bottom: 2rem;
             font-style: italic;
-            margin-bottom: 3rem;
-            line-height: 1.6;
         }
         
         .post-content {
-            font-family: 'Lora', serif;
-            font-size: 1.15rem;
-            line-height: 1.9;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .post-content p {
+            margin-bottom: 1.5rem;
         }
         
         .post-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
             color: var(--olive);
-            margin: 2.5rem 0 1rem 0;
+            margin: 2rem 0 1rem;
         }
         
         .post-content h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
             color: var(--olive);
-            margin: 2rem 0 1rem 0;
+            margin: 1.5rem 0 0.75rem;
         }
         
-        .post-content p {
-            margin: 1.5rem 0;
-        }
-        
-        .post-content strong {
-            color: var(--olive);
-            font-weight: 600;
-        }
-        
-        .post-content ul,
-        .post-content ol {
-            margin: 1.5rem 0;
+        .post-content ul, .post-content ol {
+            margin-bottom: 1.5rem;
             padding-left: 2rem;
         }
         
         .post-content li {
-            margin: 0.75rem 0;
+            margin-bottom: 0.5rem;
         }
         
+        /* Post Grid (All/Filtered) */
+        .posts-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--olive);
+            color: var(--olive);
+            border-radius: 25px;
+            font-family: 'Karla', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--olive);
+            color: white;
+        }
+        
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .post-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .post-card-info {
+            padding: 1.5rem;
+        }
+        
+        .post-card-category {
+            color: var(--sage);
+            font-size: 0.9rem;
+            font-family: 'Karla', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .post-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--olive);
+            margin: 0.5rem 0;
+        }
+        
+        .post-card-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .post-card-date {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
             .post-title {
                 font-size: 2rem;
             }
             
-            .post-excerpt {
-                font-size: 1.1rem;
-            }
-            
-            .post-image {
-                height: 250px;
+            .post-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
-        <a href="index.html" class="logo">The Handmade Kitchen</a>
-        <a href="index.html#blog" class="back-button">← Back to Blog</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">The Handmade Kitchen</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="recipe-detail.html">Recipes ▾</a>
+                    <div class="dropdown-content">
+                        <a href="recipe-detail.html?category=Kid%20Snacks">Kid Snacks</a>
+                        <a href="recipe-detail.html?category=Breakfasts">Breakfasts</a>
+                        <a href="recipe-detail.html?category=Lunches">Lunches</a>
+                        <a href="recipe-detail.html?category=Dinners">Dinners</a>
+                        <a href="recipe-detail.html?category=Appetizers">Appetizers</a>
+                        <a href="recipe-detail.html?category=Desserts">Desserts</a>
+                        <a href="recipe-detail.html">All Recipes</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="blog-post.html">Blog ▾</a>
+                    <div class="dropdown-content">
+                        <a href="blog-post.html?category=Meal%20Planning">Meal Planning</a>
+                        <a href="blog-post.html?category=Kitchen%20Tips">Kitchen Tips</a>
+                        <a href="blog-post.html?category=Clean%20Eating">Clean Eating</a>
+                        <a href="blog-post.html?category=Family%20Life">Family Life</a>
+                        <a href="blog-post.html">All Posts</a>
+                    </div>
+                </li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="post-container" id="postContent">
-        <p>Loading post...</p>
-    </div>
+    <!-- Content will be loaded here -->
+    <div id="content"></div>
 
+    <!-- Load Content Data -->
     <script src="full-content-data.js"></script>
+    
     <script>
-        // Get post index from URL parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const postIndex = parseInt(urlParams.get('id'));
-        
-        // Load post data
-        const post = contentData.blogPosts[postIndex];
-        
-        if (post) {
-            document.title = post.title + " - The Handmade Kitchen";
+        // Apply Design Settings
+        function applyDesignSettings() {
+            if (typeof designSettings === 'undefined') return;
             
-            // Convert content to HTML with better formatting
-            let htmlContent = post.content
-                .replace(/\n## (.*)/g, '<h2>$1</h2>')
-                .replace(/\n### (.*)/g, '<h3>$1</h3>')
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\n- (.*)/g, '<li>$1</li>')
-                .replace(/<li>/g, '<ul><li>')
-                .replace(/<\/li>(?!<li>)/g, '</li></ul>')
-                .replace(/<\/ul><ul>/g, '')
-                .split('\n\n')
-                .map(para => para.trim() ? `<p>${para}</p>` : '')
-                .join('');
+            const root = document.documentElement;
             
-            document.getElementById('postContent').innerHTML = `
-                <img src="${post.image}" alt="${post.title}" class="post-image">
-                <span class="post-category">${post.category}</span>
-                <h1 class="post-title">${post.title}</h1>
-                <p class="post-excerpt">${post.excerpt}</p>
-                <div class="post-content">
-                    ${htmlContent}
+            // Apply colors
+            if (designSettings.colors) {
+                if (designSettings.colors.primary) root.style.setProperty('--olive', designSettings.colors.primary);
+                if (designSettings.colors.secondary) root.style.setProperty('--sage', designSettings.colors.secondary);
+                if (designSettings.colors.accent) root.style.setProperty('--gold', designSettings.colors.accent);
+                if (designSettings.colors.background) {
+                    root.style.setProperty('--off-white', designSettings.colors.background);
+                    document.body.style.background = designSettings.colors.background;
+                }
+                if (designSettings.colors.text) root.style.setProperty('--charcoal', designSettings.colors.text);
+            }
+            
+            // Apply fonts
+            if (designSettings.typography) {
+                const fonts = [];
+                
+                if (designSettings.typography.heading_font) {
+                    fonts.push(designSettings.typography.heading_font);
+                    const style = document.createElement('style');
+                    style.textContent = `h1, h2, h3, .logo, .post-title, .post-card-title { font-family: '${designSettings.typography.heading_font}', serif !important; }`;
+                    document.head.appendChild(style);
+                }
+                
+                if (designSettings.typography.body_font) {
+                    fonts.push(designSettings.typography.body_font);
+                    const style = document.createElement('style');
+                    style.textContent = `body, p, .post-content, .post-excerpt, .post-card-excerpt { font-family: '${designSettings.typography.body_font}', serif !important; }`;
+                    document.head.appendChild(style);
+                }
+                
+                if (designSettings.typography.accent_font) {
+                    fonts.push(designSettings.typography.accent_font);
+                    const style = document.createElement('style');
+                    style.textContent = `.nav-links a, .filter-btn, .post-category, .post-card-category { font-family: '${designSettings.typography.accent_font}', sans-serif !important; }`;
+                    document.head.appendChild(style);
+                }
+                
+                // Load fonts
+                if (fonts.length > 0) {
+                    const uniqueFonts = [...new Set(fonts)];
+                    const fontUrl = 'https://fonts.googleapis.com/css2?family=' + uniqueFonts.map(f => f.replace(/ /g, '+')).join('&family=') + '&display=swap';
+                    const link = document.createElement('link');
+                    link.href = fontUrl;
+                    link.rel = 'stylesheet';
+                    document.head.appendChild(link);
+                }
+            }
+        }
+        
+        // Get URL parameters
+        function getURLParameter(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+        
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        
+        // Display single post
+        function displayPost(post) {
+            document.title = `${post.title} - The Handmade Kitchen`;
+            
+            const content = `
+                <div class="post-detail">
+                    <img src="${post.image}" alt="${post.title}" class="post-image">
+                    
+                    <div class="post-meta">
+                        <span class="post-category">${post.category}</span>
+                        <span class="post-date">${formatDate(post.date)}</span>
+                        <span class="post-author">By ${post.author}</span>
+                    </div>
+                    
+                    <h1 class="post-title">${post.title}</h1>
+                    <p class="post-excerpt">${post.excerpt}</p>
+                    
+                    <div class="post-content">
+                        ${post.content.replace(/\n/g, '</p><p>')}
+                    </div>
                 </div>
             `;
-        } else {
-            document.getElementById('postContent').innerHTML = '<p>Post not found.</p>';
+            
+            document.getElementById('content').innerHTML = content;
         }
+        
+        // Display post grid
+        function displayPostGrid(posts, category = null) {
+            const pageTitle = category ? category : 'All Blog Posts';
+            document.title = `${pageTitle} - The Handmade Kitchen`;
+            
+            const categories = [...new Set(contentData.blogPosts.map(p => p.category))];
+            
+            const content = `
+                <div class="page-header">
+                    <h1>${pageTitle}</h1>
+                    <p>Tips, stories, and inspiration for clean eating</p>
+                </div>
+                
+                <div class="posts-container">
+                    <div class="filter-buttons">
+                        <button class="filter-btn ${!category ? 'active' : ''}" onclick="window.location.href='blog-post.html'">All</button>
+                        ${categories.map(cat => `
+                            <button class="filter-btn ${category === cat ? 'active' : ''}" 
+                                    onclick="window.location.href='blog-post.html?category=${encodeURIComponent(cat)}'">
+                                ${cat}
+                            </button>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="post-grid">
+                        ${posts.map(post => `
+                            <div class="post-card" onclick="window.location.href='blog-post.html?id=${post.id}'">
+                                <img src="${post.image}" alt="${post.title}">
+                                <div class="post-card-info">
+                                    <div class="post-card-category">${post.category}</div>
+                                    <h3 class="post-card-title">${post.title}</h3>
+                                    <p class="post-card-excerpt">${post.excerpt}</p>
+                                    <p class="post-card-date">${formatDate(post.date)}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('content').innerHTML = content;
+        }
+        
+        // Initialize page
+        function init() {
+            applyDesignSettings();
+            
+            const postId = getURLParameter('id');
+            const category = getURLParameter('category');
+            
+            if (postId) {
+                // Show single post
+                const post = contentData.blogPosts.find(p => p.id === postId);
+                if (post) {
+                    displayPost(post);
+                } else {
+                    document.getElementById('content').innerHTML = '<div class="posts-container"><p>Post not found.</p></div>';
+                }
+            } else {
+                // Show grid (all or filtered)
+                let posts = contentData.blogPosts;
+                if (category) {
+                    posts = posts.filter(p => p.category === category);
+                }
+                displayPostGrid(posts, category);
+            }
+        }
+        
+        // Load on ready
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
