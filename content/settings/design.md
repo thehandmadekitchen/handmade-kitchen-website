@@ -1,9 +1,9 @@
 ---
 colors:
   primary: "#829071"
-  secondary: "#cbedae"
+  secondary: "#d4cab4"
   accent: "#a89377"
-  background: "#fbf8f4"
+  background: "#f8f2e9"
   text: "#151414"
 typography:
   heading_font: Josefin Sans
