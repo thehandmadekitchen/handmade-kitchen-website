@@ -1,13 +1,13 @@
 const designSettings = {
   "colors": {
     "primary": "#829071",
-    "secondary": "#d4cab4",
+    "secondary": "#d3c9b2",
     "accent": "#a89377",
     "background": "#f8f2e9",
     "text": "#151414"
   },
   "typography": {
-    "heading_font": "Playfair Display",
+    "heading_font": "Cormorant Garamond",
     "body_font": "Merriweather",
     "accent_font": "Karla"
   },
