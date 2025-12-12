@@ -1,10 +1,10 @@
 const designSettings = {
   "colors": {
-    "primary": "#829071",
+    "primary": "#6c785e",
     "secondary": "#d3c9b2",
     "accent": "#7c6e5a",
     "background": "#f8f2e9",
-    "text": "#433e3e"
+    "text": "#322c2c"
   },
   "typography": {
     "heading_font": "Playfair Display",
