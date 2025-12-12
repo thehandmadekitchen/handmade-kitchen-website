@@ -532,6 +532,154 @@
     <script src="full-content-data.js"></script>
     
     <script>
+        // Apply Design Settings Function
+        function applyDesignSettings() {
+            if (typeof designSettings === 'undefined') {
+                console.log('Design settings not loaded yet');
+                return;
+            }
+            
+            // Apply colors
+            if (designSettings.colors) {
+                const root = document.documentElement;
+                if (designSettings.colors.primary_color) {
+                    root.style.setProperty('--olive', designSettings.colors.primary_color);
+                }
+                if (designSettings.colors.secondary_color) {
+                    root.style.setProperty('--sage', designSettings.colors.secondary_color);
+                }
+                if (designSettings.colors.accent_color) {
+                    root.style.setProperty('--gold', designSettings.colors.accent_color);
+                }
+                if (designSettings.colors.background_color) {
+                    root.style.setProperty('--off-white', designSettings.colors.background_color);
+                    document.body.style.background = designSettings.colors.background_color;
+                }
+                if (designSettings.colors.text_color) {
+                    root.style.setProperty('--charcoal', designSettings.colors.text_color);
+                }
+            }
+            
+            // Apply typography (fonts)
+            if (designSettings.typography) {
+                const fontLinks = [];
+                
+                if (designSettings.typography.heading_font) {
+                    const headingFont = designSettings.typography.heading_font;
+                    fontLinks.push(headingFont);
+                    document.documentElement.style.setProperty('--heading-font', `'${headingFont}', serif`);
+                    
+                    // Inject CSS for headings
+                    const headingStyle = document.createElement('style');
+                    headingStyle.textContent = `
+                        h1, h2, h3, h4, h5, h6, .logo {
+                            font-family: '${headingFont}', serif !important;
+                        }
+                    `;
+                    document.head.appendChild(headingStyle);
+                }
+                
+                if (designSettings.typography.body_font) {
+                    const bodyFont = designSettings.typography.body_font;
+                    fontLinks.push(bodyFont);
+                    
+                    const bodyStyle = document.createElement('style');
+                    bodyStyle.textContent = `
+                        body, p, .recipe-description, .recipe-info {
+                            font-family: '${bodyFont}', serif !important;
+                        }
+                    `;
+                    document.head.appendChild(bodyStyle);
+                }
+                
+                if (designSettings.typography.accent_font) {
+                    const accentFont = designSettings.typography.accent_font;
+                    fontLinks.push(accentFont);
+                    
+                    const accentStyle = document.createElement('style');
+                    accentStyle.textContent = `
+                        .nav-links a, .cta-button, .recipe-category, .category-name {
+                            font-family: '${accentFont}', sans-serif !important;
+                        }
+                    `;
+                    document.head.appendChild(accentStyle);
+                }
+                
+                // Load Google Fonts dynamically
+                if (fontLinks.length > 0) {
+                    const uniqueFonts = [...new Set(fontLinks)];
+                    const fontUrl = 'https://fonts.googleapis.com/css2?family=' + 
+                        uniqueFonts.map(f => f.replace(/ /g, '+')).join('&family=') + 
+                        '&display=swap';
+                    const fontLink = document.createElement('link');
+                    fontLink.href = fontUrl;
+                    fontLink.rel = 'stylesheet';
+                    document.head.appendChild(fontLink);
+                }
+            }
+            
+            // Apply logo
+            if (designSettings.branding && designSettings.branding.site_logo) {
+                const logoElements = document.querySelectorAll('.logo');
+                logoElements.forEach(logo => {
+                    logo.innerHTML = `<img src="${designSettings.branding.site_logo}" alt="Logo" style="height: 40px;">`;
+                });
+            }
+            
+            // Apply favicon
+            if (designSettings.branding && designSettings.branding.favicon) {
+                let favicon = document.querySelector('link[rel="icon"]');
+                if (!favicon) {
+                    favicon = document.createElement('link');
+                    favicon.rel = 'icon';
+                    document.head.appendChild(favicon);
+                }
+                favicon.href = designSettings.branding.favicon;
+            }
+            
+            // Apply carousel images
+            if (designSettings.carousel) {
+                const slides = document.querySelectorAll('.carousel-slide img');
+                if (designSettings.carousel.slide1_image && slides[0]) {
+                    slides[0].src = designSettings.carousel.slide1_image;
+                }
+                if (designSettings.carousel.slide2_image && slides[1]) {
+                    slides[1].src = designSettings.carousel.slide2_image;
+                }
+                if (designSettings.carousel.slide3_image && slides[2]) {
+                    slides[2].src = designSettings.carousel.slide3_image;
+                }
+                if (designSettings.carousel.slide4_image && slides[3]) {
+                    slides[3].src = designSettings.carousel.slide4_image;
+                }
+            }
+            
+            // Apply background pattern/image
+            if (designSettings.background) {
+                if (designSettings.background.use_pattern && designSettings.background.pattern_type !== 'none') {
+                    // Apply pattern based on type
+                    const patterns = {
+                        dots: 'radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px)',
+                        grid: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
+                        lines: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px)'
+                    };
+                    
+                    if (patterns[designSettings.background.pattern_type]) {
+                        document.body.style.backgroundImage = patterns[designSettings.background.pattern_type];
+                        document.body.style.backgroundSize = '20px 20px';
+                    }
+                }
+                
+                if (designSettings.background.background_image) {
+                    document.body.style.backgroundImage = `url(${designSettings.background.background_image})`;
+                    document.body.style.backgroundSize = 'cover';
+                    document.body.style.backgroundAttachment = 'fixed';
+                }
+            }
+            
+            console.log('✅ Design settings applied!');
+        }
+        
         // Apply design settings on load
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof applyDesignSettings === 'function') {
