@@ -1,0 +1,26 @@
+---
+title: "Easy Slow Cooker Chicken Tacos"
+description: "Set it and forget it! This foolproof chicken taco recipe is perfect for busy weeknights. Juicy, flavorful, and the whole family will love it."
+category: "Dinners"
+image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47"
+prep_time: "10 minutes"
+cook_time: "4-6 hours"
+total_time: "4-6 hours"
+servings: "6 servings"
+ingredients:
+  - "2 pounds boneless skinless chicken breasts or thighs"
+  - "1 can (14oz) diced tomatoes with green chilies"
+  - "1 packet taco seasoning (or homemade: 2 tsp chili powder, 1 tsp cumin, 1 tsp paprika, 1/2 tsp garlic powder, 1/2 tsp onion powder)"
+  - "1 onion, diced"
+  - "2 cloves garlic, minced"
+  - "1/2 cup chicken broth"
+  - "Toppings: avocado, lettuce, tomatoes, cheese, cilantro, lime"
+  - "Whole wheat tortillas or lettuce wraps"
+instructions:
+  - "Place chicken breasts in slow cooker."
+  - "Add diced tomatoes, taco seasoning, onion, garlic, and chicken broth on top."
+  - "Cover and cook on LOW for 6 hours or HIGH for 3-4 hours, until chicken is very tender and shreds easily."
+  - "Remove chicken and shred using two forks. Return shredded chicken to slow cooker and stir to coat in sauce."
+  - "Serve in tortillas or lettuce wraps with your favorite toppings!"
+notes: "Meal Prep Magic: Make on Sunday and use for tacos Monday, burrito bowls Tuesday, nachos Wednesday! Store shredded chicken in fridge for 5 days. Serve It Different Ways: Taco Tuesday: Traditional tacos with all the toppings. Wednesday: Burrito bowls over rice. Thursday: Taco salad. Friday: Quesadillas or nachos! Make It Healthier: Use lettuce wraps instead of tortillas for a low-carb option. Freezer Friendly: Freeze shredded chicken in portions for quick future meals. Thaw overnight and reheat!"
+---

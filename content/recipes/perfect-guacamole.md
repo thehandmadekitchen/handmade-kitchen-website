@@ -1,0 +1,27 @@
+---
+title: "Perfect Chunky Guacamole"
+description: "This is the BEST guacamole recipe! Fresh, flavorful, and comes together in 5 minutes. Perfect for taco night or parties."
+category: "Appetizers"
+image: "https://images.unsplash.com/photo-1615501838064-85e9d6ba0e1a"
+prep_time: "10 minutes"
+cook_time: "0 minutes"
+total_time: "10 minutes"
+servings: "6 servings"
+ingredients:
+  - "4 ripe avocados"
+  - "1/4 cup diced red onion"
+  - "1 jalapeño, seeded and minced (optional)"
+  - "1/4 cup fresh cilantro, chopped"
+  - "2 tablespoons lime juice (about 1 lime)"
+  - "1/2 teaspoon salt"
+  - "1/4 teaspoon cumin"
+  - "1 tomato, diced (optional)"
+instructions:
+  - "Cut avocados in half, remove pits, and scoop flesh into a bowl."
+  - "Add lime juice and salt. Mash with a fork to your desired consistency (we like it chunky!)."
+  - "Fold in diced onion, jalapeño (if using), cilantro, and cumin. Stir gently to combine."
+  - "Fold in diced tomato if using."
+  - "Taste and adjust seasonings - add more salt, lime, or jalapeño as needed."
+  - "Serve immediately with tortilla chips or use as a topping for tacos, burritos, or burrito bowls!"
+notes: "How to Pick Perfect Avocados: Ripe avocados yield to gentle pressure but aren't mushy. If buying ahead, buy firm ones and let ripen on counter for 2-3 days. Keep It Green: Press plastic wrap directly onto the surface of guacamole to prevent browning. The lime juice also helps! Can't Eat Right Away?: Put the avocado pit back in the guacamole and cover tightly. This really does help prevent browning! Make It Spicier: Add more jalapeño or a dash of hot sauce. Customize It: Skip cilantro if you're not a fan. Add minced garlic for extra flavor!"
+---

@@ -1,0 +1,28 @@
+---
+title: "Veggie-Packed Egg Muffins"
+description: "These protein-packed breakfast muffins are loaded with vegetables and perfect for meal prep. Grab one (or two!) on busy mornings."
+category: "Breakfasts"
+image: "https://images.unsplash.com/photo-1608039755401-742074f0548d"
+prep_time: "15 minutes"
+cook_time: "20 minutes"
+total_time: "35 minutes"
+servings: "12 muffins"
+ingredients:
+  - "8 large eggs"
+  - "1/4 cup milk"
+  - "1 cup diced bell peppers (any color)"
+  - "1 cup chopped spinach"
+  - "1/2 cup diced onion"
+  - "1/2 cup shredded cheese (optional)"
+  - "4 ounces cooked sausage or bacon, crumbled (optional)"
+  - "1/2 teaspoon garlic powder"
+  - "Salt and pepper to taste"
+instructions:
+  - "Preheat oven to 350°F. Spray a 12-cup muffin tin with olive oil or line with muffin liners."
+  - "In a large bowl, whisk together eggs, milk, garlic powder, salt, and pepper until well beaten."
+  - "Divide vegetables (and meat if using) evenly among the 12 muffin cups."
+  - "Pour egg mixture over the vegetables, filling each cup about 3/4 full."
+  - "Bake for 18-22 minutes until eggs are set and lightly golden on top. A toothpick inserted in the center should come out clean."
+  - "Let cool for 5 minutes before removing from tin. Serve warm or let cool completely for meal prep."
+notes: "Meal Prep Champion: These are THE BEST for meal prep! Make on Sunday and reheat throughout the week. Storage: Refrigerate for up to 5 days or freeze for up to 3 months. Reheat from frozen in microwave for 60-90 seconds. Customization Ideas: Use whatever veggies you have! Mushrooms, tomatoes, zucchini, broccoli all work great. Add different cheeses or herbs for variety. Make It Dairy-Free: Skip the cheese and use unsweetened almond milk."
+---

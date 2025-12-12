@@ -1,0 +1,26 @@
+---
+title: "Turkey and Veggie Pinwheels"
+description: "These colorful pinwheels are a lunchbox favorite! Easy to make ahead and packed with protein and veggies."
+category: "Lunches"
+image: "https://images.unsplash.com/photo-1509440159596-0249088772ff"
+prep_time: "15 minutes"
+cook_time: "0 minutes"
+total_time: "15 minutes"
+servings: "4 servings (24 pinwheels)"
+ingredients:
+  - "4 large whole wheat tortillas"
+  - "1/2 cup cream cheese or hummus, softened"
+  - "12 slices deli turkey breast"
+  - "1 cup baby spinach leaves"
+  - "1 large carrot, julienned or shredded"
+  - "1/2 red bell pepper, thinly sliced"
+  - "1/2 cucumber, thinly sliced"
+instructions:
+  - "Lay tortillas flat on a clean surface. Spread a thin layer of cream cheese or hummus over entire surface of each tortilla, leaving a 1/2-inch border."
+  - "Layer 3 slices of turkey over each tortilla, covering the cream cheese."
+  - "Add a layer of spinach leaves, then arrange carrot, bell pepper, and cucumber in the center."
+  - "Starting from the bottom edge, roll tortilla tightly. The cream cheese will help seal it."
+  - "Wrap each roll tightly in plastic wrap and refrigerate for at least 30 minutes (this helps them hold together)."
+  - "Before serving, unwrap and slice each roll into 6 pinwheels using a sharp knife. Serve cold."
+notes: "Make Ahead: These are perfect for meal prep! Make on Sunday and refrigerate (unsliced) for up to 3 days. Slice fresh each morning. Rainbow Veggie Option: Use different colored veggies to make it extra fun - purple cabbage, yellow peppers, orange carrots! Nut-Free School Lunch: Use cream cheese instead of nut butter if sending to school. Storage: Keep wrapped rolls in fridge for 3 days. Once sliced, eat within 24 hours. Variation Ideas: Use different proteins (chicken, roast beef, ham), different spreads (pesto, sun-dried tomato), or add cheese!"
+---

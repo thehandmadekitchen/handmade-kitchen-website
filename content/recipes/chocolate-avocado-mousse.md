@@ -1,0 +1,26 @@
+---
+title: "Chocolate Avocado Mousse (Secret Ingredient!)"
+description: "Rich, creamy, chocolatey mousse made with avocados! Nobody will guess the secret ingredient. Naturally sweetened and ready in 5 minutes."
+category: "Desserts"
+image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51"
+prep_time: "10 minutes"
+cook_time: "0 minutes"
+total_time: "10 minutes + chilling"
+servings: "4 servings"
+ingredients:
+  - "2 ripe avocados"
+  - "1/4 cup cocoa powder"
+  - "1/4 cup honey or maple syrup"
+  - "1/4 cup milk of choice"
+  - "1 teaspoon vanilla extract"
+  - "Pinch of salt"
+  - "Optional toppings: whipped cream, berries, chocolate shavings"
+instructions:
+  - "Add avocados, cocoa powder, honey, milk, vanilla, and salt to a food processor or blender."
+  - "Blend on high for 1-2 minutes, stopping to scrape down sides, until completely smooth and creamy."
+  - "Taste and adjust sweetness - add more honey if needed."
+  - "Divide into 4 small serving bowls or glasses."
+  - "Cover and refrigerate for at least 30 minutes to set (or serve immediately if you can't wait!)."
+  - "Top with whipped cream, fresh berries, or chocolate shavings before serving."
+notes: "The Secret: The avocados make it incredibly creamy but you can't taste them at all! It just tastes like rich chocolate mousse. Make It Richer: Add 2 tablespoons melted dark chocolate for extra decadence. Texture Tip: Blend really well! It should be completely smooth with no avocado chunks. Storage: Keeps in fridge for up to 3 days. The top might brown slightly - that's okay! Just stir before serving. Allergy-Friendly: Naturally dairy-free and can be made vegan with maple syrup instead of honey. Kid Reaction: They'll never believe this is made with avocados! It's a great way to sneak in healthy fats."
+---

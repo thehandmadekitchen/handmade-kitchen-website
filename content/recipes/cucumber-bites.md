@@ -1,0 +1,28 @@
+---
+title: "Greek Cucumber Bites"
+description: "These refreshing, low-carb bites are like mini Greek salads! Perfect for summer parties or healthy snacking."
+category: "Appetizers"
+image: "https://images.unsplash.com/photo-1583797227936-5e0cd6229466"
+prep_time: "15 minutes"
+cook_time: "0 minutes"
+total_time: "15 minutes"
+servings: "24 bites"
+ingredients:
+  - "2 large English cucumbers"
+  - "1/2 cup hummus or cream cheese"
+  - "1/2 cup cherry tomatoes, quartered"
+  - "1/4 cup crumbled feta cheese"
+  - "2 tablespoons Kalamata olives, chopped"
+  - "Fresh dill for garnish"
+  - "Olive oil for drizzling"
+  - "Salt and pepper to taste"
+instructions:
+  - "Slice cucumbers into 1/2-inch thick rounds. You should get about 24 slices."
+  - "Use a small spoon to scoop out seeds from center of each cucumber slice, creating a small well. Don't scoop too much - leave enough for stability."
+  - "Pat cucumber rounds dry with paper towel."
+  - "Spread or pipe a small amount of hummus or cream cheese onto each cucumber round."
+  - "Top each with cherry tomato pieces, feta crumbles, and chopped olives."
+  - "Drizzle with a tiny bit of olive oil and garnish with fresh dill."
+  - "Arrange on a platter and serve immediately!"
+notes: "Make Ahead: Prep cucumber bases and toppings separately. Assemble 1-2 hours before serving to prevent sogginess. Why English Cucumbers?: They have fewer seeds and thinner skin, making them perfect for this recipe! Variations: Try different toppings! Smoked salmon and cream cheese, avocado and cherry tomato, or goat cheese and honey. Party Perfect: These are naturally gluten-free and low-carb, making them perfect for guests with dietary restrictions. Storage: Best eaten same day. The cucumbers will release water if stored overnight."
+---

@@ -1,0 +1,26 @@
+---
+title: "Thick and Creamy Berry Smoothie Bowl"
+description: "This Instagram-worthy breakfast bowl is thick, creamy, and topped with all your favorites. It's like ice cream for breakfast!"
+category: "Breakfasts"
+image: "https://images.unsplash.com/photo-1590301157890-4810ed352733"
+prep_time: "10 minutes"
+cook_time: "0 minutes"
+total_time: "10 minutes"
+servings: "2 bowls"
+ingredients:
+  - "2 frozen bananas, broken into chunks"
+  - "1 cup frozen mixed berries"
+  - "1/2 cup Greek yogurt"
+  - "1/4 cup milk of choice"
+  - "1 tablespoon honey or maple syrup"
+  - "1 tablespoon almond butter"
+  - "Toppings: fresh fruit, granola, coconut flakes, chia seeds, nuts"
+instructions:
+  - "Add frozen bananas, frozen berries, yogurt, milk, honey, and almond butter to a high-speed blender."
+  - "Blend on low, using a tamper to push ingredients down if needed. Blend until thick and creamy like soft-serve ice cream."
+  - "If mixture is too thick, add milk 1 tablespoon at a time. If too thin, add more frozen fruit."
+  - "Divide between two bowls. Work quickly as it starts to melt!"
+  - "Top with your favorite toppings - get creative! Add fresh berries, sliced banana, granola, coconut, chia seeds, or nuts."
+  - "Eat immediately with a spoon."
+notes: "Pro Tip: The key to a thick smoothie bowl is using FROZEN fruit and very little liquid. Start with less milk and add more if needed. Hidden Greens: Add a handful of spinach - you won't taste it but you'll get extra nutrients! Prep Ahead: Portion fruit into freezer bags for easy morning smoothie bowls. Topping Ideas: Make it fun! Let kids choose their own toppings. Try: sliced kiwi, mango, peanut butter drizzle, cacao nibs, hemp hearts, or homemade granola."
+---

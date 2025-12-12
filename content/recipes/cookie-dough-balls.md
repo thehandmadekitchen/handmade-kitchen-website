@@ -1,0 +1,28 @@
+---
+title: "No-Bake Chocolate Chip Cookie Dough Balls"
+description: "These taste like cookie dough but are made with chickpeas! A secretly healthy dessert that's perfect for satisfying sweet cravings."
+category: "Desserts"
+image: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e"
+prep_time: "15 minutes"
+cook_time: "0 minutes"
+total_time: "15 minutes + chilling"
+servings: "20 balls"
+ingredients:
+  - "1 can (15oz) chickpeas, drained and rinsed"
+  - "1/2 cup natural almond butter or peanut butter"
+  - "1/3 cup honey or maple syrup"
+  - "1/4 cup almond flour"
+  - "2 teaspoons vanilla extract"
+  - "1/2 teaspoon salt"
+  - "1/2 cup mini chocolate chips"
+  - "2 tablespoons milk (if needed to thin)"
+instructions:
+  - "Pat chickpeas very dry with paper towels. This is important for the right texture!"
+  - "Add chickpeas, almond butter, honey, almond flour, vanilla, and salt to a food processor."
+  - "Blend for 2-3 minutes, stopping to scrape sides, until mixture is smooth and looks like cookie dough. If too thick, add milk 1 tablespoon at a time."
+  - "Transfer to a bowl and fold in chocolate chips."
+  - "Cover and refrigerate for 30 minutes to firm up (makes rolling easier)."
+  - "Roll into 1-inch balls using your hands. If mixture is too sticky, wet your hands slightly."
+  - "Store in an airtight container in the refrigerator for up to 2 weeks."
+notes: "The Secret Ingredient: Nobody can taste the chickpeas! They add protein and fiber while keeping these treats sweet and satisfying. Texture Perfect: Make sure to blend really well - it should look and feel like cookie dough! No chickpea chunks. Flavor Variations: BIRTHDAY CAKE: Add sprinkles instead of chocolate chips. PEANUT BUTTER CUP: Roll in cocoa powder after forming balls. DOUBLE CHOCOLATE: Add 2 tablespoons cocoa powder to the mixture. Make Ahead: These are perfect for meal prep! Make a batch on Sunday for healthy desserts all week. Freezer-Friendly: Freeze for up to 3 months. Thaw for 10 minutes before eating. Kid-Approved: Even picky eaters love these! They taste like dessert but have protein and fiber."
+---

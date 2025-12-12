@@ -1,0 +1,28 @@
+---
+title: "Chewy Almond Flour Chocolate Chip Cookies"
+description: "These grain-free cookies are soft, chewy, and loaded with chocolate chips! Nobody will guess they're made with almond flour."
+category: "Desserts"
+image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e"
+prep_time: "10 minutes"
+cook_time: "12 minutes"
+total_time: "22 minutes"
+servings: "18 cookies"
+ingredients:
+  - "2 1/2 cups almond flour"
+  - "1/2 teaspoon baking soda"
+  - "1/4 teaspoon salt"
+  - "1/3 cup coconut oil, melted"
+  - "1/3 cup honey or maple syrup"
+  - "1 egg"
+  - "1 teaspoon vanilla extract"
+  - "3/4 cup dark chocolate chips"
+instructions:
+  - "Preheat oven to 350°F. Line a baking sheet with parchment paper."
+  - "In a medium bowl, mix almond flour, baking soda, and salt."
+  - "In a separate bowl, whisk together melted coconut oil, honey, egg, and vanilla until smooth."
+  - "Add wet ingredients to dry ingredients and stir until just combined. Fold in chocolate chips."
+  - "Drop rounded tablespoons of dough onto prepared baking sheet, spacing 2 inches apart. Flatten slightly with your palm."
+  - "Bake for 10-12 minutes until edges are golden brown. Centers will look slightly underdone - that's perfect!"
+  - "Let cool on baking sheet for 5 minutes (they'll firm up), then transfer to a wire rack to cool completely."
+notes: "Why They're Better: Almond flour adds protein and healthy fats! These keep you satisfied longer than regular cookies. Texture Tip: Don't overbake! Remove when edges are golden but centers look soft. They'll firm up as they cool. Storage: Keep in an airtight container for 5 days, or freeze for up to 3 months. Make It Your Own: Try different mix-ins! Chopped nuts, dried cranberries, shredded coconut, or white chocolate chips. Gluten-Free: These are naturally gluten-free! Perfect for guests with dietary restrictions. Pro Tip: Use room temperature egg for easier mixing. Cold eggs make the coconut oil solidify!"
+---

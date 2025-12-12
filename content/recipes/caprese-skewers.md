@@ -1,0 +1,27 @@
+---
+title: "Easy Caprese Skewers"
+description: "These colorful appetizers look fancy but take just 10 minutes to make! Perfect for parties or a quick snack."
+category: "Appetizers"
+image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804"
+prep_time: "15 minutes"
+cook_time: "0 minutes"
+total_time: "15 minutes"
+servings: "12 skewers"
+ingredients:
+  - "12 cherry tomatoes"
+  - "12 small mozzarella balls (bocconcini or ciliegine)"
+  - "12 fresh basil leaves"
+  - "2 tablespoons balsamic glaze"
+  - "1 tablespoon olive oil"
+  - "Salt and pepper to taste"
+  - "12 small skewers or toothpicks"
+instructions:
+  - "Thread one cherry tomato onto each skewer."
+  - "Fold a basil leaf and thread it onto the skewer."
+  - "Add a mozzarella ball to each skewer."
+  - "Arrange skewers on a serving platter."
+  - "Drizzle with balsamic glaze and olive oil."
+  - "Sprinkle with salt and pepper."
+  - "Serve immediately or refrigerate for up to 2 hours before serving."
+notes: "Make Ahead: Assemble skewers up to 4 hours ahead, but wait to drizzle with balsamic glaze and olive oil until just before serving. What's Balsamic Glaze?: It's thick, sweet balsamic vinegar. Find it in the vinegar aisle or make your own by simmering 1 cup balsamic vinegar until reduced by half. Party Tip: These are perfect for summer parties, BBQs, or as an appetizer before Italian dinner! Kid-Friendly: Even picky eaters love these! The sweet balsamic glaze wins them over. Variations: Add a grape tomato or cucumber slice for extra color. Use different types of fresh mozzarella for variety."
+---

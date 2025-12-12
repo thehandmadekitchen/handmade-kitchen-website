@@ -1,0 +1,28 @@
+---
+title: "Easy Sheet Pan Chicken and Rainbow Vegetables"
+description: "This one-pan dinner makes clean-up a breeze! Juicy chicken with roasted vegetables that even picky eaters will love."
+category: "Dinners"
+image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6"
+prep_time: "15 minutes"
+cook_time: "30 minutes"
+total_time: "45 minutes"
+servings: "4-6 servings"
+ingredients:
+  - "2 pounds boneless skinless chicken breasts or thighs"
+  - "3 cups broccoli florets"
+  - "2 bell peppers, cut into chunks (use different colors!)"
+  - "1 red onion, cut into wedges"
+  - "2 cups cherry tomatoes"
+  - "3 tablespoons olive oil"
+  - "2 teaspoons garlic powder"
+  - "1 teaspoon paprika"
+  - "1 teaspoon dried Italian seasoning"
+  - "Salt and pepper to taste"
+instructions:
+  - "Preheat oven to 425°F. Line a large baking sheet with parchment paper."
+  - "Pat chicken dry and place on one side of the baking sheet. Drizzle with 1 tablespoon olive oil and season with garlic powder, paprika, Italian seasoning, salt and pepper."
+  - "Add all vegetables to the other side of the pan. Drizzle with remaining olive oil and season with salt and pepper. Toss to coat."
+  - "Roast for 25-30 minutes until chicken is cooked through (internal temp 165°F) and vegetables are tender and slightly charred."
+  - "Let chicken rest for 5 minutes before slicing. Serve chicken with roasted vegetables and your choice of rice, quinoa, or cauliflower rice."
+notes: "Meal Prep: This is perfect for meal prep! Divide into 4-5 containers and refrigerate for easy lunches all week. Variations: Swap vegetables based on what you have - zucchini, carrots, sweet potatoes, and green beans all work great! Time Saver: Buy pre-cut vegetables to make this even faster. Cut vegetables into similar sizes so they cook evenly. Storage: Keeps in fridge for 4-5 days. Reheat in microwave or oven."
+---
