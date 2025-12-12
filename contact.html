@@ -91,7 +91,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border-radius: 8px;
             padding: 0.5rem 0;
-            margin-top: 0.5rem;
+            margin-top: 0;
             z-index: 1001;
         }
         
@@ -115,7 +115,7 @@
         
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, var(--olive) 0%, #3d7a65 100%);
+            background: var(--olive);
             padding: 80px 20px;
             text-align: center;
             color: white;
@@ -308,7 +308,7 @@
         
         <div class="contact-info">
             <h3>Other Ways to Connect</h3>
-            <p>📧 Email: hello@thehandmadekitchen.com</p>
+            <p>📧 Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1d9d4dddddef1c5d9d4d9d0dfd5dcd0d5d4dad8c5d2d9d4df9fd2dedc">[email&#160;protected]</a></p>
             <p>📸 Instagram: @thehandmadekitchen</p>
             <p>📌 Pinterest: The Handmade Kitchen</p>
         </div>
@@ -322,7 +322,7 @@
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Apply Design Settings
         function applyDesignSettings() {
             if (typeof designSettings === 'undefined') return;
@@ -369,13 +369,4 @@
                     const fontUrl = 'https://fonts.googleapis.com/css2?family=' + uniqueFonts.map(f => f.replace(/ /g, '+')).join('&family=') + '&display=swap';
                     const link = document.createElement('link');
                     link.href = fontUrl;
-                    link.rel = 'stylesheet';
-                    document.head.appendChild(link);
-                }
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', applyDesignSettings);
-    </script>
-</body>
-</html>
+                

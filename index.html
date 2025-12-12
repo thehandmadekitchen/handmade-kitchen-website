@@ -97,7 +97,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border-radius: 8px;
             padding: 0.5rem 0;
-            margin-top: 0.5rem;
+            margin-top: 0;
             z-index: 1001;
         }
         
@@ -207,6 +207,35 @@
         
         .dot.active {
             background: white;
+        }
+        
+        /* Carousel Arrows */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+        
+        .carousel-arrow:hover {
+            background: rgba(255,255,255,0.5);
+        }
+        
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+        
+        .carousel-arrow.next {
+            right: 20px;
         }
         
         /* Section Styles */
@@ -535,6 +564,9 @@
             </div>
         </div>
         
+        <button class="carousel-arrow prev" onclick="changeSlide(-1)">‹</button>
+        <button class="carousel-arrow next" onclick="changeSlide(1)">›</button>
+        
         <div class="carousel-dots">
             <span class="dot active" data-slide="0"></span>
             <span class="dot" data-slide="1"></span>
@@ -601,8 +633,8 @@
     <!-- Newsletter Section with ConvertKit -->
     <section class="newsletter-section">
         <div class="newsletter-container">
-            <h2>Join The Handmade Kitchen Community</h2>
-                       
+            <h2>Join Our Kitchen Community</h2>
+            
             <div class="newsletter-form-container">
                 <!-- ConvertKit Form -->
                 <script async data-uid="9838aeef94" src="https://the-handmade-kitchen.kit.com/9838aeef94/index.js"></script>
@@ -701,6 +733,10 @@
             currentSlide = (n + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
+        }
+        
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
         }
         
         function initCarousel() {
