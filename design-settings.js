@@ -9,7 +9,7 @@ const designSettings = {
   "typography": {
     "heading_font": "Cormorant Garamond",
     "body_font": "Merriweather",
-    "accent_font": "Nunito"
+    "accent_font": "Lato"
   },
   "branding": {
     "site_name": "The Handmade Kitchen",
