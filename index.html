@@ -3,103 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Handmade Kitchen - Clean Eating Recipes & Meal Planning</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Design Settings (loads colors, fonts, logo) -->
-    <script src="design-settings.js"></script>
-    
+    <title>The Handmade Kitchen - Clean Eating & Homestead Recipes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <style>
+        :root {
+            --olive: #6B7D5A;
+            --deep-olive: #4A5940;
+            --taupe: #A89F91;
+            --warm-cream: #F5F1E8;
+            --off-white: #FFFEFA;
+            --charcoal: #3A3A38;
+            --soft-sage: #B8C5A8;
+            --clay: #C4A57B;
+            --shadow: rgba(58, 58, 56, 0.12);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --olive: #2c5f4f;
-            --sage: #8fa893;
-            --gold: #d4a574;
-            --off-white: #fafaf9;
-            --charcoal: #2d2d2d;
-        }
-        
         body {
-            font-family: 'Lora', serif;
-            line-height: 1.6;
+            font-family: 'Karla', sans-serif;
+            background: var(--warm-cream);
             color: var(--charcoal);
-            background: var(--off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
         
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--olive);
-        }
-        
-        /* Navigation */
+        /* NAVIGATION */
         nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 1000;
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
+            width: 100%;
+            background: var(--off-white);
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
         
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--olive);
-            text-decoration: none;
+            letter-spacing: -0.5px;
+            cursor: pointer;
         }
         
-        .nav-links {
+        .nav-menu {
             display: flex;
             gap: 2rem;
-            list-style: none;
+            align-items: center;
         }
         
-        .nav-links a {
+        .nav-link {
             color: var(--charcoal);
             text-decoration: none;
-            font-family: 'Karla', sans-serif;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
         }
         
-        .nav-links a:hover {
+        .nav-link:hover {
             color: var(--olive);
         }
         
-        /* Hero Carousel */
-        .carousel {
+        .nav-link.active {
+            color: var(--olive);
+            font-weight: 600;
+        }
+        
+        /* Dropdown Navigation */
+        .nav-dropdown {
             position: relative;
-            width: 100%;
-            height: 500px;
+        }
+        
+        /* Add invisible bridge for hover */
+        .nav-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: transparent;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            z-index: 1000;
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--off-white);
+            color: var(--olive);
+        }
+        
+        .nav-dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        }
+        
+        /* SECTIONS */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* HERO */
+        .hero {
+            height: 85vh;
+            position: relative;
+            background: linear-gradient(135deg, var(--olive) 0%, var(--deep-olive) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
         
-        .carousel-slide {
-            position: absolute;
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            color: var(--off-white);
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            font-family: 'Lora', serif;
+            font-style: italic;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--clay);
+            color: var(--charcoal);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(196, 165, 123, 0.3);
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(196, 165, 123, 0.4);
+        }
+        
+        /* CONTAINER */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 5%;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--olive);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem auto 3rem auto;
+            max-width: 900px;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--olive);
+            background: white;
+            color: var(--olive);
+            border-radius: 25px;
+            font-family: 'Karla', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: var(--olive);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--olive);
+            color: white;
+        }
+        
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: var(--off-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .card-description {
+            color: var(--taupe);
+            margin-bottom: 1rem;
+        }
+        
+        /* HERO CAROUSEL */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+        
+        .carousel-container {
+            position: relative;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+        }
+        
+        .carousel-slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 1s;
         }
         
         .carousel-slide.active {
-            opacity: 1;
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
         }
         
         .carousel-slide img {
@@ -115,263 +344,631 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            z-index: 10;
+            z-index: 2;
+            width: 90%;
+            max-width: 800px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
         
         .carousel-content h1 {
-            font-size: 3.5rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
         
         .carousel-content p {
-            font-size: 1.3rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size: 1.5rem;
             margin-bottom: 2rem;
         }
         
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--olive);
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
             color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-family: 'Karla', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s;
+            border: none;
+            font-size: 2rem;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+            backdrop-filter: blur(5px);
         }
         
-        .cta-button:hover {
-            background: var(--sage);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .carousel-btn:hover {
+            background: rgba(255,255,255,0.5);
+        }
+        
+        .carousel-btn.prev {
+            left: 20px;
+        }
+        
+        .carousel-btn.next {
+            right: 20px;
         }
         
         .carousel-dots {
             position: absolute;
-            bottom: 20px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
-            z-index: 10;
+            gap: 15px;
+            z-index: 3;
         }
         
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             background: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
         }
         
-        .dot.active {
+        .dot.active,
+        .dot:hover {
             background: white;
+            transform: scale(1.2);
         }
         
-        /* Section Styles */
-        .section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* HOME SECTIONS */
+        .home-section {
+            margin: 5rem 0;
         }
         
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
         }
         
-        /* Recipe Grid */
-        .recipe-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .recipe-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+        .view-all-link {
+            color: var(--olive);
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.1rem;
         }
         
-        .recipe-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .recipe-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .recipe-info {
-            padding: 1.5rem;
-        }
-        
-        .recipe-category {
+        .view-all-link:hover {
             color: var(--sage);
-            font-size: 0.9rem;
-            font-family: 'Karla', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transform: translateX(5px);
         }
         
-        .recipe-title {
-            font-size: 1.5rem;
-            margin: 0.5rem 0;
-        }
-        
-        .recipe-description {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        
-        /* Category Cards */
-        .category-grid {
+        /* CATEGORY SHOWCASE */
+        .category-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
         
         .category-card {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         
         .category-card:hover {
-            background: var(--olive);
-            color: white;
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         
-        .category-emoji {
-            font-size: 3rem;
+        .category-icon {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
         
-        .category-name {
-            font-family: 'Karla', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
+        .category-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--olive);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
         
-        /* Blog Grid */
-        .blog-grid {
+        .category-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* BLOG PREVIEW GRID */
+        .blog-preview-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
         
-        .blog-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .blog-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        /* Shop Grid */
+        /* SHOP GRID */
         .shop-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
-        .shop-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
+        /* NEWSLETTER */
+        .newsletter {
+            background: linear-gradient(135deg, var(--olive) 0%, var(--clay) 100%);
+            padding: 4rem;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            color: var(--off-white);
+            box-shadow: 0 15px 50px rgba(107, 125, 90, 0.3);
+            margin-top: 5rem;
         }
         
-        .shop-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .shop-price {
-            font-size: 2rem;
-            color: var(--olive);
-            font-weight: 700;
-            margin: 1rem 0;
-        }
-        
-        /* Newsletter Section */
-        .newsletter-section {
-            background: linear-gradient(135deg, var(--olive) 0%, #3d7a65 100%);
-            padding: 80px 20px;
-            text-align: center;
-            color: white;
-        }
-        
-        .newsletter-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .newsletter-section h2 {
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: white;
         }
         
-        .newsletter-section p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto 0;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
-        .newsletter-form-container {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
         }
         
-        .newsletter-disclaimer {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.8);
-            margin-top: 1.5rem;
+        .newsletter-form button {
+            padding: 1rem 2.5rem;
+            background: var(--charcoal);
+            color: var(--off-white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        /* Footer */
+        /* FOOTER */
         footer {
             background: var(--charcoal);
-            color: white;
-            padding: 3rem 2rem;
+            color: var(--warm-cream);
+            padding: 4rem 5%;
             text-align: center;
         }
         
-        /* Responsive */
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--clay);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warm-cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--clay);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+        }
+        
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--olive);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        /* MOBILE */
         @media (max-width: 768px) {
-            .nav-links {
+            nav {
+                padding: 1rem 5%;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--off-white);
+                flex-direction: column;
+                padding: 2rem 5%;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .nav-link {
+                font-size: 1.2rem;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--warm-cream);
+            }
+            
+            .hero {
+                height: 70vh;
+                margin-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .container {
+                padding: 3rem 5%;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .newsletter {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .newsletter h2 {
+                font-size: 1.8rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            line-height: 1;
+            z-index: 10;
+        }
+
+        .modal .close:hover {
+            color: #000;
+        }
+
+        .recipe-header h2 {
+            color: #2c5f4f;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .recipe-info {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        .recipe-info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .recipe-info-item strong {
+            font-size: 1.2rem;
+            color: #2c5f4f;
+            margin-bottom: 0.25rem;
+        }
+
+        .recipe-info-item span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .recipe-section {
+            margin: 2rem 0;
+        }
+
+        .recipe-section h3 {
+            color: #2c5f4f;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .ingredients-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredients-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ingredients-list li:before {
+            content: "•";
+            color: #d4a574;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+        }
+
+        .instructions-list {
+            counter-reset: instruction-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions-list li {
+            counter-increment: instruction-counter;
+            padding: 1rem 0;
+            padding-left: 3rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .instructions-list li:before {
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            background: #2c5f4f;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Blog Modal Styles */
+        .blog-modal-content {
+            max-width: 900px;
+        }
+
+        .blog-post-header {
+            margin-bottom: 2rem;
+        }
+
+        .blog-post-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-post-category {
+            display: inline-block;
+            background: #d4a574;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-title {
+            color: #2c5f4f;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .blog-post-body {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .blog-post-body h1,
+        .blog-post-body h2,
+        .blog-post-body h3 {
+            color: #2c5f4f;
+            font-family: 'Playfair Display', serif;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .blog-post-body h1 {
+            font-size: 2rem;
+        }
+
+        .blog-post-body h2 {
+            font-size: 1.6rem;
+        }
+
+        .blog-post-body h3 {
+            font-size: 1.3rem;
+        }
+
+        .blog-post-body strong {
+            color: #2c5f4f;
+            font-weight: 600;
+        }
+
+        .blog-post-body p {
+            margin: 1rem 0;
+        }
+
+        .blog-post-body li {
+            margin: 0.5rem 0;
+            margin-left: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .recipe-header h2,
+            .blog-post-title {
+                font-size: 1.8rem;
+            }
+
+            .recipe-info {
+                flex-direction: column;
                 gap: 1rem;
+            }
+            
+            /* Mobile Carousel */
+            .hero-carousel {
+                height: 400px;
             }
             
             .carousel-content h1 {
@@ -382,252 +979,1566 @@
                 font-size: 1rem;
             }
             
-            .section-title {
-                font-size: 2rem;
+            .carousel-btn {
+                padding: 0.75rem 1rem;
+                font-size: 1.5rem;
+            }
+            
+            .carousel-btn.prev {
+                left: 10px;
+            }
+            
+            .carousel-btn.next {
+                right: 10px;
+            }
+            
+            /* Mobile Category Showcase */
+            .category-showcase {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .category-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .category-icon {
+                font-size: 2.5rem;
+            }
+            
+            .category-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Mobile Blog Preview */
+            .blog-preview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
         }
     </style>
+    <script src="design-settings.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">The Handmade Kitchen</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#recipes">Recipes</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#shop">Shop</a></li>
-            </ul>
+        <div class="logo" onclick="showSection('home')">The Handmade Kitchen</div>
+        
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="nav-menu" id="navMenu">
+            <a class="nav-link active" onclick="showSection('home')">Home</a>
+            
+            <div class="nav-dropdown">
+                <a class="nav-link" onclick="showSection('recipes')">Recipes</a>
+                <div class="dropdown-content">
+                    <a onclick="showSection('recipes'); filterRecipes('all')">All Recipes</a>
+                    <a onclick="showSection('recipes'); filterRecipes('kid-snacks')">Kid Snacks</a>
+                    <a onclick="showSection('recipes'); filterRecipes('breakfasts')">Breakfasts</a>
+                    <a onclick="showSection('recipes'); filterRecipes('lunches')">Lunches</a>
+                    <a onclick="showSection('recipes'); filterRecipes('dinners')">Dinners</a>
+                    <a onclick="showSection('recipes'); filterRecipes('appetizers')">Appetizers</a>
+                    <a onclick="showSection('recipes'); filterRecipes('desserts')">Desserts</a>
+                </div>
+            </div>
+            
+            <div class="nav-dropdown">
+                <a class="nav-link" onclick="showSection('blog')">Blog</a>
+                <div class="dropdown-content">
+                    <a onclick="showSection('blog'); filterBlog('all')">All Posts</a>
+                    <a onclick="showSection('blog'); filterBlog('meal-planning')">Meal Planning</a>
+                    <a onclick="showSection('blog'); filterBlog('mom-hacks')">Mom Hacks</a>
+                    <a onclick="showSection('blog'); filterBlog('lifestyle')">Lifestyle</a>
+                </div>
+            </div>
+            
+            <a class="nav-link" onclick="showSection('shop')">Shop</a>
+            <a class="nav-link" onclick="showSection('about')">About</a>
+            <a class="nav-link" onclick="showSection('contact')">Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Carousel -->
-    <div class="carousel">
-        <div class="carousel-slide active">
-            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d" alt="Fresh ingredients">
-            <div class="carousel-content">
-                <h1>Clean Eating Made Simple</h1>
-                <p>Real food. Real flavor. Real results.</p>
-                <a href="#recipes" class="cta-button">Explore Recipes</a>
+    <!-- HOME SECTION -->
+    <section id="home" class="page-section active">
+        <!-- Hero Carousel -->
+        <div class="hero-carousel">
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&h=600&fit=crop" alt="The Handmade Kitchen">
+                    <div class="carousel-content">
+                        <h1>The Handmade Kitchen</h1>
+                        <p>Clean eating & homestead recipes for real families</p>
+                        <a class="cta-button" onclick="showSection('recipes')">Explore Recipes</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&h=600&fit=crop" alt="Fresh Ingredients">
+                    <div class="carousel-content">
+                        <h1>Real Ingredients, Real Food</h1>
+                        <p>No refined sugars. No seed oils. Just wholesome ingredients.</p>
+                        <a class="cta-button" onclick="showSection('recipes')">View Recipes</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=1600&h=600&fit=crop" alt="Meal Planning">
+                    <div class="carousel-content">
+                        <h1>Simplify Your Meal Planning</h1>
+                        <p>Quick, family-friendly recipes that actually work</p>
+                        <a class="cta-button" onclick="showSection('blog')">Read the Blog</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=1600&h=600&fit=crop" alt="Digital Resources">
+                    <div class="carousel-content">
+                        <h1>Tools to Make Life Easier</h1>
+                        <p>Meal planners, recipe guides, and printables for busy families</p>
+                        <a class="cta-button" onclick="showSection('shop')">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
             </div>
         </div>
-        
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1556910096-6f5e72db6803" alt="Family cooking">
-            <div class="carousel-content">
-                <h1>Meals Your Family Will Love</h1>
-                <p>No refined sugar. No seed oils. All delicious.</p>
-                <a href="#recipes" class="cta-button">Get Started</a>
-            </div>
-        </div>
-        
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1505935428862-770b6f24f629" alt="Meal prep">
-            <div class="carousel-content">
-                <h1>Simplify Your Meal Planning</h1>
-                <p>Save time without sacrificing health</p>
-                <a href="#blog" class="cta-button">Read Tips</a>
-            </div>
-        </div>
-        
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f" alt="Kitchen tools">
-            <div class="carousel-content">
-                <h1>Tools to Make Life Easier</h1>
-                <p>Meal plans, guides, and more</p>
-                <a href="#shop" class="cta-button">Shop Now</a>
-            </div>
-        </div>
-        
-        <div class="carousel-dots">
-            <span class="dot active" data-slide="0"></span>
-            <span class="dot" data-slide="1"></span>
-            <span class="dot" data-slide="2"></span>
-            <span class="dot" data-slide="3"></span>
-        </div>
-    </div>
 
-    <!-- Latest Recipes Section -->
-    <section class="section" id="recipes">
-        <h2 class="section-title">Latest Recipes</h2>
-        <div class="recipe-grid" id="latest-recipes">
-            <!-- Loaded dynamically -->
+        <div class="container">
+            <!-- Latest Recipes -->
+            <div class="home-section">
+                <div class="section-header">
+                    <h2 class="section-title">Latest Recipes</h2>
+                    <a class="view-all-link" onclick="showSection('recipes')">View All →</a>
+                </div>
+                <div id="latestRecipes" class="card-grid"></div>
+            </div>
+
+            <!-- Recipe Categories -->
+            <div class="home-section">
+                <h2 class="section-title">Browse by Category</h2>
+                <div class="category-showcase">
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('kid-snacks')">
+                        <div class="category-icon">🍪</div>
+                        <h3>Kid Snacks</h3>
+                        <p>Quick, healthy snacks kids love</p>
+                    </div>
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('breakfasts')">
+                        <div class="category-icon">🥞</div>
+                        <h3>Breakfasts</h3>
+                        <p>Start your day right</p>
+                    </div>
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('lunches')">
+                        <div class="category-icon">🥗</div>
+                        <h3>Lunches</h3>
+                        <p>Quick and satisfying midday meals</p>
+                    </div>
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('dinners')">
+                        <div class="category-icon">🍽️</div>
+                        <h3>Dinners</h3>
+                        <p>Family-friendly main dishes</p>
+                    </div>
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('appetizers')">
+                        <div class="category-icon">🧀</div>
+                        <h3>Appetizers</h3>
+                        <p>Perfect starters and party bites</p>
+                    </div>
+                    <div class="category-card" onclick="showSection('recipes'); filterRecipes('desserts')">
+                        <div class="category-icon">🍰</div>
+                        <h3>Desserts</h3>
+                        <p>Sweet treats, naturally sweetened</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Blog Posts -->
+            <div class="home-section">
+                <div class="section-header">
+                    <h2 class="section-title">From the Blog</h2>
+                    <a class="view-all-link" onclick="showSection('blog')">View All →</a>
+                </div>
+                <div id="latestBlogPosts" class="blog-preview-grid"></div>
+            </div>
+
+            <!-- Shop Products -->
+            <div class="home-section">
+                <div class="section-header">
+                    <h2 class="section-title">Digital Resources</h2>
+                    <a class="view-all-link" onclick="showSection('shop')">View All →</a>
+                </div>
+                <div id="shopProducts" class="shop-grid"></div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="newsletter">
+                <h2>Join Our Community</h2>
+                <p>Get weekly clean eating recipes, homestead tips, and meal planning inspiration delivered to your inbox</p>
+                <form class="newsletter-form" onsubmit="alert('Thank you for subscribing! Welcome to The Handmade Kitchen family.'); return false;">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Browse by Category -->
-    <section class="section">
-        <h2 class="section-title">Browse by Category</h2>
-        <div class="category-grid">
-            <div class="category-card" onclick="filterByCategory('Kid Snacks')">
-                <div class="category-emoji">🍪</div>
-                <div class="category-name">Kid Snacks</div>
-            </div>
-            <div class="category-card" onclick="filterByCategory('Breakfasts')">
-                <div class="category-emoji">🥞</div>
-                <div class="category-name">Breakfasts</div>
-            </div>
-            <div class="category-card" onclick="filterByCategory('Lunches')">
-                <div class="category-emoji">🥗</div>
-                <div class="category-name">Lunches</div>
-            </div>
-            <div class="category-card" onclick="filterByCategory('Dinners')">
-                <div class="category-emoji">🍗</div>
-                <div class="category-name">Dinners</div>
-            </div>
-            <div class="category-card" onclick="filterByCategory('Appetizers')">
-                <div class="category-emoji">🧀</div>
-                <div class="category-name">Appetizers</div>
-            </div>
-            <div class="category-card" onclick="filterByCategory('Desserts')">
-                <div class="category-emoji">🍰</div>
-                <div class="category-name">Desserts</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="section" id="blog" style="background: #f9f9f9;">
-        <h2 class="section-title">From the Blog</h2>
-        <div class="blog-grid" id="latest-blog">
-            <!-- Loaded dynamically -->
-        </div>
-    </section>
-
-    <!-- Shop Section -->
-    <section class="section" id="shop">
-        <h2 class="section-title">Digital Resources</h2>
-        <div class="shop-grid" id="shop-products">
-            <!-- Loaded dynamically -->
-        </div>
-    </section>
-
-    <!-- Newsletter Section with ConvertKit -->
-    <section class="newsletter-section">
-        <div class="newsletter-container">
-            <h2>📬 Join Our Kitchen Community</h2>
-            <p>Get new clean eating recipes, meal prep tips, and family-friendly inspiration delivered every Monday morning.</p>
+    <!-- RECIPES SECTION -->
+    <section id="recipes" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Recipe Collection</h2>
+            <p class="section-subtitle">Clean eating recipes made simple</p>
             
-            <div class="newsletter-form-container">
-                <!-- ConvertKit Form -->
-                <script async data-uid="9838aeef94" src="https://the-handmade-kitchen.kit.com/9838aeef94/index.js"></script>
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterRecipes('all')">All Recipes</button>
+                <button class="filter-btn" onclick="filterRecipes('kid-snacks')">Kid Snacks</button>
+                <button class="filter-btn" onclick="filterRecipes('breakfasts')">Breakfasts</button>
+                <button class="filter-btn" onclick="filterRecipes('lunches')">Lunches</button>
+                <button class="filter-btn" onclick="filterRecipes('dinners')">Dinners</button>
+                <button class="filter-btn" onclick="filterRecipes('appetizers')">Appetizers</button>
+                <button class="filter-btn" onclick="filterRecipes('desserts')">Desserts</button>
             </div>
             
-            <p class="newsletter-disclaimer">
-                ✨ Free forever. Unsubscribe anytime. We respect your inbox.
-            </p>
+            <div id="recipesGrid" class="card-grid">
+                <!-- Recipes will load from CMS -->
+                <p>Loading recipes...</p>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- BLOG SECTION -->
+    <section id="blog" class="page-section">
+        <div class="container">
+            <h2 class="section-title">The Blog</h2>
+            <p class="section-subtitle">Meal planning, mom hacks, and homestead life</p>
+            
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterBlog('all')">All Posts</button>
+                <button class="filter-btn" onclick="filterBlog('meal-planning')">Meal Planning</button>
+                <button class="filter-btn" onclick="filterBlog('mom-hacks')">Mom Hacks</button>
+                <button class="filter-btn" onclick="filterBlog('lifestyle')">Lifestyle</button>
+            </div>
+            
+            <div id="blogGrid" class="card-grid">
+                <!-- Blog posts will load from CMS -->
+                <p>Loading blog posts...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP SECTION -->
+    <section id="shop" class="page-section">
+        <div class="container">
+            <h2 class="section-title">The Shop</h2>
+            <p class="section-subtitle">Digital tools to make your life easier</p>
+            
+            <div id="shopGrid" class="card-grid">
+                <!-- Shop items will load from CMS -->
+                <p>Loading products...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="page-section">
+        <div class="container">
+            <h2 class="section-title" id="aboutTitle">Welcome to The Handmade Kitchen</h2>
+            <p class="section-subtitle" id="aboutSubtitle">Clean eating & homestead recipes for real families</p>
+            
+            <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+                <div id="aboutContent">
+                    <p>Here, we believe in real ingredients and simple recipes. No refined sugars—we sweeten with honey, maple syrup, and dates. No seed oils—we cook with olive oil, avocado oil, and butter. Just wholesome, delicious food that nourishes your family.</p>
+                    <p style="margin-top: 1.5rem;">Every recipe is tested in a real kitchen, by a real family, with real kids who have opinions. If it makes it to this website, it's survived the ultimate test: dinnertime.</p>
+                    <p style="margin-top: 1.5rem;">Our mission is to make clean eating accessible, affordable, and actually delicious. No pretension, no impossible standards—just real food for real life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Questions? Just want to say hi?</p>
+            
+            <div style="max-width: 600px; margin: 0 auto; background: var(--off-white); padding: 3rem; border-radius: 12px; box-shadow: 0 8px 30px var(--shadow);">
+                <form onsubmit="alert('Thank you for your message! We\\'ll be in touch soon.'); return false;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Your Name</label>
+                        <input type="text" required style="width: 100%; padding: 0.9rem; border: 2px solid var(--warm-cream); border-radius: 8px; font-family: 'Karla', sans-serif; font-size: 1rem;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email Address</label>
+                        <input type="email" required style="width: 100%; padding: 0.9rem; border: 2px solid var(--warm-cream); border-radius: 8px; font-family: 'Karla', sans-serif; font-size: 1rem;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Message</label>
+                        <textarea required rows="6" style="width: 100%; padding: 0.9rem; border: 2px solid var(--warm-cream); border-radius: 8px; font-family: 'Karla', sans-serif; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                    
+                    <button type="submit" style="width: 100%; padding: 1.2rem; background: var(--olive); color: var(--off-white); border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 500; cursor: pointer; font-family: 'Karla', sans-serif;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2024 The Handmade Kitchen. All rights reserved.</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">
-            Clean eating recipes | No refined sugar | No seed oils
-        </p>
+        <div class="footer-logo">The Handmade Kitchen</div>
+        <div class="social-links" id="socialLinks">
+            <!-- Social icons will be populated from CMS -->
+        </div>
+        <p class="copyright">© 2024 The Handmade Kitchen. All rights reserved.</p>
     </footer>
 
-    <!-- Load Content -->
-    <script src="full-content-data.js"></script>
-    
+    <!-- JAVASCRIPT -->
     <script>
-        // Apply design settings on load
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof applyDesignSettings === 'function') {
-                applyDesignSettings();
+      // ===== APPLY DESIGN SETTINGS =====
+      function applyDesignSettings() {
+        if (typeof designSettings === 'undefined') {
+          console.log('Design settings not loaded, using defaults');
+          return;
+        }
+        
+        // Apply Colors as CSS Variables
+        if (designSettings.colors) {
+          const root = document.documentElement;
+          if (designSettings.colors.primary) {
+            root.style.setProperty('--olive', designSettings.colors.primary);
+          }
+          if (designSettings.colors.secondary) {
+            root.style.setProperty('--sage', designSettings.colors.secondary);
+          }
+          if (designSettings.colors.accent) {
+            root.style.setProperty('--gold', designSettings.colors.accent);
+          }
+          if (designSettings.colors.background) {
+            root.style.setProperty('--off-white', designSettings.colors.background);
+            document.body.style.backgroundColor = designSettings.colors.background;
+          }
+          if (designSettings.colors.text) {
+            root.style.setProperty('--charcoal', designSettings.colors.text);
+          }
+        }
+        
+        // Apply Typography
+        if (designSettings.typography) {
+          // Load Google Fonts
+          const fonts = [];
+          if (designSettings.typography.heading_font) {
+            fonts.push(designSettings.typography.heading_font.replace(/ /g, '+'));
+          }
+          if (designSettings.typography.body_font) {
+            fonts.push(designSettings.typography.body_font.replace(/ /g, '+'));
+          }
+          if (designSettings.typography.accent_font) {
+            fonts.push(designSettings.typography.accent_font.replace(/ /g, '+'));
+          }
+          
+          if (fonts.length > 0) {
+            const fontLink = document.createElement('link');
+            fontLink.href = `https://fonts.googleapis.com/css2?${fonts.map(f => 'family=' + f + ':wght@400;600;700').join('&')}&display=swap`;
+            fontLink.rel = 'stylesheet';
+            document.head.appendChild(fontLink);
+          }
+          
+          // Apply font families
+          const style = document.createElement('style');
+          let css = '';
+          
+          if (designSettings.typography.heading_font) {
+            css += `
+              h1, h2, h3, h4, h5, h6,
+              .section-title,
+              .recipe-title,
+              .blog-post-title,
+              .post-title,
+              .category-card h3,
+              .carousel-content h1 {
+                font-family: '${designSettings.typography.heading_font}', serif !important;
+              }
+            `;
+          }
+          
+          if (designSettings.typography.body_font) {
+            css += `
+              body,
+              .card-description,
+              .post-content,
+              .blog-post-body,
+              .recipe-section {
+                font-family: '${designSettings.typography.body_font}', serif !important;
+              }
+            `;
+          }
+          
+          if (designSettings.typography.accent_font) {
+            css += `
+              .nav-link,
+              .filter-btn,
+              .cta-button,
+              button,
+              .category-card p {
+                font-family: '${designSettings.typography.accent_font}', sans-serif !important;
+              }
+            `;
+          }
+          
+          style.textContent = css;
+          document.head.appendChild(style);
+        }
+        
+        // Apply Branding
+        if (designSettings.branding) {
+          if (designSettings.branding.site_name) {
+            const logoElement = document.querySelector('.logo');
+            if (logoElement) {
+              logoElement.textContent = designSettings.branding.site_name;
             }
-            
-            loadHomepageContent();
-            initCarousel();
+          }
+          
+          if (designSettings.branding.logo && designSettings.branding.logo !== '') {
+            const logoElement = document.querySelector('.logo');
+            if (logoElement) {
+              logoElement.innerHTML = `<img src="${designSettings.branding.logo}" alt="${designSettings.branding.site_name || 'Logo'}" style="max-height: 50px;">`;
+            }
+          }
+          
+          if (designSettings.branding.favicon && designSettings.branding.favicon !== '') {
+            const favicon = document.querySelector('link[rel="icon"]');
+            if (favicon) {
+              favicon.href = designSettings.branding.favicon;
+            } else {
+              const newFavicon = document.createElement('link');
+              newFavicon.rel = 'icon';
+              newFavicon.href = designSettings.branding.favicon;
+              document.head.appendChild(newFavicon);
+            }
+          }
+        }
+        
+        // Apply Carousel Images
+        if (designSettings.carousel) {
+          const slides = document.querySelectorAll('.carousel-slide img');
+          if (designSettings.carousel.slide1_image && slides[0]) {
+            slides[0].src = designSettings.carousel.slide1_image;
+          }
+          if (designSettings.carousel.slide2_image && slides[1]) {
+            slides[1].src = designSettings.carousel.slide2_image;
+          }
+          if (designSettings.carousel.slide3_image && slides[2]) {
+            slides[2].src = designSettings.carousel.slide3_image;
+          }
+          if (designSettings.carousel.slide4_image && slides[3]) {
+            slides[3].src = designSettings.carousel.slide4_image;
+          }
+        }
+        
+        // Apply Background Settings
+        if (designSettings.background) {
+          if (designSettings.background.use_pattern && designSettings.background.pattern_type !== 'none') {
+            let pattern = '';
+            switch (designSettings.background.pattern_type) {
+              case 'dots':
+                pattern = 'radial-gradient(circle, #00000008 1px, transparent 1px)';
+                document.body.style.backgroundImage = pattern;
+                document.body.style.backgroundSize = '20px 20px';
+                break;
+              case 'grid':
+                pattern = 'linear-gradient(#00000008 1px, transparent 1px), linear-gradient(90deg, #00000008 1px, transparent 1px)';
+                document.body.style.backgroundImage = pattern;
+                document.body.style.backgroundSize = '30px 30px';
+                break;
+              case 'lines':
+                pattern = 'repeating-linear-gradient(45deg, transparent, transparent 10px, #00000005 10px, #00000005 20px)';
+                document.body.style.backgroundImage = pattern;
+                break;
+            }
+          }
+          
+          if (designSettings.background.bg_image && designSettings.background.bg_image !== '') {
+            document.body.style.backgroundImage = `url('${designSettings.background.bg_image}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+          }
+        }
+        
+        console.log('✅ Design settings applied');
+      }
+      
+      // Apply settings when page loads
+      document.addEventListener('DOMContentLoaded', applyDesignSettings);
+      
+      // Toggle mobile menu
+      function toggleMobileMenu() {
+        const navMenu = document.getElementById('navMenu');
+        const hamburger = document.querySelector('.hamburger');
+        
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      }
+      
+      // Navigation function
+      function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('.page-section').forEach(section => {
+          section.classList.remove('active');
         });
         
-        // Carousel functionality
-        let currentSlide = 0;
+        // Show selected section
+        document.getElementById(sectionId).classList.add('active');
+        
+        // Update active nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Close mobile menu if open
+        const navMenu = document.getElementById('navMenu');
+        const hamburger = document.querySelector('.hamburger');
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+      
+      // Netlify Identity widget
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+      
+      // Load content from CMS
+      async function loadContent() {
+        try {
+          // Load dynamic homepage content (recipes and blog posts)
+          loadHomepageContent();
+          
+          // Load home page settings
+          const homeResponse = await fetch('/content/settings/home.md');
+          const homeText = await homeResponse.text();
+          const homeData = parseMarkdown(homeText);
+          
+          // Only update elements that exist
+          if (homeData) {
+            const heroTitle = document.getElementById('heroTitle');
+            const heroSubtitle = document.getElementById('heroSubtitle');
+            if (heroTitle) heroTitle.textContent = homeData.hero_title || 'The Handmade Kitchen';
+            if (heroSubtitle) heroSubtitle.textContent = homeData.hero_subtitle || 'Clean eating & homestead recipes';
+          }
+          
+          // Load contact/social settings
+          const contactResponse = await fetch('/content/settings/contact.md');
+          const contactText = await contactResponse.text();
+          const contactData = parseMarkdown(contactText);
+          
+          if (contactData) {
+            updateSocialLinks(contactData);
+          }
+          
+          // Load about page
+          const aboutResponse = await fetch('/content/settings/about.md');
+          const aboutText = await aboutResponse.text();
+          const aboutData = parseMarkdown(aboutText);
+          
+          if (aboutData) {
+            document.getElementById('aboutTitle').textContent = aboutData.title || 'About Us';
+            document.getElementById('aboutSubtitle').textContent = aboutData.subtitle || '';
+            
+            // Extract body content (after frontmatter)
+            const bodyMatch = aboutText.match(/---[\s\S]*?---\s*([\s\S]*)/);
+            if (bodyMatch && bodyMatch[1]) {
+              document.getElementById('aboutContent').innerHTML = marked ? marked.parse(bodyMatch[1]) : bodyMatch[1].replace(/\n/g, '<br>');
+            }
+          }
+          
+        } catch (error) {
+          console.log('Using default content');
+        }
+      }
+      
+      function parseMarkdown(text) {
+        const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---/;
+        const match = text.match(frontmatterRegex);
+        
+        if (match && match[1]) {
+          try {
+            return jsyaml.load(match[1]);
+          } catch (e) {
+            console.error('Error parsing YAML:', e);
+            return null;
+          }
+        }
+        return null;
+      }
+      
+      function updateSocialLinks(contactData) {
+        const socialContainer = document.getElementById('socialLinks');
+        socialContainer.innerHTML = '';
+        
+        const socialIcons = {
+          instagram: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`,
+          pinterest: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.690 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.350-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>`,
+          facebook: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+          tiktok: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>`
+        };
+        
+        if (contactData.instagram) {
+          socialContainer.innerHTML += `<a href="${contactData.instagram}" aria-label="Instagram" target="_blank">${socialIcons.instagram}</a>`;
+        }
+        if (contactData.pinterest) {
+          socialContainer.innerHTML += `<a href="${contactData.pinterest}" aria-label="Pinterest" target="_blank">${socialIcons.pinterest}</a>`;
+        }
+        if (contactData.facebook) {
+          socialContainer.innerHTML += `<a href="${contactData.facebook}" aria-label="Facebook" target="_blank">${socialIcons.facebook}</a>`;
+        }
+        if (contactData.tiktok) {
+          socialContainer.innerHTML += `<a href="${contactData.tiktok}" aria-label="TikTok" target="_blank">${socialIcons.tiktok}</a>`;
+        }
+      }
+      
+      // Load content when page loads
+      document.addEventListener('DOMContentLoaded', loadContent);
+      
+      // ===== CAROUSEL FUNCTIONALITY =====
+      let currentSlideIndex = 0;
+      
+      function moveCarousel(direction) {
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
         
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+        slides[currentSlideIndex].classList.remove('active');
+        dots[currentSlideIndex].classList.remove('active');
+        
+        currentSlideIndex += direction;
+        
+        if (currentSlideIndex >= slides.length) {
+          currentSlideIndex = 0;
+        }
+        if (currentSlideIndex < 0) {
+          currentSlideIndex = slides.length - 1;
         }
         
-        function nextSlide() {
-            showSlide(currentSlide + 1);
+        slides[currentSlideIndex].classList.add('active');
+        dots[currentSlideIndex].classList.add('active');
+      }
+      
+      function currentSlide(index) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        slides[currentSlideIndex].classList.remove('active');
+        dots[currentSlideIndex].classList.remove('active');
+        
+        currentSlideIndex = index;
+        
+        slides[currentSlideIndex].classList.add('active');
+        dots[currentSlideIndex].classList.add('active');
+      }
+      
+      // Auto-advance carousel every 5 seconds
+      setInterval(() => {
+        moveCarousel(1);
+      }, 5000);
+      
+      // ===== HOMEPAGE CONTENT LOADING =====
+      function loadHomepageContent() {
+        loadLatestRecipes();
+        loadLatestBlogPosts();
+        loadShopProducts();
+      }
+      
+      function loadLatestRecipes() {
+        const container = document.getElementById('latestRecipes');
+        if (!container) return;
+        
+        // Get first 4 recipes
+        const latestRecipes = contentData.recipes.slice(0, 4);
+        
+        container.innerHTML = latestRecipes.map((recipe, index) => 
+          createRecipeCard(recipe, index)
+        ).join('');
+      }
+      
+      function loadLatestBlogPosts() {
+        const container = document.getElementById('latestBlogPosts');
+        if (!container) return;
+        
+        // Get all 3 blog posts (or first 3 if more exist)
+        const latestPosts = contentData.blogPosts.slice(0, 3);
+        
+        container.innerHTML = latestPosts.map((post, index) => 
+          createBlogCard(post, index)
+        ).join('');
+      }
+      
+      function loadShopProducts() {
+        const container = document.getElementById('shopProducts');
+        if (!container) return;
+        
+        // Get all shop items
+        const shopItems = contentData.shopItems || [];
+        
+        container.innerHTML = shopItems.map(item => createShopCard(item)).join('');
+      }
+      
+      // ===== CONTENT DATA AND LOADING FUNCTIONS =====
+      
+      // Content data structure
+      const contentData = {
+        recipes: [
+          {
+            title: "Honey Sweetened Chocolate Chip Cookies",
+            category: "Desserts",
+            time: "25 min",
+            servings: "24 cookies",
+            image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800&h=600&fit=crop",
+            ingredients: [
+              "1/2 cup butter, softened",
+              "1/2 cup honey",
+              "2 eggs",
+              "2 teaspoons vanilla extract",
+              "2 cups all-purpose flour",
+              "1 teaspoon baking soda",
+              "1/2 teaspoon salt",
+              "1 1/2 cups dark chocolate chips (70% cacao or higher)"
+            ],
+            instructions: [
+              "Preheat oven to 350°F and line baking sheets with parchment paper.",
+              "In large bowl, cream butter and honey together until fluffy.",
+              "Beat in eggs and vanilla.",
+              "In separate bowl, whisk together flour, baking soda, and salt.",
+              "Gradually add dry ingredients to wet ingredients, mixing until just combined.",
+              "Fold in chocolate chips.",
+              "Drop rounded tablespoons of dough onto prepared baking sheets, spacing 2 inches apart.",
+              "Bake for 10-12 minutes until edges are golden.",
+              "Let cool on baking sheet for 5 minutes before transferring to wire rack.",
+              "Store in airtight container for up to 1 week."
+            ]
+          },
+          {
+            title: "Fluffy Sourdough Pancakes",
+            category: "Breakfasts",
+            time: "20 min",
+            servings: "4 servings",
+            image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=800&h=600&fit=crop",
+            ingredients: [
+              "1 cup sourdough starter (unfed/discard)",
+              "1 cup milk",
+              "1 egg",
+              "2 tablespoons melted butter",
+              "1 tablespoon honey",
+              "1 cup all-purpose flour",
+              "1/2 teaspoon baking soda",
+              "1/2 teaspoon salt"
+            ],
+            instructions: [
+              "In large bowl, whisk together sourdough starter, milk, egg, melted butter, and honey.",
+              "Add flour, baking soda, and salt. Stir until just combined (batter will be slightly lumpy).",
+              "Heat griddle or large skillet over medium heat. Grease lightly with butter.",
+              "Pour 1/4 cup batter for each pancake onto hot griddle.",
+              "Cook until bubbles form on surface and edges look set, about 2-3 minutes.",
+              "Flip and cook until golden brown on other side, about 1-2 minutes more.",
+              "Serve warm with butter and pure maple syrup."
+            ]
+          },
+          {
+            title: "Homemade Chicken & Vegetable Soup",
+            category: "Dinners",
+            time: "60 min",
+            servings: "8 servings",
+            image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&h=600&fit=crop",
+            ingredients: [
+              "1 whole chicken (3-4 lbs) or 2 lbs chicken pieces",
+              "8 cups water",
+              "3 carrots, peeled and diced",
+              "3 celery stalks, diced",
+              "1 large onion, diced",
+              "4 cloves garlic, minced",
+              "2 bay leaves",
+              "1 teaspoon dried thyme",
+              "Salt and pepper to taste",
+              "2 cups egg noodles or rice (optional)",
+              "Fresh parsley for garnish"
+            ],
+            instructions: [
+              "Place chicken in large pot with water. Bring to boil, then reduce to simmer.",
+              "Skim off any foam that rises to the top.",
+              "Add bay leaves, thyme, salt, and pepper. Simmer for 45 minutes.",
+              "Remove chicken from pot and let cool slightly. Remove meat from bones and shred.",
+              "Strain broth through fine mesh strainer and return to pot.",
+              "Add carrots, celery, onion, and garlic to broth. Simmer 15 minutes.",
+              "Add shredded chicken back to pot. If using noodles/rice, add now and cook until tender.",
+              "Taste and adjust seasonings. Remove bay leaves.",
+              "Garnish with fresh parsley before serving."
+            ]
+          },
+          {
+            title: "No-Bake Energy Bites",
+            category: "Kid Snacks",
+            time: "15 min",
+            servings: "20 bites",
+            image: "https://images.unsplash.com/photo-1564768353-3c0150b4b0a6?w=800&h=600&fit=crop",
+            ingredients: [
+              "1 cup old-fashioned oats",
+              "1/2 cup natural peanut butter",
+              "1/3 cup honey",
+              "1/2 cup dark chocolate chips",
+              "1/4 cup ground flaxseed",
+              "1 teaspoon vanilla extract",
+              "Pinch of salt"
+            ],
+            instructions: [
+              "Mix all ingredients together in a medium bowl until well combined.",
+              "Cover and refrigerate for 30 minutes (this makes them easier to roll).",
+              "Roll mixture into 1-inch balls using your hands.",
+              "Store in airtight container in refrigerator for up to 2 weeks.",
+              "Perfect for lunchboxes, after-school snacks, or pre-workout fuel!"
+            ]
+          },
+          {
+            title: "Sheet Pan Lemon Herb Chicken",
+            category: "Dinners",
+            time: "45 min",
+            servings: "6 servings",
+            image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop",
+            ingredients: [
+              "6 chicken thighs (bone-in, skin-on)",
+              "1 lb baby potatoes, halved",
+              "3 cups broccoli florets",
+              "1/4 cup olive oil",
+              "3 cloves garlic, minced",
+              "2 tablespoons fresh lemon juice",
+              "1 tablespoon dried herbs (thyme, rosemary, oregano)",
+              "Salt and pepper to taste"
+            ],
+            instructions: [
+              "Preheat oven to 425°F. Line large baking sheet with parchment paper.",
+              "In small bowl, whisk together olive oil, garlic, lemon juice, herbs, salt, and pepper.",
+              "Place chicken thighs and potatoes on baking sheet. Brush with half the olive oil mixture.",
+              "Roast for 25 minutes.",
+              "Remove from oven, add broccoli, and brush everything with remaining olive oil mixture.",
+              "Return to oven for 15-20 minutes until chicken reaches 165°F and vegetables are tender.",
+              "Let rest 5 minutes before serving."
+            ]
+          }
+        ],
+        blogPosts: [
+          {
+            title: "The 5-Meal Framework (Because Who Plans More?)",
+            category: "Meal Planning",
+            excerpt: "Stop trying to plan 21 dinners a week. Here's why rotating 5 solid meals will change your life and free up approximately 47% of your mental load.",
+            image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&h=600&fit=crop",
+            content: `Listen, I know what the meal planning experts say. "Plan all 7 dinners!" "Batch cook on Sundays!" "Color-code your grocery list!"
+
+But here's what they don't tell you: **you don't actually need 7 different dinners.**
+
+## The Truth About Meal Planning
+
+Most families eat the same 5-7 meals on rotation anyway. We just feel guilty about it because Instagram told us we should be making something different and photogenic every single night.
+
+Spoiler alert: Your kids don't care if you serve spaghetti twice in one week. Neither does your spouse. The only person judging you is... you.
+
+## How the Framework Works
+
+**Pick 5 meals. That's it. Just 5.**
+
+These should be:
+- **Quick** (30 minutes or less)
+- **Simple** (basic ingredients you always have)
+- **Flexible** (can be modified based on what's in the fridge)
+- **Kid-approved** (or at least kid-tolerated)
+- **Actually meals you like**
+
+## My Personal 5-Meal Rotation
+
+**Monday: Sheet Pan Chicken**
+Throw chicken thighs and whatever vegetables on a pan. Season. Roast. Done in 35 minutes with one dirty pan.
+
+**Tuesday: Taco Tuesday**
+Ground beef or chicken, tortillas, toppings. Kids can build their own. Leftovers become Wednesday's quesadillas.
+
+**Wednesday: Pasta Night**
+Rotate between marinara, Alfredo, or just butter and Parmesan. Add frozen meatballs if you're feeling fancy.
+
+**Thursday: Slow Cooker Whatever**
+This is what I start in the morning. Usually a soup, chili, or pulled pork. Comes home to dinner ready.
+
+**Friday: Breakfast for Dinner**
+Pancakes. Eggs. Bacon. Nobody ever complains.
+
+## Why This Actually Works
+
+**1. Less Decision Fatigue**
+You're not deciding what's for dinner every night. You already know: it's Monday, so it's sheet pan chicken.
+
+**2. Grocery Shopping is Automatic**
+You buy the same core ingredients every week. No more wandering the aisles wondering what to make.
+
+**3. You Get Really Good at These 5 Meals**
+When you make the same thing every week, you get FAST. That sheet pan chicken that took 45 minutes the first time? Now it's 20 minutes because you know exactly what to do.
+
+**4. Flexibility Within Structure**
+Sheet pan chicken doesn't mean the same chicken every Monday. You can do lemon herb one week, honey garlic the next, BBQ the week after. Same method, different flavors.
+
+## What About Variety?
+
+Here's the thing: you're still eating different food every night. Monday's chicken is nothing like Wednesday's pasta is nothing like Friday's pancakes.
+
+Plus, you can swap out meals in your rotation as the seasons change. Summer might be more grilling, winter might be more soups. But you still only have to think about 5 meals at a time.
+
+## Getting Started
+
+Want to try this? Here's what to do:
+
+**Week 1:** Write down the 5 meals your family already eats most often. That's your starting rotation.
+
+**Week 2:** Try cooking those 5 meals in order Monday-Friday. See how it feels.
+
+**Week 3:** Keep what works, swap what doesn't.
+
+**Week 4:** You've got your system.
+
+## The Bottom Line
+
+Meal planning doesn't have to be complicated. In fact, it works better when it's simple.
+
+Five meals. One week. On repeat.
+
+That's it. That's the whole system.
+
+And somehow, it's the most revolutionary thing I've ever done for my sanity.
+
+**Try the 5-meal framework for one week and let me know how it goes!**`
+          },
+          {
+            title: "Essential Pantry Staples for Clean Eating",
+            category: "Mom Hacks",
+            excerpt: "Stock your pantry with these real-food essentials and you'll always be ready to make a wholesome meal.",
+            image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop",
+            content: `The secret to clean eating isn't fancy ingredients or complicated recipes. It's having the RIGHT ingredients always on hand.
+
+Here are the 15 essentials that live in my pantry year-round.
+
+## Healthy Fats
+
+**Extra Virgin Olive Oil**
+Your everyday oil for cooking, salad dressings, and roasting. Buy a good one - you'll taste the difference. I go through about 2 bottles a month.
+
+**Coconut Oil**
+Perfect for high-heat cooking and baking. The slight coconut flavor works in both sweet and savory dishes. Use refined if you don't want the coconut taste.
+
+**Real Butter (Grass-Fed)**
+Yes, REAL butter. Not margarine. Not "spreads." Butter from grass-fed cows. It's what our grandparents used, and they were onto something.
+
+**Avocado Oil**
+High smoke point makes it perfect for searing meat or stir-frying. Neutral flavor means it won't compete with your other ingredients.
+
+## Natural Sweeteners
+
+**Raw Honey**
+Local honey if you can get it. Use it in everything from tea to salad dressings to baking. One jar lasts me about 6 weeks.
+
+**Pure Maple Syrup**
+The REAL stuff, not the corn syrup impostor with maple flavoring. Grade A for delicate flavor, Grade B (now called "dark") for robust maple taste.
+
+**Medjool Dates**
+Nature's candy. Blend into smoothies, chop into energy bites, or just eat them plain. They're also great for naturally sweetening desserts.
+
+## Spices & Seasonings
+
+**Sea Salt**
+Get a good quality sea salt. Pink Himalayan or grey Celtic sea salt. Your food will actually taste like something.
+
+**Garlic Powder**
+For when you don't feel like mincing fresh garlic. Make sure it's JUST garlic - no added salt or other ingredients.
+
+**Cinnamon**
+Ceylon cinnamon is the "true" cinnamon with a sweeter, more delicate flavor. Use it in both sweet dishes and savory curries.
+
+## Basics
+
+**Apple Cider Vinegar (with the Mother)**
+The murky stuff at the bottom is good for you! Use in salad dressings, marinades, or diluted in water as a health tonic.
+
+**Coconut Aminos**
+Your clean eating alternative to soy sauce. All the umami flavor, none of the soy or gluten. I use this in stir-fries, marinades, and dipping sauces.
+
+**Bone Broth**
+Keep a few boxes on hand for soups and sauces. Or just heat it up and sip it from a mug - it's incredibly nourishing.
+
+## Baking
+
+**Almond Flour**
+Your go-to for gluten-free baking. Higher protein and lower carb than regular flour. Makes great pancakes, muffins, and cookies.
+
+**Old-Fashioned Oats**
+Not instant - the real, rolled oats. Use them in breakfast, baking, energy bites, or even as a binder in meatballs.
+
+## Why These 15?
+
+With just these items, you can make:
+- Homemade salad dressings
+- Healthy baked goods
+- Quick stir-fries
+- Nourishing soups
+- Energy-boosting snacks
+- Basically any clean eating recipe
+
+More importantly, you'll STOP buying:
+- Seed oils (canola, vegetable, soybean)
+- Refined white sugar
+- Processed sauces full of additives
+- Anything with ingredients you can't pronounce
+
+## The Shopping Strategy
+
+**Buy in Bulk**
+These staples don't go bad quickly. Save money by buying larger quantities at stores like Costco, Thrive Market, or Azure Standard.
+
+**Always Check Labels**
+Even "healthy" products can have hidden junk. If the ingredient list is long or includes things you don't recognize, skip it.
+
+**Invest in Quality**
+Yes, good olive oil costs more than the cheap stuff. But you're not spending money on processed foods anymore, so it balances out.
+
+## Quick Meal Ideas Using Just These Staples
+
+**Breakfast:**
+- Oatmeal with honey, cinnamon, and butter
+- Smoothie with dates for natural sweetness
+
+**Lunch:**
+- Quick bone broth soup
+- Homemade vinaigrette over any salad
+
+**Dinner:**
+- Roasted vegetables in olive oil and sea salt
+- Stir-fry with coconut aminos
+
+**Snacks:**
+- Energy bites with oats, honey, and nut butter
+- Dates stuffed with almond butter
+
+## Getting Started
+
+Don't rush out and buy everything at once. Start by swapping:
+
+**Week 1:** Replace your cooking oils with olive oil and coconut oil
+**Week 2:** Replace sugar with honey and maple syrup
+**Week 3:** Add the spices and vinegars
+**Week 4:** Stock up on the baking essentials
+
+## The Bottom Line
+
+A well-stocked pantry with real, whole-food ingredients makes clean eating EASY.
+
+No more wondering what to make for dinner. No more running to the store three times a week.
+
+Just open your pantry, grab what you need, and cook.
+
+**What's your must-have pantry staple? Share below!**`
+          },
+          {
+            title: "My Simple Sunday Meal Prep Routine",
+            category: "Meal Planning",
+            excerpt: "Spend 2 hours on Sunday to make your weeknights so much easier. Here's exactly what I do.",
+            image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop",
+            content: `I used to think meal prep meant spending my entire Sunday making 21 individual meals in little containers.
+
+No wonder I never did it!
+
+Then I figured out the secret: **you're not trying to cook everything for the week. You're just making weeknights EASIER.**
+
+## My 2-Hour Sunday System
+
+I spend exactly 2 hours on Sunday afternoon prepping. Not all day. Just 2 focused hours.
+
+Here's what that looks like:
+
+### Hour 1: Proteins (11 AM - 12 PM)
+
+**What I Cook:**
+- Sheet pan of chicken thighs (6-8 pieces)
+- Ground beef (2 lbs, browned)
+- Hard boiled eggs (12)
+
+**Why These Three?**
+They're the most time-consuming things to cook during the week. Having them ready means dinner comes together in 15 minutes instead of 45.
+
+**The Process:**
+
+11:00 - Start the eggs boiling (set 12-minute timer)
+
+11:02 - Season chicken thighs and get them in the oven at 425°F (they'll take 35 minutes)
+
+11:05 - Brown the ground beef in a large skillet while everything else cooks
+
+11:15 - Move eggs to ice bath when timer goes off
+
+11:37 - Pull chicken from oven, let rest
+
+11:45 - Everything is cooked and cooling
+
+### Hour 2: Vegetables & Basics (12 PM - 1 PM)
+
+**What I Prep:**
+- Wash and chop 3 types of vegetables
+- Make one big salad base
+- Cook a batch of rice or quinoa
+- Portion fruit for snacks
+
+**My Three Vegetables:**
+I choose 3 vegetables that work multiple ways:
+- Bell peppers (stir-fry, quesadillas, omelets)
+- Broccoli (roasted, steamed, added to anything)
+- Carrots (snacks, soups, roasted)
+
+**The Salad Base:**
+One large container of:
+- Mixed greens
+- Shredded carrots
+- Sliced cucumbers
+- Cherry tomatoes
+
+This becomes the foundation for quick salads all week. I add protein and dressing fresh each day.
+
+## The Container System
+
+Here's what I actually use:
+
+**Proteins:** 4 glass containers (1 for chicken, 1 for beef, 1 for eggs, 1 extra)
+**Vegetables:** 3 plastic containers with lids
+**Salad:** 1 large bowl with lid
+**Grain:** 1 medium container
+
+That's it. I'm not making individual meal boxes. I'm making components.
+
+## How It Plays Out During the Week
+
+**Monday: Chicken & Roasted Veggies**
+Grab chicken, grab broccoli, roast together 20 minutes. Done.
+
+**Tuesday: Ground Beef Tacos**
+Beef is ready, just heat it up. Chop some fresh toppings. 15 minutes.
+
+**Wednesday: Chicken Salad**
+Dice prepped chicken, mix with mayo and celery. Serve over salad base. 10 minutes.
+
+**Thursday: Grain Bowl**
+Layer rice, add chicken or beef, top with prepped vegetables, drizzle with sauce. 10 minutes.
+
+**Friday: Breakfast for Dinner**
+Use those hard-boiled eggs chopped in a scramble with the prepped peppers. Or just make fresh eggs - it's Friday!
+
+## What I DON'T Prep
+
+This is important:
+
+**I don't prep:**
+- Full assembled meals
+- Anything that gets soggy (like assembled salads)
+- Things that are quick to make fresh (eggs, pasta)
+- Anything my kids won't eat reheated
+
+## The Game Changer: Assembly vs. Cooking
+
+Here's what finally clicked for me:
+
+Weeknight cooking isn't about being a chef. It's about ASSEMBLY.
+
+When your proteins and vegetables are prepped, you're not "cooking dinner." You're just putting things together.
+
+Huge mental difference.
+
+## Common Questions
+
+**"Doesn't reheated chicken taste bad?"**
+
+Not if you:
+- Add a splash of broth when reheating
+- Don't overheat it (just warm through)
+- Or serve it cold in salads and wraps
+
+**"What if my family doesn't like leftovers?"**
+
+They're not eating leftovers! You're using the same ingredients in different ways.
+
+Monday's roasted chicken becomes Tuesday's chicken salad becomes Wednesday's quesadilla filling. Same chicken, totally different meals.
+
+**"Do I really save time?"**
+
+The first few Sundays? Maybe not much time saved.
+
+After a month? You'll wonder how you ever survived without this system.
+
+## Tips for Success
+
+**Start Small**
+Your first time, just prep ONE protein and TWO vegetables. That's it. See how it helps your week.
+
+**Pick Your Day**
+Doesn't have to be Sunday. Pick whatever day works for your schedule.
+
+**Get the Family Involved**
+Kids can wash vegetables. Partner can brown the beef. Make it a team effort.
+
+**Adjust as Needed**
+Some weeks I only prep proteins. Some weeks I add extra vegetables. Some weeks I skip it entirely.
+
+The point isn't perfection. It's having SOME components ready so weeknights aren't starting from zero.
+
+## The Real Impact
+
+Here's what changed for us:
+
+**Before:**
+- 5 PM panic every single day
+- Multiple grocery store runs per week
+- Lots of drive-through dinners
+- Constant stress about "what's for dinner"
+
+**After:**
+- Calm weeknight cooking
+- One grocery trip per week
+- Eating at home 5 nights a week
+- Actually enjoying cooking
+
+## Start This Sunday
+
+Here's your action plan:
+
+**This Sunday, prep:**
+- 1 batch of chicken
+- 1 batch of ground beef
+- 1 chopped vegetable
+
+**Next Sunday, add:**
+- Hard boiled eggs
+- Another vegetable
+- A grain
+
+**By Week 3:**
+You'll have your own system dialed in.
+
+## The Bottom Line
+
+Two hours on Sunday buys me about 10 hours of peace during the week.
+
+No more 5 PM panic.
+No more drive-through runs.
+No more wondering what's for dinner.
+
+Just open the fridge, grab components, and assemble.
+
+That's the magic.
+
+**Ready to try it? Start small this Sunday and report back!**`
+          }
+        ],
+        shopItems: [
+          {
+            title: "The Simple Meal Planning System",
+            type: "Digital Planner",
+            description: "The exact framework I use to plan meals without losing my mind. Includes templates, shopping lists, and the 5-Meal rotation system.",
+            price: "$27",
+            icon: "📋",
+            featured: true
+          },
+          {
+            title: "30 Family-Friendly Clean Eating Recipes",
+            type: "eBook",
+            description: "No refined sugars, no seed oils - just real food your kids will actually eat. Digital download includes shopping lists and meal prep tips.",
+            price: "$19",
+            icon: "📖",
+            featured: true
+          },
+          {
+            title: "The Clean Eating Pantry Checklist",
+            type: "Printable",
+            description: "Never wonder what to stock again. This comprehensive checklist covers all the essentials for a well-stocked clean eating pantry.",
+            price: "$7",
+            icon: "✓",
+            featured: false
+          }
+        ]
+      };
+      
+      // Current filter states
+      let currentRecipeFilter = 'all';
+      let currentBlogFilter = 'all';
+      
+      // Function to create recipe card HTML
+      function createRecipeCard(recipe, index) {
+        return `
+          <a href="recipe-detail.html?id=${index}" class="card recipe-card" data-category="${recipe.category.toLowerCase().replace(' ', '-')}" style="text-decoration: none; color: inherit; display: block;">
+            <img src="${recipe.image}" alt="${recipe.title}" class="card-image">
+            <div class="card-content">
+              <span class="card-category">${recipe.category}</span>
+              <h3 class="card-title">${recipe.title}</h3>
+              <div class="card-meta">
+                <span>⏱ ${recipe.time}</span>
+                <span>👤 ${recipe.servings}</span>
+              </div>
+            </div>
+          </a>
+        `;
+      }
+      
+      // Function to create blog card HTML
+      function createBlogCard(post, index) {
+        return `
+          <a href="blog-post.html?id=${index}" class="card blog-card" data-category="${post.category.toLowerCase().replace(' ', '-')}" style="text-decoration: none; color: inherit; display: block;">
+            <img src="${post.image}" alt="${post.title}" class="card-image">
+            <div class="card-content">
+              <span class="card-category">${post.category}</span>
+              <h3 class="card-title">${post.title}</h3>
+              <p class="card-description">${post.excerpt}</p>
+            </div>
+          </a>
+        `;
+      }
+      
+      // Function to create shop card HTML
+      function createShopCard(item) {
+        return `
+          <div class="card shop-card">
+            <div class="product-image">${item.icon}</div>
+            <div class="card-content">
+              <span class="card-category">${item.type}</span>
+              <h3 class="card-title">${item.title}</h3>
+              <p class="card-description">${item.description}</p>
+              <div class="product-price">${item.price}</div>
+              <a href="#" class="buy-button">Get It Now</a>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Load recipes
+      function loadRecipesContent(filter = 'all') {
+        currentRecipeFilter = filter;
+        const container = document.getElementById('recipesGrid');
+        if (!container) return;
+        
+        let filtered = contentData.recipes;
+        if (filter !== 'all') {
+          filtered = contentData.recipes.filter(r => 
+            r.category.toLowerCase().replace(' ', '-') === filter
+          );
         }
         
-        function initCarousel() {
-            // Auto-advance every 5 seconds
-            setInterval(nextSlide, 5000);
-            
-            // Dot navigation
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    showSlide(parseInt(dot.dataset.slide));
-                });
-            });
+        container.innerHTML = filtered.map((recipe, index) => createRecipeCard(recipe, index)).join('');
+      }
+      
+      // Load blog posts
+      function loadBlogPostsContent(filter = 'all') {
+        currentBlogFilter = filter;
+        const container = document.getElementById('blogGrid');
+        if (!container) return;
+        
+        let filtered = contentData.blogPosts;
+        if (filter !== 'all') {
+          filtered = contentData.blogPosts.filter(p => 
+            p.category.toLowerCase().replace(' ', '-') === filter
+          );
         }
         
-        // Load homepage content
-        function loadHomepageContent() {
-            loadLatestRecipes();
-            loadLatestBlog();
-            loadShopProducts();
-        }
+        container.innerHTML = filtered.map((post, idx) => {
+          // Find original index in full array
+          const originalIndex = contentData.blogPosts.indexOf(post);
+          return createBlogCard(post, originalIndex);
+        }).join('');
+      }
+      
+      // Load shop items
+      function loadShopItemsContent() {
+        const container = document.getElementById('shopGrid');
+        if (!container) return;
         
-        function loadLatestRecipes() {
-            const container = document.getElementById('latest-recipes');
-            const recipes = contentData.recipes.slice(0, 4); // Show 4 recipes
-            
-            container.innerHTML = recipes.map(recipe => `
-                <div class="recipe-card" onclick="window.location.href='recipe-detail.html?id=${recipe.id}'">
-                    <img src="${recipe.image}" alt="${recipe.title}">
-                    <div class="recipe-info">
-                        <div class="recipe-category">${recipe.category}</div>
-                        <h3 class="recipe-title">${recipe.title}</h3>
-                        <p class="recipe-description">${recipe.description}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
+        container.innerHTML = contentData.shopItems.map(item => createShopCard(item)).join('');
+      }
+      
+      // Open recipe modal
+      function openRecipeModal(index) {
+        const recipe = contentData.recipes[index];
+        const modal = document.getElementById('recipeModal');
+        const detailsContainer = document.getElementById('recipeDetails');
         
-        function loadLatestBlog() {
-            const container = document.getElementById('latest-blog');
-            const posts = contentData.blogPosts.slice(0, 3); // Show 3 posts
-            
-            container.innerHTML = posts.map(post => `
-                <div class="blog-card" onclick="window.location.href='blog-post.html?id=${post.id}'">
-                    <img src="${post.image}" alt="${post.title}">
-                    <div class="recipe-info">
-                        <div class="recipe-category">${post.category}</div>
-                        <h3 class="recipe-title">${post.title}</h3>
-                        <p class="recipe-description">${post.excerpt}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
+        detailsContainer.innerHTML = `
+          <div class="recipe-header">
+            <h2>${recipe.title}</h2>
+            <div class="recipe-info">
+              <div class="recipe-info-item">
+                <strong>${recipe.time}</strong>
+                <span>Prep Time</span>
+              </div>
+              <div class="recipe-info-item">
+                <strong>${recipe.servings}</strong>
+                <span>Servings</span>
+              </div>
+              <div class="recipe-info-item">
+                <strong>${recipe.category}</strong>
+                <span>Category</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="recipe-section">
+            <h3>Ingredients</h3>
+            <ul class="ingredients-list">
+              ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+            </ul>
+          </div>
+          
+          <div class="recipe-section">
+            <h3>Instructions</h3>
+            <ol class="instructions-list">
+              ${recipe.instructions.map(inst => `<li>${inst}</li>`).join('')}
+            </ol>
+          </div>
+        `;
         
-        function loadShopProducts() {
-            const container = document.getElementById('shop-products');
-            
-            container.innerHTML = contentData.shopItems.map(item => `
-                <div class="shop-card">
-                    <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <h3>${item.title}</h3>
-                    <p style="color: #666; margin: 1rem 0;">${item.description}</p>
-                    <div class="shop-price">${item.price}</div>
-                    <a href="${item.link}" class="cta-button" style="display: inline-block; margin-top: 1rem;">Get It Now</a>
-                </div>
-            `).join('');
-        }
+        modal.classList.add('active');
+      }
+      
+      // Close recipe modal
+      function closeRecipeModal() {
+        const modal = document.getElementById('recipeModal');
+        modal.classList.remove('active');
+      }
+      
+      // Open blog modal
+      function openBlogModal(index) {
+        const post = contentData.blogPosts[index];
+        const modal = document.getElementById('blogModal');
+        const contentContainer = document.getElementById('blogPostContent');
         
-        function filterByCategory(category) {
-            window.location.href = `recipe-detail.html?category=${encodeURIComponent(category)}`;
+        // Convert markdown-style content to HTML
+        let htmlContent = post.content
+          .replace(/\n# (.*)/g, '<h1>$1</h1>')
+          .replace(/\n## (.*)/g, '<h2>$1</h2>')
+          .replace(/\n### (.*)/g, '<h3>$1</h3>')
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\n- (.*)/g, '<li>$1</li>')
+          .replace(/\n\n/g, '</p><p>')
+          .replace(/\n/g, '<br>');
+        
+        contentContainer.innerHTML = `
+          <div class="blog-post-header">
+            <img src="${post.image}" alt="${post.title}" class="blog-post-image">
+            <div class="blog-post-meta">
+              <span class="blog-post-category">${post.category}</span>
+              <h1 class="blog-post-title">${post.title}</h1>
+            </div>
+          </div>
+          <div class="blog-post-body">
+            <p>${htmlContent}</p>
+          </div>
+        `;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+      
+      // Close blog modal
+      function closeBlogModal() {
+        const modal = document.getElementById('blogModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+      
+      // Filter functions for navigation
+      function filterRecipes(category) {
+        loadRecipesContent(category);
+        // Update active button state
+        document.querySelectorAll('#recipes .filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+          // Check if this button's onclick matches the category
+          const btnCategory = btn.getAttribute('onclick').match(/filterRecipes\('(.+?)'\)/);
+          if (btnCategory && btnCategory[1] === category) {
+            btn.classList.add('active');
+          }
+        });
+      }
+      
+      function filterBlog(category) {
+        loadBlogPostsContent(category);
+        // Update active button state
+        document.querySelectorAll('#blog .filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+          const btnCategory = btn.getAttribute('onclick').match(/filterBlog\('(.+?)'\)/);
+          if (btnCategory && btnCategory[1] === category) {
+            btn.classList.add('active');
+          }
+        });
+      }
+      
+      // Enhanced showSection to load content
+      const originalShowSection = showSection;
+      showSection = function(sectionName) {
+        originalShowSection(sectionName);
+        
+        // Load content for the section
+        setTimeout(() => {
+          if (sectionName === 'recipes') {
+            loadRecipesContent(currentRecipeFilter);
+          } else if (sectionName === 'blog') {
+            loadBlogPostsContent(currentBlogFilter);
+          } else if (sectionName === 'shop') {
+            loadShopItemsContent();
+          }
+        }, 100);
+      };
+      
+      // Close modal when clicking outside
+      document.addEventListener('click', function(e) {
+        const recipeModal = document.getElementById('recipeModal');
+        const blogModal = document.getElementById('blogModal');
+        if (e.target === recipeModal) {
+          closeRecipeModal();
         }
+        if (e.target === blogModal) {
+          closeBlogModal();
+        }
+      });
     </script>
+
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeRecipeModal()">&times;</span>
+        <div id="recipeDetails"></div>
+      </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="modal">
+      <div class="modal-content blog-modal-content">
+        <span class="close" onclick="closeBlogModal()">&times;</span>
+        <div id="blogPostContent"></div>
+      </div>
+    </div>
+
 </body>
 </html>
