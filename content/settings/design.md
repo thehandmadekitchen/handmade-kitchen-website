@@ -4,7 +4,7 @@ colors:
   secondary: "#d3c9b2"
   accent: "#7c6e5a"
   background: "#f8f2e9"
-  text: "#151414"
+  text: "#433e3e"
 typography:
   heading_font: Playfair Display
   body_font: Merriweather
