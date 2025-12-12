@@ -1,0 +1,27 @@
+---
+title: "Italian Pasta Salad (Better Each Day!)"
+description: "This pasta salad gets BETTER as it sits! Perfect for picnics, potlucks, or meal prep. Loaded with flavor."
+category: "Lunches"
+image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9"
+prep_time: "20 minutes"
+cook_time: "12 minutes"
+total_time: "32 minutes"
+servings: "10 servings"
+ingredients:
+  - "1 pound rotini or penne pasta"
+  - "1 cup cherry tomatoes, halved"
+  - "1 cup mozzarella balls (pearls), halved"
+  - "1/2 cup black olives, sliced"
+  - "1/2 cup red onion, finely diced"
+  - "1 cup bell peppers (mix of colors), diced"
+  - "1/2 cup pepperoni, diced (optional)"
+  - "DRESSING: 1/2 cup olive oil, 1/3 cup red wine vinegar, 2 tbsp Italian seasoning, 2 cloves garlic minced, salt, pepper"
+instructions:
+  - "Cook pasta according to package directions. Drain and rinse with cold water to cool."
+  - "While pasta cooks, make dressing: Whisk together olive oil, vinegar, Italian seasoning, garlic, salt, and pepper."
+  - "In a large bowl, combine cooled pasta, tomatoes, mozzarella, olives, onion, bell peppers, and pepperoni."
+  - "Pour dressing over pasta mixture. Toss well to coat everything."
+  - "Refrigerate for at least 2 hours (or overnight) before serving. Flavors get better!"
+  - "Before serving, taste and add more dressing or seasoning if needed."
+notes: "The 24-Hour Rule: This tastes even better the next day! Make it ahead. Add-Ins: Artichoke hearts, sun-dried tomatoes, salami, fresh basil, Parmesan cheese. Make It a Meal: Add grilled chicken or shrimp for protein. Potluck Perfect: This serves a crowd and travels well. Always a hit! Storage: Keeps for 5 days refrigerated. Great for meal prep lunches! Vegetarian: Skip the pepperoni or add chickpeas for protein. Pro Tip: Don't overcook the pasta - it should be al dente. It will absorb dressing as it sits."
+---

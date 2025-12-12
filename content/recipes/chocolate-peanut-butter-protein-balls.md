@@ -1,0 +1,27 @@
+---
+title: "Chocolate Peanut Butter Protein Balls"
+description: "These no-bake energy balls taste like cookie dough but pack protein and fiber! Perfect pre-sports snack."
+category: "Kid Snacks"
+image: "https://images.unsplash.com/photo-1625944525533-473f1a48ff03"
+prep_time: "15 minutes"
+cook_time: "0 minutes"
+total_time: "15 minutes + chilling"
+servings: "20 balls"
+ingredients:
+  - "1 cup old-fashioned oats"
+  - "1/2 cup ground flaxseed"
+  - "1/2 cup natural peanut butter"
+  - "1/3 cup honey"
+  - "1/4 cup cocoa powder"
+  - "1/4 cup mini chocolate chips"
+  - "1 teaspoon vanilla extract"
+  - "Pinch of salt"
+instructions:
+  - "In a large bowl, mix all ingredients together until well combined."
+  - "Refrigerate mixture for 15 minutes (makes it easier to roll)."
+  - "Roll mixture into balls about 1 inch in diameter."
+  - "Place on a parchment-lined tray."
+  - "Refrigerate for at least 30 minutes to firm up."
+  - "Store in airtight container in refrigerator for up to 2 weeks."
+notes: "Perfect for: Pre-game snack, after-school treat, breakfast on-the-go, hiking/camping. Protein Power: Each ball has about 4g protein plus healthy fats and fiber. Keeps you full! Customization Ideas: Swap cocoa for cinnamon, add dried cranberries, use almond butter, roll in coconut flakes. Make-Ahead: Make a double batch on Sunday! They keep for 2 weeks refrigerated. Freezer-Friendly: Freeze for up to 3 months. Thaw 10 minutes before eating. No Flax?: Use wheat germ or more oats instead."
+---

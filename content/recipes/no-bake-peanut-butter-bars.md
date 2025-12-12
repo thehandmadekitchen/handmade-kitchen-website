@@ -1,0 +1,26 @@
+---
+title: "No-Bake Peanut Butter Oat Bars"
+description: "These bars taste like peanut butter cookies but require no baking! Easy, kid-friendly, and customizable."
+category: "Desserts"
+image: "https://images.unsplash.com/photo-1549312673-64e9e50e1f00"
+prep_time: "10 minutes"
+cook_time: "0 minutes"
+total_time: "10 minutes + chilling"
+servings: "16 bars"
+ingredients:
+  - "2 cups old-fashioned oats"
+  - "1 cup natural peanut butter"
+  - "1/2 cup honey"
+  - "1/4 cup mini chocolate chips"
+  - "1 teaspoon vanilla extract"
+  - "Pinch of salt"
+instructions:
+  - "Line an 8x8 pan with parchment paper (leave overhang for lifting)."
+  - "In a large bowl, mix oats, peanut butter, honey, vanilla, and salt until well combined."
+  - "Fold in chocolate chips."
+  - "Press mixture firmly and evenly into prepared pan. Use back of measuring cup to really press down!"
+  - "Refrigerate for at least 2 hours until firm."
+  - "Lift out using parchment overhang. Cut into 16 bars."
+  - "Store in refrigerator."
+notes: "No Oven Needed: Perfect for summer when you don't want to heat up the kitchen! Make Them Yours: Swap chocolate chips for dried fruit, add coconut flakes, or use almond butter. Lunchbox Favorite: Kids love these! Pack for school snacks or after-school treats. Storage: Refrigerate for 2 weeks. These get better as they sit! Freezer Option: Wrap individually and freeze for up to 3 months. Press Firmly: The secret to bars that hold together is REALLY pressing mixture down hard!"
+---

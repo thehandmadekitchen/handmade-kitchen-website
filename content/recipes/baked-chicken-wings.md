@@ -1,0 +1,26 @@
+---
+title: "Crispy Baked Chicken Wings (3 Flavor Options)"
+description: "Crispy wings without deep frying! The secret is baking powder. Choose Buffalo, BBQ, or Asian flavors."
+category: "Appetizers"
+image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f"
+prep_time: "10 minutes"
+cook_time: "45 minutes"
+total_time: "55 minutes"
+servings: "24 wings"
+ingredients:
+  - "2 pounds chicken wings (drumettes and flats separated)"
+  - "1 tablespoon baking powder (NOT baking soda!)"
+  - "1 teaspoon salt"
+  - "1/2 teaspoon black pepper"
+  - "BUFFALO SAUCE: 1/2 cup hot sauce + 4 tbsp melted butter"
+  - "BBQ SAUCE: 1 cup BBQ sauce"
+  - "ASIAN SAUCE: 1/3 cup soy sauce + 2 tbsp honey + 1 tbsp sesame oil + 1 tsp ginger"
+instructions:
+  - "Pat wings VERY dry with paper towels. This is crucial for crispiness!"
+  - "In a large bowl, toss wings with baking powder, salt, and pepper until evenly coated."
+  - "Arrange wings in single layer on wire rack set over baking sheet. Don't overlap!"
+  - "Refrigerate uncovered for 1 hour (optional but makes them crispier)."
+  - "Preheat oven to 425°F. Bake for 40-45 minutes, flipping halfway, until golden and crispy."
+  - "Toss hot wings in your choice of sauce. Serve immediately!"
+notes: "The Crispy Secret: Baking powder! It helps dry out the skin and makes it super crispy. No Frying Needed: These are healthier than fried wings but just as crispy! Make All 3 Flavors: Divide wings into thirds and make different flavors for variety. Game Day Perfect: Make ahead and keep warm in 200°F oven. Ranch or Blue Cheese: Serve with dipping sauce and celery sticks. Temperature Check: Internal temp should reach 165°F."
+---

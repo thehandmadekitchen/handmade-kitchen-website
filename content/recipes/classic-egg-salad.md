@@ -1,0 +1,27 @@
+---
+title: "Classic Egg Salad (Made Better!)"
+description: "Creamy, tangy, perfect egg salad with a secret ingredient that makes it extra special. Great for sandwiches or lettuce wraps."
+category: "Lunches"
+image: "https://images.unsplash.com/photo-1603046891726-36bfd957e19f"
+prep_time: "15 minutes"
+cook_time: "12 minutes"
+total_time: "27 minutes"
+servings: "4 servings"
+ingredients:
+  - "8 hard-boiled eggs, peeled and chopped"
+  - "1/3 cup mayonnaise"
+  - "2 tablespoons plain Greek yogurt (the secret!)"
+  - "1 tablespoon Dijon mustard"
+  - "2 tablespoons chopped fresh dill or chives"
+  - "2 celery stalks, finely diced"
+  - "Salt and pepper to taste"
+  - "Bread, crackers, or lettuce for serving"
+instructions:
+  - "Boil eggs: Place eggs in pot, cover with cold water. Bring to boil, cover, remove from heat. Let sit 12 minutes. Transfer to ice bath."
+  - "Peel and chop eggs into small pieces (not too fine!)."
+  - "In a bowl, mix mayonnaise, Greek yogurt, mustard, dill, salt, and pepper."
+  - "Add chopped eggs and celery. Stir gently to combine."
+  - "Taste and adjust seasonings. Refrigerate for at least 30 minutes for flavors to blend."
+  - "Serve in sandwiches, on crackers, or in lettuce wraps!"
+notes: "The Greek Yogurt Secret: Adds protein and makes it lighter without sacrificing creaminess! Perfect Eggs Every Time: Ice bath stops cooking immediately and makes peeling easier. Add Crunch: Finely diced pickles, red onion, or bell pepper add great texture. Make It Fancy: Serve on toasted bread with arugula and tomato. Storage: Keeps refrigerated for 3-4 days. Make Ahead: Perfect for meal prep! Serve Different Ways: Sandwiches, wraps, stuffed in tomatoes, over salad greens, with crackers."
+---

@@ -1,0 +1,28 @@
+---
+title: "Perfect Cinnamon French Toast (Freezer-Friendly)"
+description: "Crispy on the outside, custardy inside! Make a big batch and freeze for quick weekday breakfasts."
+category: "Breakfasts"
+image: "https://images.unsplash.com/photo-1484723091739-30a097e8f929"
+prep_time: "10 minutes"
+cook_time: "15 minutes"
+total_time: "25 minutes"
+servings: "8 slices"
+ingredients:
+  - "8 slices thick bread (challah or Texas toast work best)"
+  - "4 large eggs"
+  - "1 cup milk"
+  - "2 tablespoons honey or maple syrup"
+  - "1 teaspoon vanilla extract"
+  - "1 teaspoon cinnamon"
+  - "1/4 teaspoon nutmeg"
+  - "Butter for cooking"
+  - "Toppings: maple syrup, fresh berries, powdered sugar"
+instructions:
+  - "In a shallow bowl, whisk together eggs, milk, honey, vanilla, cinnamon, and nutmeg."
+  - "Heat a large skillet or griddle over medium heat. Add 1 tablespoon butter."
+  - "Dip each bread slice in egg mixture, letting it soak for 10 seconds per side. Don't oversoak or it gets soggy!"
+  - "Place soaked bread on hot griddle. Cook for 2-3 minutes per side until golden brown."
+  - "Repeat with remaining slices, adding more butter as needed."
+  - "Serve hot with maple syrup and toppings!"
+notes: "Freezer Instructions: Let cooked French toast cool completely. Stack with parchment paper between slices. Freeze in freezer bag for up to 3 months. To reheat: Microwave 30 seconds or toast in toaster! Bread Matters: Day-old bread works better than fresh - it absorbs egg mixture without falling apart. Make It Special: Top with whipped cream, caramelized bananas, or berry compote for weekend brunch! Dairy-Free: Use almond milk and coconut oil instead of milk and butter. Meal Prep Hero: Make on Sunday, freeze, grab for quick breakfast all week!"
+---

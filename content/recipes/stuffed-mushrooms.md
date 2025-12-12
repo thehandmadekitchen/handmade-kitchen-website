@@ -1,0 +1,26 @@
+---
+title: "Sausage and Cream Cheese Stuffed Mushrooms"
+description: "These bite-sized appetizers are always the first to disappear! Savory, cheesy, and addictive."
+category: "Appetizers"
+image: "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2"
+prep_time: "20 minutes"
+cook_time: "20 minutes"
+total_time: "40 minutes"
+servings: "24 mushrooms"
+ingredients:
+  - "24 large white mushrooms"
+  - "8 ounces Italian sausage (remove from casing)"
+  - "4 ounces cream cheese, softened"
+  - "1/4 cup grated Parmesan cheese"
+  - "2 cloves garlic, minced"
+  - "2 tablespoons fresh parsley, chopped"
+  - "Salt and pepper"
+instructions:
+  - "Preheat oven to 375°F. Line baking sheet with parchment paper."
+  - "Remove stems from mushrooms. Chop stems finely and set aside caps."
+  - "In a skillet, cook sausage over medium heat, breaking it up. When almost done, add chopped mushroom stems and garlic. Cook until sausage is browned."
+  - "Remove from heat. Stir in cream cheese, Parmesan, parsley, salt, and pepper."
+  - "Spoon filling into each mushroom cap, mounding it slightly."
+  - "Place on baking sheet. Bake for 18-20 minutes until mushrooms are tender and filling is golden."
+notes: "Make Ahead: Stuff mushrooms up to 24 hours ahead. Refrigerate. Bake when ready! Variations: Use ground turkey instead of sausage, add spinach to filling, or top with extra Parmesan. Vegetarian: Skip sausage, add more vegetables like spinach and sun-dried tomatoes. Serving Tip: Let cool 5 minutes before serving (filling is HOT!). Party Planning: These are perfect finger food - no utensils needed! Storage: Refrigerate leftovers up to 3 days. Reheat in oven at 350°F for 10 minutes."
+---

@@ -1,0 +1,25 @@
+---
+title: "Classic Tomato Basil Bruschetta"
+description: "Fresh, bright, and so easy! This Italian appetizer disappears in minutes at every party."
+category: "Appetizers"
+image: "https://images.unsplash.com/photo-1506280754576-f6fa8a873550"
+prep_time: "15 minutes"
+cook_time: "5 minutes"
+total_time: "20 minutes"
+servings: "24 pieces"
+ingredients:
+  - "1 French baguette, sliced diagonally"
+  - "4 large tomatoes, diced small"
+  - "3 cloves garlic (1 minced, 2 whole)"
+  - "1/4 cup fresh basil, chopped"
+  - "2 tablespoons olive oil (plus more for bread)"
+  - "1 tablespoon balsamic vinegar"
+  - "Salt and pepper to taste"
+instructions:
+  - "Preheat oven to 400°F. Arrange bread slices on baking sheet. Brush with olive oil."
+  - "Bake for 5-7 minutes until golden and crispy."
+  - "While bread toasts, combine diced tomatoes, minced garlic, basil, 2 tablespoons olive oil, balsamic vinegar, salt, and pepper in a bowl."
+  - "Remove toasted bread from oven. Rub each slice with a whole garlic clove (this adds amazing flavor!)."
+  - "Top each toast with tomato mixture right before serving."
+notes: "Timing Tip: Make tomato mixture up to 2 hours ahead. Toast bread and assemble right before serving (otherwise gets soggy!). Make It Special: Top with fresh mozzarella or burrata cheese. Party Perfect: People always ask for this recipe! It's that good. Variations: Add diced avocado, swap tomatoes for roasted red peppers, or use cherry tomatoes. Keep Bread Crispy: Don't add topping too early! Assemble within 15 minutes of serving."
+---

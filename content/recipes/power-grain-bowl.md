@@ -1,0 +1,26 @@
+---
+title: "Power Grain Bowl (Build Your Own Formula)"
+description: "Master the grain bowl formula and never run out of lunch ideas! Mix and match ingredients for endless combinations."
+category: "Lunches"
+image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd"
+prep_time: "30 minutes"
+cook_time: "20 minutes"
+total_time: "50 minutes"
+servings: "4 bowls"
+ingredients:
+  - "BASE: 2 cups cooked grain (quinoa, brown rice, or farro)"
+  - "GREENS: 4 cups mixed greens or spinach"
+  - "PROTEIN: 2 cups (grilled chicken, hard-boiled eggs, chickpeas, or tofu)"
+  - "ROASTED VEG: 2 cups (sweet potato, broccoli, Brussels sprouts)"
+  - "RAW VEG: 1 cup (shredded carrot, cucumber, bell pepper)"
+  - "HEALTHY FAT: 1 avocado sliced, or 1/4 cup nuts/seeds"
+  - "SAUCE: 1/2 cup tahini dressing, peanut sauce, or vinaigrette"
+instructions:
+  - "Cook grain according to package directions. Set aside."
+  - "Preheat oven to 425°F. Toss chosen vegetables with olive oil, salt, and pepper. Roast for 20 minutes."
+  - "Prepare protein: Grill chicken, boil eggs, or drain and season chickpeas."
+  - "For each bowl: Start with greens, add a scoop of grain, arrange protein and vegetables on top."
+  - "Add avocado or nuts. Drizzle with sauce."
+  - "Mix everything together and enjoy!"
+notes: "The Formula: Greens + Grain + Protein + Roasted Veg + Raw Veg + Healthy Fat + Sauce = Perfect Bowl. 5 Bowl Combos: MEXICAN - Brown rice, black beans, corn, peppers, avocado, salsa. MEDITERRANEAN - Quinoa, chickpeas, roasted red peppers, cucumber, feta, tahini. ASIAN - Rice, edamame, roasted broccoli, carrots, sesame seeds, peanut sauce. FALL HARVEST - Farro, chicken, roasted sweet potato, kale, pecans, maple vinaigrette. GREEK - Quinoa, grilled chicken, tomatoes, cucumber, olives, feta, lemon dressing. Meal Prep: Cook grains and roast vegetables Sunday. Assemble fresh bowls all week! Storage: Keep components separate for up to 5 days. Assemble when ready to eat."
+---

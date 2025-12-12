@@ -1,0 +1,28 @@
+---
+title: "Fudgy Black Bean Brownies (No One Will Know!)"
+description: "These brownies are rich, fudgy, and made with black beans! Seriously. No one can tell, and they're actually good for you!"
+category: "Desserts"
+image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c"
+prep_time: "10 minutes"
+cook_time: "25 minutes"
+total_time: "35 minutes"
+servings: "16 brownies"
+ingredients:
+  - "1 can (15oz) black beans, drained and rinsed"
+  - "3 eggs"
+  - "1/3 cup cocoa powder"
+  - "1/2 cup honey or maple syrup"
+  - "1/4 cup coconut oil, melted"
+  - "1 teaspoon vanilla extract"
+  - "1/2 teaspoon baking powder"
+  - "1/2 teaspoon salt"
+  - "1/2 cup chocolate chips"
+instructions:
+  - "Preheat oven to 350°F. Line an 8x8 pan with parchment paper and spray with oil."
+  - "Add black beans, eggs, cocoa powder, honey, coconut oil, vanilla, baking powder, and salt to a food processor or blender."
+  - "Blend for 2-3 minutes until completely smooth. Scrape down sides as needed."
+  - "Pour batter into prepared pan. Sprinkle chocolate chips on top."
+  - "Bake for 22-25 minutes. Center should be slightly underdone (they firm as they cool)."
+  - "Let cool completely in pan before cutting into squares."
+notes: "The Secret Ingredient: Black beans add protein, fiber, and moisture - but you absolutely cannot taste them! Texture Tip: Slightly underbake for fudgier brownies. They'll firm up as they cool. Make Them Yours: Add walnuts, swirl in peanut butter, or use dark chocolate chips. Gluten-Free: Naturally gluten-free! Perfect for anyone avoiding gluten. Storage: Room temperature for 3 days, refrigerated for 1 week, freeze for 3 months. The Reveal: Don't tell people what's in them until AFTER they try one. Watch their faces!"
+---

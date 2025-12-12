@@ -1,0 +1,26 @@
+---
+title: "Honey Popcorn Balls (No Corn Syrup!)"
+description: "Old-fashioned treat made healthier! These sticky-sweet popcorn balls are perfect for Halloween, parties, or just because."
+category: "Kid Snacks"
+image: "https://images.unsplash.com/photo-1578849278619-e73505e9610f"
+prep_time: "10 minutes"
+cook_time: "10 minutes"
+total_time: "20 minutes"
+servings: "12 balls"
+ingredients:
+  - "10 cups popped popcorn (about 1/3 cup kernels)"
+  - "1/2 cup honey"
+  - "1/4 cup coconut oil or butter"
+  - "1/4 teaspoon salt"
+  - "1/2 teaspoon vanilla extract"
+instructions:
+  - "Pop popcorn and pour into a very large bowl. Remove any unpopped kernels!"
+  - "Line a baking sheet with parchment paper. Grease your hands with coconut oil or butter."
+  - "In a saucepan, combine honey, coconut oil, and salt. Bring to a boil over medium heat, stirring constantly."
+  - "Boil for 2 minutes without stirring. Remove from heat and stir in vanilla."
+  - "Immediately pour hot mixture over popcorn. Working quickly, stir with a greased spoon to coat all popcorn."
+  - "Let cool for 2-3 minutes until cool enough to handle (but still warm)."
+  - "With greased hands, quickly shape popcorn into balls (about tennis ball size). Press firmly!"
+  - "Place on prepared baking sheet. Let cool completely before eating or wrapping."
+notes: "Timing is Key: Work quickly! The mixture hardens as it cools. Fun Additions: Mix in M&Ms, peanuts, or dried fruit before shaping. Color Fun: Add natural food coloring to the honey mixture for colored popcorn balls! Storage: Wrap individually in plastic wrap. Keep at room temperature for 3 days. Halloween Perfect: Make orange and black popcorn balls for trick-or-treaters! Pro Tip: Really grease your hands well, or wear plastic gloves sprayed with oil!"
+---

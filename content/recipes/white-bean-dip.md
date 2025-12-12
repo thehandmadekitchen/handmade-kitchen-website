@@ -1,0 +1,27 @@
+---
+title: "Creamy White Bean Dip with Herbs"
+description: "Like hummus's sophisticated cousin! Smooth, garlicky, and perfect with vegetables or crackers."
+category: "Appetizers"
+image: "https://images.unsplash.com/photo-1541529086526-db283c563270"
+prep_time: "10 minutes"
+cook_time: "0 minutes"
+total_time: "10 minutes"
+servings: "8 servings"
+ingredients:
+  - "2 cans (15oz each) white beans (cannellini), drained and rinsed"
+  - "3 tablespoons olive oil (plus more for drizzling)"
+  - "2 tablespoons lemon juice"
+  - "2 cloves garlic"
+  - "1/4 cup fresh herbs (parsley, basil, or rosemary)"
+  - "1/2 teaspoon salt"
+  - "1/4 teaspoon black pepper"
+  - "Water as needed to thin"
+instructions:
+  - "Add beans, olive oil, lemon juice, garlic, herbs, salt, and pepper to food processor."
+  - "Blend until smooth, about 1-2 minutes."
+  - "Add water 1 tablespoon at a time if too thick. Blend to desired consistency."
+  - "Taste and adjust seasonings - add more lemon, salt, or garlic as needed."
+  - "Transfer to serving bowl. Drizzle with olive oil and sprinkle with fresh herbs."
+  - "Serve with vegetables, pita chips, or crackers!"
+notes: "Make It Special: Top with sun-dried tomatoes, roasted red peppers, or a drizzle of pesto. Budget-Friendly: Costs about $2 to make! Way cheaper than store-bought dips. Make Ahead: This gets better as it sits! Make 1-2 days ahead. Serve With: Carrots, bell peppers, cucumbers, pita bread, crackers, or as sandwich spread. Variations: Add roasted garlic for milder flavor, or red pepper flakes for spice. Meal Prep: Portion into small containers for grab-and-go snacks all week!"
+---
