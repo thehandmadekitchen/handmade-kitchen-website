@@ -7,7 +7,7 @@ const designSettings = {
     "text": "#322c2c"
   },
   "typography": {
-    "heading_font": "Playfair Display",
+    "heading_font": "Cormorant Garamond",
     "body_font": "Merriweather",
     "accent_font": "Work Sans"
   },
