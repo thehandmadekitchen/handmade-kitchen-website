@@ -8,7 +8,7 @@ colors:
 typography:
   heading_font: Cormorant Garamond
   body_font: Merriweather
-  accent_font: Work Sans
+  accent_font: Nunito
 branding:
   site_name: The Handmade Kitchen
   logo: ""
