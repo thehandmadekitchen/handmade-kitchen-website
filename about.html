@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - The Handmade Kitchen</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Design Settings -->
+    <script src="design-settings.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --olive: #2c5f4f;
+            --sage: #8fa893;
+            --gold: #d4a574;
+            --off-white: #fafaf9;
+            --charcoal: #2d2d2d;
+        }
+        
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--off-white);
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--olive);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-family: 'Karla', sans-serif;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--olive);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--off-white);
+            color: var(--olive);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--olive) 0%, #3d7a65 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        
+        /* Content */
+        .content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--olive);
+            margin: 2rem 0 1rem;
+        }
+        
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">The Handmade Kitchen</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="recipe-detail.html">Recipes ▾</a>
+                    <div class="dropdown-content">
+                        <a href="recipe-detail.html?category=Kid%20Snacks">Kid Snacks</a>
+                        <a href="recipe-detail.html?category=Breakfasts">Breakfasts</a>
+                        <a href="recipe-detail.html?category=Lunches">Lunches</a>
+                        <a href="recipe-detail.html?category=Dinners">Dinners</a>
+                        <a href="recipe-detail.html?category=Appetizers">Appetizers</a>
+                        <a href="recipe-detail.html?category=Desserts">Desserts</a>
+                        <a href="recipe-detail.html">All Recipes</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="blog-post.html">Blog ▾</a>
+                    <div class="dropdown-content">
+                        <a href="blog-post.html?category=Meal%20Planning">Meal Planning</a>
+                        <a href="blog-post.html?category=Kitchen%20Tips">Kitchen Tips</a>
+                        <a href="blog-post.html?category=Clean%20Eating">Clean Eating</a>
+                        <a href="blog-post.html?category=Family%20Life">Family Life</a>
+                        <a href="blog-post.html">All Posts</a>
+                    </div>
+                </li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>About The Handmade Kitchen</h1>
+        <p>Real food for real families</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h2>Welcome to Our Kitchen</h2>
+        <p>The Handmade Kitchen is all about making clean eating simple, delicious, and accessible for busy families. We believe that real food doesn't have to be complicated—it just needs to be made with love and the right ingredients.</p>
+
+        <h2>Our Philosophy</h2>
+        <p>We're committed to recipes that use whole, unprocessed ingredients. That means no refined sugar, no seed oils, and nothing artificial. Just real food that nourishes your body and tastes amazing.</p>
+
+        <p>Every recipe is tested in a real kitchen with real kids (and real opinions!). If it doesn't pass the family test, it doesn't make it to the site.</p>
+
+        <h2>What You'll Find Here</h2>
+        <p>From quick weeknight dinners to special occasion treats, we share recipes that work for real life. You'll also find meal planning tips, kitchen organization ideas, and honest stories about the ups and downs of feeding a family.</p>
+
+        <p>Whether you're just starting your clean eating journey or you've been at it for years, we're here to make it a little bit easier—and a lot more delicious.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 The Handmade Kitchen. All rights reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            Clean eating recipes | No refined sugar | No seed oils
+        </p>
+    </footer>
+
+    <script>
+        // Apply Design Settings
+        function applyDesignSettings() {
+            if (typeof designSettings === 'undefined') return;
+            
+            const root = document.documentElement;
+            
+            if (designSettings.colors) {
+                if (designSettings.colors.primary) root.style.setProperty('--olive', designSettings.colors.primary);
+                if (designSettings.colors.secondary) root.style.setProperty('--sage', designSettings.colors.secondary);
+                if (designSettings.colors.accent) root.style.setProperty('--gold', designSettings.colors.accent);
+                if (designSettings.colors.background) {
+                    root.style.setProperty('--off-white', designSettings.colors.background);
+                    document.body.style.background = designSettings.colors.background;
+                }
+                if (designSettings.colors.text) root.style.setProperty('--charcoal', designSettings.colors.text);
+            }
+            
+            if (designSettings.typography) {
+                const fonts = [];
+                
+                if (designSettings.typography.heading_font) {
+                    fonts.push(designSettings.typography.heading_font);
+                    const style = document.createElement('style');
+                    style.textContent = `h1, h2, .logo { font-family: '${designSettings.typography.heading_font}', serif !important; }`;
+                    document.head.appendChild(style);
+                }
+                
+                if (designSettings.typography.body_font) {
+                    fonts.push(designSettings.typography.body_font);
+                    const style = document.createElement('style');
+                    style.textContent = `body, p { font-family: '${designSettings.typography.body_font}', serif !important; }`;
+                    document.head.appendChild(style);
+                }
+                
+                if (designSettings.typography.accent_font) {
+                    fonts.push(designSettings.typography.accent_font);
+                    const style = document.createElement('style');
+                    style.textContent = `.nav-links a { font-family: '${designSettings.typography.accent_font}', sans-serif !important; }`;
+                    document.head.appendChild(style);
+                }
+                
+                if (fonts.length > 0) {
+                    const uniqueFonts = [...new Set(fonts)];
+                    const fontUrl = 'https://fonts.googleapis.com/css2?family=' + uniqueFonts.map(f => f.replace(/ /g, '+')).join('&family=') + '&display=swap';
+                    const link = document.createElement('link');
+                    link.href = fontUrl;
+                    link.rel = 'stylesheet';
+                    document.head.appendChild(link);
+                }
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', applyDesignSettings);
+    </script>
+</body>
+</html>
