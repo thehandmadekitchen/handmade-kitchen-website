@@ -1,7 +1,7 @@
 ---
 colors:
   primary: "#829071"
-  secondary: "#8fa893"
+  secondary: "#cbedae"
   accent: "#a89377"
   background: "#fbf8f4"
   text: "#151414"
