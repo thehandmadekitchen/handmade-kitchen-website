@@ -4,7 +4,7 @@ const contentData = {
       "id": "chicken-veggie-soup",
       "title": "Homemade Chicken & Vegetable Soup",
       "description": "",
-      "image": "/images/uploads/soup.jpg",
+      "image": "/images/uploads/win_20210125_11_25_10_pro.jpg",
       "category": "Dinners",
       "prepTime": "",
       "cookTime": "",
