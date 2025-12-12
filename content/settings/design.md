@@ -6,7 +6,7 @@ colors:
   background: "#f8f2e9"
   text: "#151414"
 typography:
-  heading_font: Merriweather
+  heading_font: Cormorant Garamond
   body_font: Merriweather
   accent_font: Karla
 branding:
