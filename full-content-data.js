@@ -1,6 +1,108 @@
 const contentData = {
   "recipes": [
     {
+      "id": "almond-flour-cookies",
+      "title": "Chewy Almond Flour Chocolate Chip Cookies",
+      "description": "These grain-free cookies are soft, chewy, and loaded with chocolate chips! Nobody will guess they're made with almond flour.",
+      "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e",
+      "category": "Desserts",
+      "prepTime": "10 minutes",
+      "cookTime": "12 minutes",
+      "totalTime": "22 minutes",
+      "servings": "18 cookies",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Why They're Better: Almond flour adds protein and healthy fats! These keep you satisfied longer than regular cookies. Texture Tip: Don't overbake! Remove when edges are golden but centers look soft. They'll firm up as they cool. Storage: Keep in an airtight container for 5 days, or freeze for up to 3 months. Make It Your Own: Try different mix-ins! Chopped nuts, dried cranberries, shredded coconut, or white chocolate chips. Gluten-Free: These are naturally gluten-free! Perfect for guests with dietary restrictions. Pro Tip: Use room temperature egg for easier mixing. Cold eggs make the coconut oil solidify!"
+    },
+    {
+      "id": "apple-nachos",
+      "title": "Apple Nachos with Almond Butter Drizzle",
+      "description": "A fun and healthy after-school snack! Crispy apple slices topped with nut butter, granola, and naturally sweet toppings.",
+      "image": "https://images.unsplash.com/photo-1569870499705-504209102861",
+      "category": "Kid Snacks",
+      "prepTime": "10 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "10 minutes",
+      "servings": "4 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Prevent Browning: Toss apple slices in a little lemon juice to keep them from browning if making ahead. Customizable: Let kids top their own! Set out bowls of different toppings and let them create. Other Topping Ideas: Raisins, chopped dates, chia seeds, hemp hearts, or crushed nuts. Quick Tip: This is perfect for after school or a fun weekend snack that feels like a treat but is actually nutritious!"
+    },
+    {
+      "id": "banana-nice-cream",
+      "title": "2-Ingredient Banana Nice Cream",
+      "description": "This creamy 'ice cream' is made with just frozen bananas! It tastes like real ice cream but is naturally sweet and dairy-free.",
+      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb",
+      "category": "Desserts",
+      "prepTime": "5 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "5 minutes + freezing time",
+      "servings": "4 servings",
+      "ingredients": {
+        "- \"Optional add-ins": "cocoa powder, peanut butter, berries, vanilla extract\""
+      },
+      "instructions": {},
+      "notes": "5 Flavor Variations: 1) CHOCOLATE: Add 2 tablespoons cocoa powder. 2) PEANUT BUTTER: Add 2 tablespoons peanut butter. 3) STRAWBERRY: Add 1 cup frozen strawberries. 4) MINT CHIP: Add 1/4 tsp peppermint extract and chocolate chips. 5) COOKIES & CREAM: Fold in crushed chocolate sandwich cookies. Pro Tip: Use VERY ripe bananas (lots of brown spots) for maximum sweetness! Make Ahead: Keep sliced bananas in freezer bags for instant nice cream anytime. Kid-Approved: They won't believe this is just bananas! It's a healthier dessert they'll actually love. Toppings: Try: chocolate chips, sprinkles, crushed nuts, honey drizzle, or fresh fruit."
+    },
+    {
+      "id": "banana-oat-pancakes",
+      "title": "3-Ingredient Banana Oat Pancakes",
+      "description": "The easiest, fluffiest pancakes made with just bananas, oats, and eggs! Perfect for busy mornings and naturally sweetened.",
+      "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93",
+      "category": "Breakfasts",
+      "prepTime": "5 minutes",
+      "cookTime": "10 minutes",
+      "totalTime": "15 minutes",
+      "servings": "4 servings (about 12 small pancakes)",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Make Ahead: Make a double batch and freeze! Place parchment paper between pancakes and freeze in a freezer bag for up to 3 months. Reheat in toaster or microwave. Pro Tips: Use very ripe (spotty) bananas for best sweetness. If batter is too thin, add more oats. If too thick, add a splash of milk. Variations: Add 1/4 cup blueberries or chocolate chips to batter before cooking. Storage: Refrigerate leftovers for 3-4 days. These reheat beautifully!"
+    },
+    {
+      "id": "buffalo-cauliflower-bites",
+      "title": "Baked Buffalo Cauliflower Bites",
+      "description": "These crispy, spicy cauliflower bites taste like buffalo wings but are way healthier! Perfect game-day snack that even meat-eaters will love.",
+      "image": "https://images.unsplash.com/photo-1601000938365-54182f6ab3c3",
+      "category": "Appetizers",
+      "prepTime": "15 minutes",
+      "cookTime": "25 minutes",
+      "totalTime": "40 minutes",
+      "servings": "6 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Game Day Winner: These disappear fast at parties! Even non-vegetarians can't get enough. Make It Spicier: Use extra hot buffalo sauce or add cayenne pepper to the batter. Make It Milder: Mix buffalo sauce with honey for a sweeter, less spicy version. Meal Prep: Bake plain cauliflower ahead, then toss in sauce and reheat when ready to serve. Storage: Best eaten fresh, but leftovers can be reheated in a 400°F oven for 5-10 minutes to crisp up. Pro Tip: Don't overcrowd the pan! Crowded cauliflower steams instead of crisping."
+    },
+    {
+      "id": "caprese-skewers",
+      "title": "Easy Caprese Skewers",
+      "description": "These colorful appetizers look fancy but take just 10 minutes to make! Perfect for parties or a quick snack.",
+      "image": "https://images.unsplash.com/photo-1608897013039-887f21d8c804",
+      "category": "Appetizers",
+      "prepTime": "15 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "15 minutes",
+      "servings": "12 skewers",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Make Ahead: Assemble skewers up to 4 hours ahead, but wait to drizzle with balsamic glaze and olive oil until just before serving. What's Balsamic Glaze?: It's thick, sweet balsamic vinegar. Find it in the vinegar aisle or make your own by simmering 1 cup balsamic vinegar until reduced by half. Party Tip: These are perfect for summer parties, BBQs, or as an appetizer before Italian dinner! Kid-Friendly: Even picky eaters love these! The sweet balsamic glaze wins them over. Variations: Add a grape tomato or cucumber slice for extra color. Use different types of fresh mozzarella for variety."
+    },
+    {
+      "id": "chicken-caesar-wraps",
+      "title": "Healthy Chicken Caesar Wraps",
+      "description": "All the flavors of classic Caesar salad in a portable wrap! These are perfect for packed lunches and way healthier than takeout.",
+      "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f",
+      "category": "Lunches",
+      "prepTime": "15 minutes",
+      "cookTime": "0 minutes (with pre-cooked chicken)",
+      "totalTime": "15 minutes",
+      "servings": "4 wraps",
+      "ingredients": {},
+      "instructions": {
+        "- \"Make the dressing": "In a small bowl, whisk together Greek yogurt, olive oil, lemon juice, Dijon mustard, garlic, salt, and pepper until smooth.\""
+      },
+      "notes": "Meal Prep: Prep all components separately and store in fridge. Assemble wraps fresh each morning (takes 2 minutes!) or night before. Rotisserie Shortcut: Use a store-bought rotisserie chicken to save time! Make It Lighter: Use lettuce wraps instead of tortillas for a low-carb option. Storage: Assembled wraps keep in fridge for 1 day. Store components separately for up to 4 days. Pro Tip: Don't overdress! Too much dressing makes wraps soggy. You can always pack extra dressing on the side."
+    },
+    {
       "id": "chicken-veggie-soup",
       "title": "Homemade Chicken & Vegetable Soup",
       "description": "",
@@ -13,6 +115,92 @@ const contentData = {
       "ingredients": {},
       "instructions": {},
       "notes": ""
+    },
+    {
+      "id": "chicken-wild-rice-soup",
+      "title": "Creamy Chicken and Wild Rice Soup",
+      "description": "This cozy, comforting soup is loaded with vegetables and perfect for meal prep. It's creamy without any cream!",
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd",
+      "category": "Lunches",
+      "prepTime": "15 minutes",
+      "cookTime": "30 minutes",
+      "totalTime": "45 minutes",
+      "servings": "6-8 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Meal Prep Hero: This soup actually tastes better the next day! Make a big batch and freeze portions for easy lunches. Time Saver: Use a rotisserie chicken and add it in the last 5 minutes to save time. The rice takes the longest, so that's what you're waiting for. Storage: Refrigerate for up to 5 days or freeze for up to 3 months. Note: Rice will absorb liquid as it sits, so add extra broth when reheating. Make It Dairy-Free: Use coconut milk for a naturally dairy-free, creamy soup!"
+    },
+    {
+      "id": "chocolate-avocado-mousse",
+      "title": "Chocolate Avocado Mousse (Secret Ingredient!)",
+      "description": "Rich, creamy, chocolatey mousse made with avocados! Nobody will guess the secret ingredient. Naturally sweetened and ready in 5 minutes.",
+      "image": "https://images.unsplash.com/photo-1624353365286-3f8d62daad51",
+      "category": "Desserts",
+      "prepTime": "10 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "10 minutes + chilling",
+      "servings": "4 servings",
+      "ingredients": {
+        "- \"Optional toppings": "whipped cream, berries, chocolate shavings\""
+      },
+      "instructions": {},
+      "notes": "The Secret: The avocados make it incredibly creamy but you can't taste them at all! It just tastes like rich chocolate mousse. Make It Richer: Add 2 tablespoons melted dark chocolate for extra decadence. Texture Tip: Blend really well! It should be completely smooth with no avocado chunks. Storage: Keeps in fridge for up to 3 days. The top might brown slightly - that's okay! Just stir before serving. Allergy-Friendly: Naturally dairy-free and can be made vegan with maple syrup instead of honey. Kid Reaction: They'll never believe this is made with avocados! It's a great way to sneak in healthy fats."
+    },
+    {
+      "id": "cookie-dough-balls",
+      "title": "No-Bake Chocolate Chip Cookie Dough Balls",
+      "description": "These taste like cookie dough but are made with chickpeas! A secretly healthy dessert that's perfect for satisfying sweet cravings.",
+      "image": "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e",
+      "category": "Desserts",
+      "prepTime": "15 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "15 minutes + chilling",
+      "servings": "20 balls",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "The Secret Ingredient: Nobody can taste the chickpeas! They add protein and fiber while keeping these treats sweet and satisfying. Texture Perfect: Make sure to blend really well - it should look and feel like cookie dough! No chickpea chunks. Flavor Variations: BIRTHDAY CAKE: Add sprinkles instead of chocolate chips. PEANUT BUTTER CUP: Roll in cocoa powder after forming balls. DOUBLE CHOCOLATE: Add 2 tablespoons cocoa powder to the mixture. Make Ahead: These are perfect for meal prep! Make a batch on Sunday for healthy desserts all week. Freezer-Friendly: Freeze for up to 3 months. Thaw for 10 minutes before eating. Kid-Approved: Even picky eaters love these! They taste like dessert but have protein and fiber."
+    },
+    {
+      "id": "cucumber-bites",
+      "title": "Greek Cucumber Bites",
+      "description": "These refreshing, low-carb bites are like mini Greek salads! Perfect for summer parties or healthy snacking.",
+      "image": "https://images.unsplash.com/photo-1583797227936-5e0cd6229466",
+      "category": "Appetizers",
+      "prepTime": "15 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "15 minutes",
+      "servings": "24 bites",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Make Ahead: Prep cucumber bases and toppings separately. Assemble 1-2 hours before serving to prevent sogginess. Why English Cucumbers?: They have fewer seeds and thinner skin, making them perfect for this recipe! Variations: Try different toppings! Smoked salmon and cream cheese, avocado and cherry tomato, or goat cheese and honey. Party Perfect: These are naturally gluten-free and low-carb, making them perfect for guests with dietary restrictions. Storage: Best eaten same day. The cucumbers will release water if stored overnight."
+    },
+    {
+      "id": "date-caramels",
+      "title": "3-Ingredient Date Caramels",
+      "description": "These taste like real caramel candies but are made with just dates, almond butter, and sea salt! A naturally sweet treat that kids absolutely love.",
+      "image": "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf",
+      "category": "Kid Snacks",
+      "prepTime": "10 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "10 minutes + setting time",
+      "servings": "20 caramels",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Make Ahead: These keep for 2 weeks in the fridge! Make a double batch. Pro Tip: If dates are too dry, soak in warm water for 10 minutes first, then drain well. Variations: Roll into balls and coat with cocoa powder for 'truffle' caramels, or add a pinch of vanilla extract. Storage: Keep refrigerated in an airtight container. They can also be frozen!"
+    },
+    {
+      "id": "egg-muffins",
+      "title": "Veggie-Packed Egg Muffins",
+      "description": "These protein-packed breakfast muffins are loaded with vegetables and perfect for meal prep. Grab one (or two!) on busy mornings.",
+      "image": "https://images.unsplash.com/photo-1608039755401-742074f0548d",
+      "category": "Breakfasts",
+      "prepTime": "15 minutes",
+      "cookTime": "20 minutes",
+      "totalTime": "35 minutes",
+      "servings": "12 muffins",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Meal Prep Champion: These are THE BEST for meal prep! Make on Sunday and reheat throughout the week. Storage: Refrigerate for up to 5 days or freeze for up to 3 months. Reheat from frozen in microwave for 60-90 seconds. Customization Ideas: Use whatever veggies you have! Mushrooms, tomatoes, zucchini, broccoli all work great. Add different cheeses or herbs for variety. Make It Dairy-Free: Skip the cheese and use unsweetened almond milk."
     },
     {
       "id": "energy-bites",
@@ -29,6 +217,34 @@ const contentData = {
       "notes": ""
     },
     {
+      "id": "healthy-apple-crisp",
+      "title": "Healthy Apple Crisp with Oat Topping",
+      "description": "This warm, comforting apple crisp is naturally sweetened and topped with a buttery oat crumble. Perfect for fall or anytime you're craving dessert!",
+      "image": "https://images.unsplash.com/photo-1535920527002-b35e96722eb9",
+      "category": "Desserts",
+      "prepTime": "15 minutes",
+      "cookTime": "35 minutes",
+      "totalTime": "50 minutes",
+      "servings": "8 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Serving Suggestions: Top with vanilla ice cream, whipped cream, or Greek yogurt for breakfast! Make Ahead: Assemble (don't bake) and refrigerate overnight. Bake fresh when ready to serve. Apple Varieties: Mix different types of apples for complex flavor! Granny Smith adds tartness, Honeycrisp adds sweetness. Storage: Keeps covered in fridge for 5 days. Reheat individual portions in microwave or oven. Meal Prep: Make individual portions in small ramekins for grab-and-go desserts! Perfect for Fall: This is THE dessert to make when apples are in season. The whole house smells amazing!"
+    },
+    {
+      "id": "homemade-hummus",
+      "title": "Creamy Homemade Hummus (Better Than Store-Bought!)",
+      "description": "This silky-smooth hummus is so easy to make and way cheaper than buying it! Perfect for snacking, lunch boxes, or parties.",
+      "image": "https://images.unsplash.com/photo-1571070703017-ca2d7e1a4a3b",
+      "category": "Appetizers",
+      "prepTime": "10 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "10 minutes",
+      "servings": "8 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Secret to Ultra-Smooth Hummus: Process tahini and lemon juice first! This creates a creamy base. Some people also peel the chickpeas for extra smoothness (but it's not necessary). Flavor Variations: ROASTED RED PEPPER: Add 1/2 cup roasted red peppers. GARLIC LOVER'S: Double the garlic and add fresh parsley. SPICY: Add jalapeño or cayenne pepper. EVERYTHING BAGEL: Top with everything bagel seasoning. Storage: Keeps in fridge for up to 7 days! Great for meal prep. Serve With: Carrots, cucumbers, bell peppers, celery, pita chips, or use as a sandwich spread."
+    },
+    {
       "id": "honey-chocolate-chip-cookies",
       "title": "Honey Sweetened Chocolate Chip Cookies",
       "description": "",
@@ -41,6 +257,125 @@ const contentData = {
       "ingredients": {},
       "instructions": {},
       "notes": ""
+    },
+    {
+      "id": "honey-garlic-salmon",
+      "title": "Honey Garlic Baked Salmon with Vegetables",
+      "description": "This restaurant-quality dinner is ready in 25 minutes! Flaky salmon with a sweet and savory glaze, plus perfectly roasted veggies.",
+      "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288",
+      "category": "Dinners",
+      "prepTime": "10 minutes",
+      "cookTime": "15 minutes",
+      "totalTime": "25 minutes",
+      "servings": "4 servings",
+      "ingredients": {},
+      "instructions": {
+        "- \"While vegetables roast, make glaze": "Mix honey, remaining olive oil, garlic, Dijon mustard, salt, and pepper.\""
+      },
+      "notes": "Omega-3 Powerhouse: Salmon is packed with healthy fats! Serve 2-3 times per week for maximum benefits. Time Saver: Buy pre-washed Brussels sprouts and baby potatoes to save prep time. Meal Prep: Cook extra salmon to flake over salads for lunch the next day. Picky Eater Tip: If kids don't like salmon, substitute with chicken breasts (adjust cook time to 20-25 minutes). Storage: Best eaten fresh, but leftovers keep for 2 days in fridge. Reheat gently to avoid overcooking."
+    },
+    {
+      "id": "mason-jar-salads",
+      "title": "Mason Jar Salads (5 Easy Combinations)",
+      "description": "Prep 5 salads on Sunday for healthy lunches all week! Layer ingredients in mason jars to keep everything fresh and crisp.",
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+      "category": "Lunches",
+      "prepTime": "30 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "30 minutes",
+      "servings": "5 salads",
+      "ingredients": {},
+      "instructions": {
+        "- \"LAYERING ORDER (this is key!)": "Start with dressing at the bottom, then hearty veggies, protein, grains, greens, and toppings on top.\"",
+        "- \"For each jar": "Pour 2 tablespoons dressing in bottom of jar.\""
+      },
+      "notes": "5 Flavor Combos: 1) GREEK: Lemon vinaigrette, cucumbers, tomatoes, chickpeas, quinoa, spinach, feta, olives. 2) SOUTHWEST: Salsa ranch, black beans, corn, peppers, chicken, romaine, avocado, tortilla strips. 3) ASIAN: Sesame ginger dressing, edamame, carrots, chicken, brown rice, cabbage, sesame seeds. 4) COBB: Balsamic dressing, tomatoes, hard-boiled eggs, bacon, chicken, romaine, avocado, blue cheese. 5) MEDITERRANEAN: Olive oil + lemon, chickpeas, cucumbers, tomatoes, quinoa, arugula, feta, sunflower seeds. Storage: Keeps fresh for 5 days! The key is keeping dressing separate from greens until eating."
+    },
+    {
+      "id": "mediterranean-quinoa-bowl",
+      "title": "Mediterranean Quinoa Power Bowl",
+      "description": "This vibrant bowl is packed with protein, fiber, and fresh flavors! Meal prep 5 bowls for easy lunches all week.",
+      "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+      "category": "Lunches",
+      "prepTime": "20 minutes",
+      "cookTime": "15 minutes",
+      "totalTime": "35 minutes",
+      "servings": "4 bowls",
+      "ingredients": {
+        "- \"Optional": "grilled chicken, fresh parsley\""
+      },
+      "instructions": {},
+      "notes": "Meal Prep Perfection: This actually tastes better after sitting! The flavors marry together. Make on Sunday for lunches Monday-Friday. Add Protein: Toss in grilled chicken, shrimp, or hard-boiled eggs for extra protein. Make It Vegan: Skip the feta or use vegan feta. Still delicious! Storage: Keeps fresh in fridge for 5 days. The quinoa absorbs the dressing beautifully. Customization: This is super versatile! Add roasted red peppers, artichoke hearts, or sun-dried tomatoes."
+    },
+    {
+      "id": "no-bake-energy-bites",
+      "title": "No-Bake Peanut Butter Energy Bites",
+      "description": "These easy 5-ingredient energy bites are perfect for lunchboxes and after-school snacks. Naturally sweetened with dates and packed with protein!",
+      "image": "https://images.unsplash.com/photo-1558326567-98ae2405596b",
+      "category": "Kid Snacks",
+      "prepTime": "10 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "10 minutes + chilling",
+      "servings": "20 bites",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Make Ahead: These actually taste better after sitting for a day! Roll and store in the fridge. Nut-Free Option: Use sunflower seed butter instead of peanut butter. Add-Ins: Try adding shredded coconut, dried cranberries, or chia seeds for variety."
+    },
+    {
+      "id": "one-pot-pasta-primavera",
+      "title": "One-Pot Veggie-Loaded Pasta Primavera",
+      "description": "Everything cooks in one pot - even the pasta! This colorful dinner is on the table in 30 minutes and has veggies hidden in every bite.",
+      "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9",
+      "category": "Dinners",
+      "prepTime": "10 minutes",
+      "cookTime": "20 minutes",
+      "totalTime": "30 minutes",
+      "servings": "6 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Why One-Pot?: Pasta cooks directly in the sauce, absorbing all the flavors! Plus easy cleanup. Veggie Flexibility: Use whatever vegetables you have! Mushrooms, spinach, cherry tomatoes, asparagus, or peas all work great. Add Protein: Stir in cooked chicken, shrimp, or white beans for extra protein. Storage: Keeps in fridge for 4 days. Reheats beautifully - add a splash of water when reheating. Kid Tip: The veggies blend into the sauce, making this perfect for picky eaters!"
+    },
+    {
+      "id": "overnight-oats",
+      "title": "Customizable Overnight Oats (5 Ways)",
+      "description": "The ultimate make-ahead breakfast! Prep these the night before for a grab-and-go breakfast that's creamy, delicious, and endlessly customizable.",
+      "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf",
+      "category": "Breakfasts",
+      "prepTime": "5 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "5 minutes + overnight",
+      "servings": "1 serving (multiply as needed)",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "5 Flavor Variations: 1) APPLE CINNAMON: Add diced apple, 1/2 tsp cinnamon, and chopped walnuts. 2) CHOCOLATE PEANUT BUTTER: Add 1 tbsp cocoa powder, 1 tbsp peanut butter, and sliced banana. 3) BERRY BLAST: Add mixed berries and a sprinkle of granola. 4) CARROT CAKE: Add grated carrot, raisins, 1/2 tsp cinnamon, and pecans. 5) BANANA BREAD: Add mashed banana, 1/2 tsp cinnamon, and walnuts. Meal Prep: Make 5 jars on Sunday for breakfast all week! Storage: Keeps in fridge for up to 5 days."
+    },
+    {
+      "id": "perfect-guacamole",
+      "title": "Perfect Chunky Guacamole",
+      "description": "This is the BEST guacamole recipe! Fresh, flavorful, and comes together in 5 minutes. Perfect for taco night or parties.",
+      "image": "https://images.unsplash.com/photo-1615501838064-85e9d6ba0e1a",
+      "category": "Appetizers",
+      "prepTime": "10 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "10 minutes",
+      "servings": "6 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "How to Pick Perfect Avocados: Ripe avocados yield to gentle pressure but aren't mushy. If buying ahead, buy firm ones and let ripen on counter for 2-3 days. Keep It Green: Press plastic wrap directly onto the surface of guacamole to prevent browning. The lime juice also helps! Can't Eat Right Away?: Put the avocado pit back in the guacamole and cover tightly. This really does help prevent browning! Make It Spicier: Add more jalapeño or a dash of hot sauce. Customize It: Skip cilantro if you're not a fan. Add minced garlic for extra flavor!"
+    },
+    {
+      "id": "sheet-pan-chicken-veggies",
+      "title": "Easy Sheet Pan Chicken and Rainbow Vegetables",
+      "description": "This one-pan dinner makes clean-up a breeze! Juicy chicken with roasted vegetables that even picky eaters will love.",
+      "image": "https://images.unsplash.com/photo-1598103442097-8b74394b95c6",
+      "category": "Dinners",
+      "prepTime": "15 minutes",
+      "cookTime": "30 minutes",
+      "totalTime": "45 minutes",
+      "servings": "4-6 servings",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Meal Prep: This is perfect for meal prep! Divide into 4-5 containers and refrigerate for easy lunches all week. Variations: Swap vegetables based on what you have - zucchini, carrots, sweet potatoes, and green beans all work great! Time Saver: Buy pre-cut vegetables to make this even faster. Cut vegetables into similar sizes so they cook evenly. Storage: Keeps in fridge for 4-5 days. Reheat in microwave or oven."
     },
     {
       "id": "sheet-pan-chicken",
@@ -57,6 +392,39 @@ const contentData = {
       "notes": ""
     },
     {
+      "id": "slow-cooker-chicken-tacos",
+      "title": "Easy Slow Cooker Chicken Tacos",
+      "description": "Set it and forget it! This foolproof chicken taco recipe is perfect for busy weeknights. Juicy, flavorful, and the whole family will love it.",
+      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47",
+      "category": "Dinners",
+      "prepTime": "10 minutes",
+      "cookTime": "4-6 hours",
+      "totalTime": "4-6 hours",
+      "servings": "6 servings",
+      "ingredients": {
+        "- \"1 packet taco seasoning (or homemade": "2 tsp chili powder, 1 tsp cumin, 1 tsp paprika, 1/2 tsp garlic powder, 1/2 tsp onion powder)\"",
+        "- \"Toppings": "avocado, lettuce, tomatoes, cheese, cilantro, lime\""
+      },
+      "instructions": {},
+      "notes": "Meal Prep Magic: Make on Sunday and use for tacos Monday, burrito bowls Tuesday, nachos Wednesday! Store shredded chicken in fridge for 5 days. Serve It Different Ways: Taco Tuesday: Traditional tacos with all the toppings. Wednesday: Burrito bowls over rice. Thursday: Taco salad. Friday: Quesadillas or nachos! Make It Healthier: Use lettuce wraps instead of tortillas for a low-carb option. Freezer Friendly: Freeze shredded chicken in portions for quick future meals. Thaw overnight and reheat!"
+    },
+    {
+      "id": "smoothie-bowl",
+      "title": "Thick and Creamy Berry Smoothie Bowl",
+      "description": "This Instagram-worthy breakfast bowl is thick, creamy, and topped with all your favorites. It's like ice cream for breakfast!",
+      "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733",
+      "category": "Breakfasts",
+      "prepTime": "10 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "10 minutes",
+      "servings": "2 bowls",
+      "ingredients": {
+        "- \"Toppings": "fresh fruit, granola, coconut flakes, chia seeds, nuts\""
+      },
+      "instructions": {},
+      "notes": "Pro Tip: The key to a thick smoothie bowl is using FROZEN fruit and very little liquid. Start with less milk and add more if needed. Hidden Greens: Add a handful of spinach - you won't taste it but you'll get extra nutrients! Prep Ahead: Portion fruit into freezer bags for easy morning smoothie bowls. Topping Ideas: Make it fun! Let kids choose their own toppings. Try: sliced kiwi, mango, peanut butter drizzle, cacao nibs, hemp hearts, or homemade granola."
+    },
+    {
       "id": "sourdough-pancakes",
       "title": "Fluffy Sourdough Pancakes",
       "description": "",
@@ -69,6 +437,76 @@ const contentData = {
       "ingredients": {},
       "instructions": {},
       "notes": ""
+    },
+    {
+      "id": "sweet-potato-brownies",
+      "title": "Fudgy Sweet Potato Brownies",
+      "description": "Nobody will guess these rich, chocolatey brownies are packed with sweet potatoes! Naturally sweetened and made with almond flour for a healthier treat.",
+      "image": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62",
+      "category": "Kid Snacks",
+      "prepTime": "15 minutes",
+      "cookTime": "25 minutes",
+      "totalTime": "40 minutes",
+      "servings": "16 brownies",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Meal Prep: Bake on Sunday and store in an airtight container for easy lunchbox treats all week. They freeze beautifully too! Storage: Keep in fridge for up to 5 days or freeze for 3 months. Pro Tip: Let them cool completely before cutting for cleaner squares. If they're too soft, pop them in the fridge for 30 minutes first!"
+    },
+    {
+      "id": "sweet-potato-toast",
+      "title": "Sweet Potato Toast (3 Ways)",
+      "description": "Forget regular toast! Sweet potato slices are the perfect base for both sweet and savory toppings. Naturally gluten-free and packed with nutrients.",
+      "image": "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2",
+      "category": "Breakfasts",
+      "prepTime": "5 minutes",
+      "cookTime": "15 minutes",
+      "totalTime": "20 minutes",
+      "servings": "4 toasts",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "3 Delicious Topping Combos: SAVORY: Mashed avocado, fried egg, everything bagel seasoning. SWEET: Almond butter, sliced banana, cinnamon, honey drizzle. MEDITERRANEAN: Hummus, cherry tomatoes, cucumber, feta, olive oil drizzle. Make Ahead: Toast sweet potato slices and store in fridge for up to 5 days. Pop in toaster to reheat! Pro Tip: If your toaster won't fit the slices, use the oven method instead. Storage: Keep plain toasted sweet potato in the fridge and add fresh toppings each morning."
+    },
+    {
+      "id": "turkey-meatballs",
+      "title": "Hidden Veggie Turkey Meatballs",
+      "description": "These tender meatballs have zucchini baked right in! Serve with pasta, in subs, or on their own. Freezer-friendly and kid-approved.",
+      "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468",
+      "category": "Dinners",
+      "prepTime": "20 minutes",
+      "cookTime": "25 minutes",
+      "totalTime": "45 minutes",
+      "servings": "6 servings (about 24 meatballs)",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Freezer Meal Champion: Make a double batch! Freeze cooked meatballs in sauce for up to 3 months. Reheat from frozen. Meal Prep: These work for multiple meals! Spaghetti and meatballs Monday, meatball subs Tuesday, meatball soup Wednesday! Make It Dairy-Free: Skip the Parmesan or use nutritional yeast. Still delicious! Pro Tip: Wet your hands when rolling meatballs to prevent sticking. Storage: Refrigerate in sauce for up to 5 days. They actually taste better the next day!"
+    },
+    {
+      "id": "turkey-veggie-pinwheels",
+      "title": "Turkey and Veggie Pinwheels",
+      "description": "These colorful pinwheels are a lunchbox favorite! Easy to make ahead and packed with protein and veggies.",
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff",
+      "category": "Lunches",
+      "prepTime": "15 minutes",
+      "cookTime": "0 minutes",
+      "totalTime": "15 minutes",
+      "servings": "4 servings (24 pinwheels)",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Make Ahead: These are perfect for meal prep! Make on Sunday and refrigerate (unsliced) for up to 3 days. Slice fresh each morning. Rainbow Veggie Option: Use different colored veggies to make it extra fun - purple cabbage, yellow peppers, orange carrots! Nut-Free School Lunch: Use cream cheese instead of nut butter if sending to school. Storage: Keep wrapped rolls in fridge for 3 days. Once sliced, eat within 24 hours. Variation Ideas: Use different proteins (chicken, roast beef, ham), different spreads (pesto, sun-dried tomato), or add cheese!"
+    },
+    {
+      "id": "veggie-nuggets",
+      "title": "Hidden Veggie Chicken Nuggets",
+      "description": "Crispy homemade chicken nuggets with sneaky veggies baked right in! These are way better than store-bought and freeze perfectly.",
+      "image": "https://images.unsplash.com/photo-1562967914-608f82629710",
+      "category": "Kid Snacks",
+      "prepTime": "20 minutes",
+      "cookTime": "20 minutes",
+      "totalTime": "40 minutes",
+      "servings": "24 nuggets",
+      "ingredients": {},
+      "instructions": {},
+      "notes": "Freezer Friendly: These freeze beautifully! After baking and cooling, freeze in a single layer, then transfer to a freezer bag. Reheat from frozen at 350°F for 15 minutes. Meal Prep: Make a double batch on Sunday for easy lunchbox additions all week. Picky Eater Tip: The veggies are so finely grated that even veggie-haters won't notice them! Storage: Refrigerate for up to 4 days or freeze for up to 3 months."
     }
   ],
   "blogPosts": [
