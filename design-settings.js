@@ -1,6 +1,6 @@
 const designSettings = {
   "colors": {
-    "primary": "#6c785e",
+    "primary": "#616952",
     "secondary": "#d3c9b2",
     "accent": "#8e7e67",
     "background": "#f8f2e9",
