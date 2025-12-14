@@ -1,6 +1,6 @@
 ---
 colors:
-  primary: "#7b8a67"
+  primary: "#7b8a66"
   secondary: "#d3c9b2"
   accent: "#8e7e67"
   background: "#f8f2e9"
