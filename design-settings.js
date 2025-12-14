@@ -26,5 +26,12 @@ const designSettings = {
     "use_pattern": null,
     "pattern_type": "none",
     "bg_image": null
+  },
+  "socialMedia": {
+    "pinterest": "https://www.pinterest.com/yourhandle",
+    "facebook": "https://www.facebook.com/yourhandle",
+    "instagram": "https://www.instagram.com/yourhandle",
+    "tiktok": "https://www.tiktok.com/@yourhandle",
+    "youtube": "https://www.youtube.com/@yourhandle"
   }
 };
