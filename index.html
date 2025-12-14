@@ -649,10 +649,32 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 The Handmade Kitchen. All rights reserved.</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">
-            Clean eating recipes | No refined sugar | No seed oils
-        </p>
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem;">Follow Along</h3>
+                <div style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+                    <a href="https://www.pinterest.com/yourhandle" target="_blank" style="color: white; font-size: 1.8rem; transition: color 0.3s;" title="Pinterest">
+                        📌
+                    </a>
+                    <a href="https://www.facebook.com/yourhandle" target="_blank" style="color: white; font-size: 1.8rem; transition: color 0.3s;" title="Facebook">
+                        📘
+                    </a>
+                    <a href="https://www.instagram.com/yourhandle" target="_blank" style="color: white; font-size: 1.8rem; transition: color 0.3s;" title="Instagram">
+                        📷
+                    </a>
+                    <a href="https://www.tiktok.com/@yourhandle" target="_blank" style="color: white; font-size: 1.8rem; transition: color 0.3s;" title="TikTok">
+                        🎵
+                    </a>
+                    <a href="https://www.youtube.com/@yourhandle" target="_blank" style="color: white; font-size: 1.8rem; transition: color 0.3s;" title="YouTube">
+                        ▶️
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2024 The Handmade Kitchen. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                Clean eating recipes | No refined sugar | No seed oils
+            </p>
+        </div>
     </footer>
 
     <!-- Load Content -->
@@ -756,14 +778,14 @@
             const container = document.getElementById('latest-recipes');
             const recipes = contentData.recipes.slice(0, 4);
             container.innerHTML = recipes.map(r => `
-                <div class="recipe-card" onclick="window.location.href='recipe-detail.html?id=${r.id}'">
+                <a href="recipe.html?recipe=${r.slug || r.id}" class="recipe-card" style="text-decoration: none; color: inherit; display: block;">
                     <img src="${r.image}" alt="${r.title}">
                     <div class="recipe-info">
                         <div class="recipe-category">${r.category}</div>
                         <h3 class="recipe-title">${r.title}</h3>
                         <p class="recipe-description">${r.description}</p>
                     </div>
-                </div>
+                </a>
             `).join('');
         }
         
@@ -771,14 +793,14 @@
             const container = document.getElementById('latest-blog');
             const posts = contentData.blogPosts.slice(0, 3);
             container.innerHTML = posts.map(p => `
-                <div class="blog-card" onclick="window.location.href='blog-post.html?id=${p.id}'">
+                <a href="blog.html?post=${p.slug || p.id}" class="blog-card" style="text-decoration: none; color: inherit; display: block;">
                     <img src="${p.image}" alt="${p.title}">
                     <div class="recipe-info">
                         <div class="recipe-category">${p.category}</div>
                         <h3 class="recipe-title">${p.title}</h3>
                         <p class="recipe-description">${p.excerpt}</p>
                     </div>
-                </div>
+                </a>
             `).join('');
         }
         
