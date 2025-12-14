@@ -193,3 +193,13 @@ collections:
                   - {label: "Light Grid", value: "grid"}
                   - {label: "Diagonal Lines", value: "lines"}
               - {label: "Background Image", name: "bg_image", widget: "image", required: false, hint: "Full page background (use sparingly)"}
+          
+          - label: "Social Media Links"
+            name: "socialMedia"
+            widget: "object"
+            fields:
+              - {label: "Pinterest URL", name: "pinterest", widget: "string", required: false, hint: "https://www.pinterest.com/yourhandle"}
+              - {label: "Facebook URL", name: "facebook", widget: "string", required: false, hint: "https://www.facebook.com/yourhandle"}
+              - {label: "Instagram URL", name: "instagram", widget: "string", required: false, hint: "https://www.instagram.com/yourhandle"}
+              - {label: "TikTok URL", name: "tiktok", widget: "string", required: false, hint: "https://www.tiktok.com/@yourhandle"}
+              - {label: "YouTube URL", name: "youtube", widget: "string", required: false, hint: "https://www.youtube.com/@yourhandle"}
