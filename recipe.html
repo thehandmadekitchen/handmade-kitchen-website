@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe | Our Handmade Kitchen</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5a4a3a;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #5a4a3a;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d4a574;
+        }
+        
+        .recipe-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #d4a574;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .recipe-header {
+            margin-bottom: 30px;
+        }
+        
+        .recipe-title {
+            font-size: 2.5em;
+            color: #5a4a3a;
+            margin-bottom: 15px;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            gap: 30px;
+            color: #666;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .recipe-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .recipe-description {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .recipe-category {
+            display: inline-block;
+            background: #d4a574;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .recipe-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .recipe-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .ingredients-section {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+        
+        .ingredients-section h2 {
+            color: #5a4a3a;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .ingredients-section ul {
+            list-style: none;
+        }
+        
+        .ingredients-section li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .ingredients-section li:last-child {
+            border-bottom: none;
+        }
+        
+        .instructions-section h2 {
+            color: #5a4a3a;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .instructions-section ol {
+            counter-reset: step-counter;
+            list-style: none;
+        }
+        
+        .instructions-section li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .instructions-section li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: #d4a574;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .notes-section {
+            background: #fff9f0;
+            border-left: 4px solid #d4a574;
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 40px;
+        }
+        
+        .notes-section h2 {
+            color: #5a4a3a;
+            margin-bottom: 15px;
+        }
+        
+        .notes-section p {
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        footer {
+            background: #5a4a3a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .recipe-title {
+                font-size: 2em;
+            }
+            
+            .recipe-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Our Handmade Kitchen</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#recipes">Recipes</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="recipe-container">
+        <a href="index.html#recipes" class="back-link">← Back to All Recipes</a>
+        
+        <div id="recipe-content">
+            <!-- Recipe content will be loaded here -->
+            <p style="text-align: center; padding: 40px; color: #999;">Loading recipe...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Our Handmade Kitchen. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Get recipe slug from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipeSlug = urlParams.get('recipe');
+
+        if (!recipeSlug) {
+            document.getElementById('recipe-content').innerHTML = `
+                <p style="text-align: center; padding: 40px; color: #999;">
+                    Recipe not found. <a href="index.html#recipes">Return to recipes</a>
+                </p>
+            `;
+        } else {
+            // Load the recipe data
+            loadRecipe(recipeSlug);
+        }
+
+        async function loadRecipe(slug) {
+            try {
+                // Load the specific recipe JSON file
+                const response = await fetch(`content/recipes/${slug}.json`);
+                
+                if (!response.ok) {
+                    throw new Error('Recipe not found');
+                }
+                
+                const recipe = await response.json();
+                displayRecipe(recipe);
+                
+            } catch (error) {
+                console.error('Error loading recipe:', error);
+                document.getElementById('recipe-content').innerHTML = `
+                    <p style="text-align: center; padding: 40px; color: #999;">
+                        Sorry, this recipe could not be found. <a href="index.html#recipes">Return to recipes</a>
+                    </p>
+                `;
+            }
+        }
+
+        function displayRecipe(recipe) {
+            // Update page title
+            document.title = `${recipe.title} | Our Handmade Kitchen`;
+            
+            // Parse ingredients if they're in a string format
+            let ingredientsList = recipe.ingredients;
+            if (typeof recipe.ingredients === 'string') {
+                ingredientsList = recipe.ingredients.split('\n').filter(i => i.trim());
+            }
+            
+            // Parse instructions if they're in a string format
+            let instructionsList = recipe.instructions;
+            if (typeof recipe.instructions === 'string') {
+                instructionsList = recipe.instructions.split('\n').filter(i => i.trim());
+            }
+            
+            // Build the HTML
+            const html = `
+                <div class="recipe-header">
+                    <h1 class="recipe-title">${recipe.title}</h1>
+                    <p class="recipe-description">${recipe.description || ''}</p>
+                    <span class="recipe-category">${recipe.category}</span>
+                    
+                    <div class="recipe-meta">
+                        ${recipe.prep_time ? `
+                            <div class="recipe-meta-item">
+                                <span>⏱️</span>
+                                <span><strong>Prep:</strong> ${recipe.prep_time}</span>
+                            </div>
+                        ` : ''}
+                        ${recipe.cook_time ? `
+                            <div class="recipe-meta-item">
+                                <span>🔥</span>
+                                <span><strong>Cook:</strong> ${recipe.cook_time}</span>
+                            </div>
+                        ` : ''}
+                        ${recipe.total_time ? `
+                            <div class="recipe-meta-item">
+                                <span>⏰</span>
+                                <span><strong>Total:</strong> ${recipe.total_time}</span>
+                            </div>
+                        ` : ''}
+                        ${recipe.servings ? `
+                            <div class="recipe-meta-item">
+                                <span>👥</span>
+                                <span><strong>Servings:</strong> ${recipe.servings}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+
+                ${recipe.image ? `
+                    <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image" onerror="this.style.display='none'">
+                ` : ''}
+
+                <div class="recipe-content">
+                    <div class="ingredients-section">
+                        <h2>Ingredients</h2>
+                        <ul>
+                            ${ingredientsList.map(ingredient => `
+                                <li>${ingredient}</li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="instructions-section">
+                        <h2>Instructions</h2>
+                        <ol>
+                            ${instructionsList.map(instruction => `
+                                <li>${instruction}</li>
+                            `).join('')}
+                        </ol>
+                    </div>
+                </div>
+
+                ${recipe.notes ? `
+                    <div class="notes-section">
+                        <h2>Notes</h2>
+                        <p>${recipe.notes}</p>
+                    </div>
+                ` : ''}
+            `;
+            
+            document.getElementById('recipe-content').innerHTML = html;
+        }
+    </script>
+</body>
+</html>

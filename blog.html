@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | Our Handmade Kitchen</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5a4a3a;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #5a4a3a;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d4a574;
+        }
+        
+        .blog-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #d4a574;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .blog-header {
+            margin-bottom: 30px;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            background: #d4a574;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .blog-title {
+            font-size: 2.5em;
+            color: #5a4a3a;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+        
+        .blog-excerpt {
+            font-size: 1.2em;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid #d4a574;
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .blog-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .blog-content h2 {
+            color: #5a4a3a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .blog-content h3 {
+            color: #5a4a3a;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin: 20px 0 20px 30px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 10px;
+        }
+        
+        .blog-content strong {
+            color: #5a4a3a;
+        }
+        
+        .blog-content blockquote {
+            background: #f9f9f9;
+            border-left: 4px solid #d4a574;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        footer {
+            background: #5a4a3a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2em;
+            }
+            
+            .blog-image {
+                height: 250px;
+            }
+            
+            .blog-content {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Our Handmade Kitchen</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#recipes">Recipes</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="blog-container">
+        <a href="index.html#blog" class="back-link">← Back to All Blog Posts</a>
+        
+        <div id="blog-content">
+            <!-- Blog content will be loaded here -->
+            <p style="text-align: center; padding: 40px; color: #999;">Loading blog post...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Our Handmade Kitchen. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Get blog slug from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogSlug = urlParams.get('post');
+
+        if (!blogSlug) {
+            document.getElementById('blog-content').innerHTML = `
+                <p style="text-align: center; padding: 40px; color: #999;">
+                    Blog post not found. <a href="index.html#blog">Return to blog</a>
+                </p>
+            `;
+        } else {
+            // Load the blog post data
+            loadBlogPost(blogSlug);
+        }
+
+        async function loadBlogPost(slug) {
+            try {
+                // Load the specific blog JSON file
+                const response = await fetch(`content/blog/${slug}.json`);
+                
+                if (!response.ok) {
+                    throw new Error('Blog post not found');
+                }
+                
+                const post = await response.json();
+                displayBlogPost(post);
+                
+            } catch (error) {
+                console.error('Error loading blog post:', error);
+                document.getElementById('blog-content').innerHTML = `
+                    <p style="text-align: center; padding: 40px; color: #999;">
+                        Sorry, this blog post could not be found. <a href="index.html#blog">Return to blog</a>
+                    </p>
+                `;
+            }
+        }
+
+        function displayBlogPost(post) {
+            // Update page title
+            document.title = `${post.title} | Our Handmade Kitchen`;
+            
+            // Format content - convert markdown-style formatting to HTML
+            let content = post.content || '';
+            
+            // Convert markdown headers to HTML
+            content = content.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            content = content.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            
+            // Convert **bold** to <strong>
+            content = content.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            
+            // Convert paragraphs (double line breaks)
+            content = content.split('\n\n').map(para => {
+                if (!para.trim().startsWith('<h') && para.trim() !== '') {
+                    return `<p>${para.trim()}</p>`;
+                }
+                return para;
+            }).join('\n');
+            
+            // Build the HTML
+            const html = `
+                <div class="blog-header">
+                    <span class="blog-category">${post.category}</span>
+                    <h1 class="blog-title">${post.title}</h1>
+                    
+                    <div class="blog-meta">
+                        ${post.date ? `<span>📅 ${post.date}</span>` : ''}
+                        ${post.author ? `<span> • By ${post.author}</span>` : ''}
+                    </div>
+                    
+                    ${post.excerpt ? `
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                    ` : ''}
+                </div>
+
+                ${post.featured_image || post.image ? `
+                    <img src="${post.featured_image || post.image}" alt="${post.title}" class="blog-image" onerror="this.style.display='none'">
+                ` : ''}
+
+                <div class="blog-content">
+                    ${content}
+                </div>
+            `;
+            
+            document.getElementById('blog-content').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
