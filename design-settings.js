@@ -3,7 +3,7 @@ const designSettings = {
     "primary": "#7b8a66",
     "secondary": "#d3c9b2",
     "accent": "#8e7e67",
-    "background": "#f8f2e9",
+    "background": "#fff7ec",
     "text": "#322c2c"
   },
   "typography": {
@@ -26,12 +26,5 @@ const designSettings = {
     "use_pattern": null,
     "pattern_type": "none",
     "bg_image": null
-  },
-  "socialMedia": {
-    "pinterest": "https://www.pinterest.com/yourhandle",
-    "facebook": "https://www.facebook.com/yourhandle",
-    "instagram": "https://www.instagram.com/yourhandle",
-    "tiktok": "https://www.tiktok.com/@yourhandle",
-    "youtube": "https://www.youtube.com/@yourhandle"
   }
 };
