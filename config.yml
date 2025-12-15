@@ -1,0 +1,205 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # RECIPES
+  - name: "recipes"
+    label: "Recipes"
+    folder: "content/recipes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Easy Kid Snacks", "Breakfasts", "Lunches", "Dinners", "Appetizers", "Desserts"]}
+      - {label: "Prep/Cook Time", name: "time", widget: "string", hint: "e.g., 25 min"}
+      - {label: "Servings", name: "servings", widget: "string", hint: "e.g., 4 servings"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Ingredients", name: "ingredients", widget: "list"}
+      - {label: "Instructions", name: "instructions", widget: "list"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+
+  # BLOG POSTS
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Meal Planning Systems", "Mom Hacks", "Lifestyle"]}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
+
+  # SHOP ITEMS
+  - name: "shop"
+    label: "Shop Products"
+    folder: "content/shop"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Product Type", name: "type", widget: "string", hint: "e.g., Digital Planner, eBook"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Price", name: "price", widget: "string", hint: "e.g., $27"}
+      - {label: "Product Icon", name: "icon", widget: "string", hint: "Emoji like 📋 or 📚"}
+      - {label: "Buy Link", name: "link", widget: "string", hint: "Your Gumroad or product link"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+
+  # SITE SETTINGS
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "content/settings/about.md"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Main Content", name: "body", widget: "markdown"}
+          
+      - label: "Home Page"
+        name: "home"
+        file: "content/settings/home.md"
+        fields:
+          - {label: "Hero Title", name: "hero_title", widget: "string"}
+          - {label: "Hero Subtitle", name: "hero_subtitle", widget: "string"}
+          - {label: "Welcome Title", name: "welcome_title", widget: "string"}
+          - {label: "Welcome Subtitle", name: "welcome_subtitle", widget: "string"}
+          - {label: "Feature 1 Title", name: "feature1_title", widget: "string"}
+          - {label: "Feature 1 Text", name: "feature1_text", widget: "text"}
+          - {label: "Feature 2 Title", name: "feature2_title", widget: "string"}
+          - {label: "Feature 2 Text", name: "feature2_text", widget: "text"}
+          - {label: "Feature 3 Title", name: "feature3_title", widget: "string"}
+          - {label: "Feature 3 Text", name: "feature3_text", widget: "text"}
+          
+      - label: "Contact Info"
+        name: "contact"
+        file: "content/settings/contact.md"
+        fields:
+          - {label: "Email", name: "email", widget: "string", required: false}
+          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+          - {label: "Pinterest URL", name: "pinterest", widget: "string", required: false}
+          - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+          - {label: "TikTok URL", name: "tiktok", widget: "string", required: false}
+          
+      - label: "Design Settings"
+        name: "design"
+        file: "content/settings/design.md"
+        fields:
+          - label: "Colors"
+            name: "colors"
+            widget: "object"
+            fields:
+              - {label: "Primary Color (Olive Green)", name: "primary", widget: "color", default: "#2c5f4f", hint: "Main brand color - headers, buttons"}
+              - {label: "Secondary Color (Sage)", name: "secondary", widget: "color", default: "#8fa893", hint: "Accents and hover states"}
+              - {label: "Accent Color (Gold)", name: "accent", widget: "color", default: "#d4a574", hint: "Highlights and CTAs"}
+              - {label: "Background Color", name: "background", widget: "color", default: "#fafaf9", hint: "Page background"}
+              - {label: "Text Color", name: "text", widget: "color", default: "#2d2d2d", hint: "Main text color"}
+          
+          - label: "Typography"
+            name: "typography"
+            widget: "object"
+            fields:
+              - label: "Heading Font (For Titles & Headers)"
+                name: "heading_font"
+                widget: "select"
+                hint: "Choose a font that matches your brand personality"
+                options: 
+                  - {label: "Playfair Display - Elegant, sophisticated serif (current)", value: "Playfair Display"}
+                  - {label: "Merriweather - Classic, highly readable serif", value: "Merriweather"}
+                  - {label: "Cormorant Garamond - Refined, delicate serif", value: "Cormorant Garamond"}
+                  - {label: "Libre Baskerville - Traditional, bookish serif", value: "Libre Baskerville"}
+                  - {label: "Crimson Text - Elegant, literary serif", value: "Crimson Text"}
+                  - {label: "Cardo - Classic, academic serif", value: "Cardo"}
+                  - {label: "Spectral - Modern, editorial serif", value: "Spectral"}
+                  - {label: "Vollkorn - Strong, robust serif", value: "Vollkorn"}
+                  - {label: "Montserrat - Clean, geometric sans-serif", value: "Montserrat"}
+                  - {label: "Poppins - Modern, friendly sans-serif", value: "Poppins"}
+                  - {label: "Josefin Sans - Stylish, vintage sans-serif", value: "Josefin Sans"}
+                  - {label: "Bebas Neue - Bold, impactful sans-serif (ALL CAPS style)", value: "Bebas Neue"}
+                default: "Playfair Display"
+              
+              - label: "Body Font (For Paragraphs & Descriptions)"
+                name: "body_font"
+                widget: "select"
+                hint: "Choose a highly readable font for long-form content"
+                options:
+                  - {label: "Lora - Beautiful, highly readable serif (current)", value: "Lora"}
+                  - {label: "Merriweather - Classic, easy-to-read serif", value: "Merriweather"}
+                  - {label: "Crimson Text - Elegant reading serif", value: "Crimson Text"}
+                  - {label: "Spectral - Modern, comfortable serif", value: "Spectral"}
+                  - {label: "Cardo - Traditional book serif", value: "Cardo"}
+                  - {label: "Open Sans - Clean, professional sans-serif", value: "Open Sans"}
+                  - {label: "Karla - Friendly, approachable sans-serif", value: "Karla"}
+                  - {label: "Source Sans Pro - Technical, professional sans-serif", value: "Source Sans Pro"}
+                  - {label: "Nunito - Soft, rounded sans-serif", value: "Nunito"}
+                  - {label: "Work Sans - Modern, neutral sans-serif", value: "Work Sans"}
+                  - {label: "Inter - Contemporary, clean sans-serif", value: "Inter"}
+                default: "Lora"
+              
+              - label: "Accent Font (For Buttons & Navigation)"
+                name: "accent_font"
+                widget: "select"
+                hint: "Choose a strong, clear font for UI elements"
+                options:
+                  - {label: "Karla - Friendly, geometric sans-serif (current)", value: "Karla"}
+                  - {label: "Montserrat - Modern, clean sans-serif", value: "Montserrat"}
+                  - {label: "Raleway - Elegant, thin sans-serif", value: "Raleway"}
+                  - {label: "Open Sans - Professional, versatile sans-serif", value: "Open Sans"}
+                  - {label: "Poppins - Modern, rounded sans-serif", value: "Poppins"}
+                  - {label: "Nunito - Soft, friendly sans-serif", value: "Nunito"}
+                  - {label: "Work Sans - Neutral, professional sans-serif", value: "Work Sans"}
+                  - {label: "Inter - Clean, contemporary sans-serif", value: "Inter"}
+                  - {label: "Roboto - Google's classic sans-serif", value: "Roboto"}
+                  - {label: "Lato - Warm, humanist sans-serif", value: "Lato"}
+                default: "Karla"
+          
+          - label: "Logo & Branding"
+            name: "branding"
+            widget: "object"
+            fields:
+              - {label: "Site Name", name: "site_name", widget: "string", default: "The Handmade Kitchen"}
+              - {label: "Site Logo", name: "logo", widget: "image", required: false, hint: "Upload a logo image (optional)"}
+              - {label: "Favicon", name: "favicon", widget: "image", required: false, hint: "Small icon for browser tab"}
+          
+          - label: "Carousel Images"
+            name: "carousel"
+            widget: "object"
+            fields:
+              - {label: "Slide 1 Image", name: "slide1_image", widget: "image", required: false}
+              - {label: "Slide 2 Image", name: "slide2_image", widget: "image", required: false}
+              - {label: "Slide 3 Image", name: "slide3_image", widget: "image", required: false}
+              - {label: "Slide 4 Image", name: "slide4_image", widget: "image", required: false}
+          
+          - label: "Background Settings"
+            name: "background"
+            widget: "object"
+            fields:
+              - {label: "Use Pattern Background", name: "use_pattern", widget: "boolean", default: false}
+              - label: "Pattern Type"
+                name: "pattern_type"
+                widget: "select"
+                required: false
+                options:
+                  - {label: "None", value: "none"}
+                  - {label: "Subtle Dots", value: "dots"}
+                  - {label: "Light Grid", value: "grid"}
+                  - {label: "Diagonal Lines", value: "lines"}
+              - {label: "Background Image", name: "bg_image", widget: "image", required: false, hint: "Full page background (use sparingly)"}
+          
+          - label: "Social Media Links"
+            name: "socialMedia"
+            widget: "object"
+            fields:
+              - {label: "Pinterest URL", name: "pinterest", widget: "string", required: false, hint: "https://www.pinterest.com/yourhandle"}
+              - {label: "Facebook URL", name: "facebook", widget: "string", required: false, hint: "https://www.facebook.com/yourhandle"}
+              - {label: "Instagram URL", name: "instagram", widget: "string", required: false, hint: "https://www.instagram.com/yourhandle"}
+              - {label: "TikTok URL", name: "tiktok", widget: "string", required: false, hint: "https://www.tiktok.com/@yourhandle"}
+              - {label: "YouTube URL", name: "youtube", widget: "string", required: false, hint: "https://www.youtube.com/@yourhandle"}
