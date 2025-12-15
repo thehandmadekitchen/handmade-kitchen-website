@@ -3,7 +3,7 @@ const designSettings = {
     "primary": "#7b8a66",
     "secondary": "#d3c9b2",
     "accent": "#8e7e67",
-    "background": "#ea1f1f",
+    "background": "#ecece6",
     "text": "#322c2c"
   },
   "typography": {
