@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe | The Handmade Kitchen</title>
+    
+    <!-- Pinterest Rich Pins Meta Tags (will be populated dynamically) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Handmade Kitchen">
+    <meta name="pinterest-rich-pin" content="true">
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Merriweather:wght@400;600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Design Settings -->
@@ -11,6 +17,9 @@
     
     <!-- YAML Parser -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    
+    <!-- Pinterest SDK -->
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     
     <style>
         * {
@@ -132,12 +141,50 @@
             margin-bottom: 20px;
         }
         
+        .recipe-image-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
         .recipe-image {
             width: 100%;
             height: 400px;
             object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 40px;
+            display: block;
+        }
+        
+        .pin-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #E60023;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(230, 0, 35, 0.3);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .pin-button:hover {
+            background: #BD081C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(230, 0, 35, 0.4);
+        }
+        
+        .pin-icon {
+            width: 20px;
+            height: 20px;
         }
         
         .recipe-content {
@@ -236,6 +283,11 @@
             .recipe-image {
                 height: 250px;
             }
+            
+            .pin-button {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -289,7 +341,6 @@
 
         async function loadRecipe(slug) {
             try {
-                // Load the Markdown file
                 const response = await fetch(`content/recipes/${slug}.md`);
                 
                 if (!response.ok) {
@@ -299,6 +350,7 @@
                 const markdownText = await response.text();
                 const recipe = parseMarkdown(markdownText);
                 displayRecipe(recipe);
+                updateMetaTags(recipe);
                 
             } catch (error) {
                 console.error('Error loading recipe:', error);
@@ -311,10 +363,7 @@
         }
 
         function parseMarkdown(text) {
-            // Split frontmatter and content
             const parts = text.split('---');
-            
-            // Parse YAML frontmatter (between first and second ---)
             let frontmatter = {};
             if (parts.length >= 3) {
                 try {
@@ -323,8 +372,6 @@
                     console.error('Error parsing YAML:', e);
                 }
             }
-            
-            // Get body content (after second ---)
             const body = parts.length >= 3 ? parts.slice(2).join('---').trim() : '';
             
             return {
@@ -339,18 +386,41 @@
             };
         }
 
-        function displayRecipe(recipe) {
+        function updateMetaTags(recipe) {
+            // Update page title
             document.title = `${recipe.title} | The Handmade Kitchen`;
             
-            // Handle ingredients (can be array or string)
+            // Update or create meta tags for Pinterest Rich Pins
+            const url = window.location.href;
+            const description = `${recipe.category} recipe: ${recipe.title}. ${recipe.time ? 'Ready in ' + recipe.time + '.' : ''} ${recipe.servings ? 'Serves ' + recipe.servings + '.' : ''}`;
+            
+            updateMetaTag('property', 'og:title', recipe.title);
+            updateMetaTag('property', 'og:description', description);
+            updateMetaTag('property', 'og:image', recipe.image);
+            updateMetaTag('property', 'og:url', url);
+            updateMetaTag('name', 'description', description);
+        }
+
+        function updateMetaTag(attr, key, content) {
+            let element = document.querySelector(`meta[${attr}="${key}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute(attr, key);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        }
+
+        function displayRecipe(recipe) {
             let ingredientsList = Array.isArray(recipe.ingredients) 
                 ? recipe.ingredients 
                 : recipe.ingredients.split('\n').filter(i => i.trim());
             
-            // Handle instructions (can be array or string)
             let instructionsList = Array.isArray(recipe.instructions)
                 ? recipe.instructions
                 : recipe.instructions.split('\n').filter(i => i.trim());
+            
+            const currentUrl = window.location.href;
             
             const html = `
                 <div class="recipe-header">
@@ -374,7 +444,15 @@
                 </div>
 
                 ${recipe.image ? `
-                    <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image" onerror="this.style.display='none'">
+                    <div class="recipe-image-container">
+                        <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image" onerror="this.style.display='none'">
+                        <button class="pin-button" onclick="pinRecipe('${recipe.image}', '${encodeURIComponent(recipe.title)}', '${encodeURIComponent(currentUrl)}')">
+                            <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 19c-.61 0-1.22-.09-1.82-.27l.12-.97c.03-.24.15-.47.33-.65l.88-.88c.18-.18.43-.28.69-.28h.16c.26 0 .51.1.69.28l.88.88c.18.18.3.41.33.65l.12.97c-.6.18-1.21.27-1.82.27zm3.78-8.26l-1.44 1.44c-.37.37-.85.63-1.37.74v1.31h-2.94v-1.31c-.52-.11-1-.37-1.37-.74l-1.44-1.44c-.37-.37-.63-.85-.74-1.37H5.17v-2.94h1.31c.11-.52.37-1 .74-1.37l1.44-1.44c.37-.37.85-.63 1.37-.74V2.17h2.94v1.31c.52.11 1 .37 1.37.74l1.44 1.44c.37.37.63.85.74 1.37h1.31v2.94h-1.31c-.11.52-.37 1-.74 1.37z"/>
+                            </svg>
+                            Pin This Recipe
+                        </button>
+                    </div>
                 ` : ''}
 
                 <div class="recipe-content">
@@ -406,6 +484,12 @@
             `;
             
             document.getElementById('recipe-content').innerHTML = html;
+        }
+
+        function pinRecipe(imageUrl, title, url) {
+            // Use Pinterest's official Pin It button functionality
+            const pinterestUrl = `https://www.pinterest.com/pin/create/button/?url=${url}&media=${encodeURIComponent(imageUrl)}&description=${title}`;
+            window.open(pinterestUrl, 'pinterest-share', 'width=750,height=550');
         }
         
         // Load social media icons
