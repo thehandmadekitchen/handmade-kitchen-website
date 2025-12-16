@@ -231,32 +231,32 @@
             <a href="index.html" class="logo">Our Handmade Kitchen</a>
             <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Home</a></li>
                 <li class="dropdown">
                     <a href="recipes.html" class="dropdown-toggle">Recipes ▾</a>
                     <div class="dropdown-content">
-                        <a href="recipes.html?category=Kid Snacks">Kid Snacks</a>
-                        <a href="recipes.html?category=Breakfasts">Breakfasts</a>
-                        <a href="recipes.html?category=Lunches">Lunches</a>
-                        <a href="recipes.html?category=Dinners">Dinners</a>
-                        <a href="recipes.html?category=Appetizers">Appetizers</a>
-                        <a href="recipes.html?category=Desserts">Desserts</a>
-                        <a href="recipes.html">All Recipes</a>
+                        <a href="recipes.html?category=Kid Snacks" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Kid Snacks</a>
+                        <a href="recipes.html?category=Breakfasts" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Breakfasts</a>
+                        <a href="recipes.html?category=Lunches" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Lunches</a>
+                        <a href="recipes.html?category=Dinners" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Dinners</a>
+                        <a href="recipes.html?category=Appetizers" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Appetizers</a>
+                        <a href="recipes.html?category=Desserts" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Desserts</a>
+                        <a href="recipes.html" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">All Recipes</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="blogs.html" class="dropdown-toggle">Blog ▾</a>
                     <div class="dropdown-content">
-                        <a href="blogs.html?category=Meal Planning">Meal Planning</a>
-                        <a href="blogs.html?category=Kitchen Tips">Kitchen Tips</a>
-                        <a href="blogs.html?category=Clean Eating">Clean Eating</a>
-                        <a href="blogs.html?category=Family Life">Family Life</a>
-                        <a href="blogs.html">All Posts</a>
+                        <a href="blogs.html?category=Meal Planning" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Meal Planning</a>
+                        <a href="blogs.html?category=Kitchen Tips" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Kitchen Tips</a>
+                        <a href="blogs.html?category=Clean Eating" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Clean Eating</a>
+                        <a href="blogs.html?category=Family Life" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Family Life</a>
+                        <a href="blogs.html" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">All Posts</a>
                     </div>
                 </li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="shop.html" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Shop</a></li>
+                <li><a href="about.html" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">About</a></li>
+                <li><a href="index.html#contact" onclick="if(window.innerWidth<=768) document.querySelector('.nav-links').classList.remove('active')">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -364,16 +364,6 @@
                         dropdown.classList.toggle('active');
                     }
                 });
-            });
-            
-            // Close mobile menu on any link click in mobile view
-            navLinks.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768 && e.target.tagName === 'A' && !e.target.classList.contains('dropdown-toggle')) {
-                    // Small delay to allow dropdown items to be clicked
-                    setTimeout(() => {
-                        navLinks.classList.remove('active');
-                    }, 100);
-                }
             });
             
             applyDesignSettings();
