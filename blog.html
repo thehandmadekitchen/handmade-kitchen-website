@@ -196,11 +196,11 @@
                 if (designSettings.colors.background) root.style.setProperty('--off-white', designSettings.colors.background);
                 if (designSettings.colors.text) root.style.setProperty('--charcoal', designSettings.colors.text);
             }
-            if (designSettings.typography && designSettings.typography.headingFont) {
-                document.querySelectorAll('h1, h2, h3, .logo, .blog-title').forEach(function(el) { el.style.fontFamily = designSettings.typography.headingFont; });
+            if (designSettings.typography && designSettings.typography.heading_font) {
+                document.querySelectorAll('h1, h2, h3, .logo, .blog-title').forEach(function(el) { el.style.fontFamily = designSettings.typography.heading_font; });
             }
-            if (designSettings.typography && designSettings.typography.bodyFont) {
-                document.body.style.fontFamily = designSettings.typography.bodyFont;
+            if (designSettings.typography && designSettings.typography.body_font) {
+                document.body.style.fontFamily = designSettings.typography.body_font;
             }
         }
         document.addEventListener('DOMContentLoaded', function() { applyDesignSettings(); loadSocialMediaIcons(); });

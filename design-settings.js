@@ -35,3 +35,20 @@ const designSettings = {
     "youtube": "https://www.youtube.com/@thehandmadekitchen"
   }
 };
+
+// Load fonts dynamically
+(function() {
+  if (designSettings.typography) {
+    const fonts = [];
+    if (designSettings.typography.heading_font) fonts.push(designSettings.typography.heading_font + ':wght@400;600;700');
+    if (designSettings.typography.body_font) fonts.push(designSettings.typography.body_font + ':wght@400;600;700');
+    if (designSettings.typography.accent_font) fonts.push(designSettings.typography.accent_font + ':wght@400;600;700');
+    
+    if (fonts.length > 0) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=' + fonts.join('&family=') + '&display=swap';
+      document.head.appendChild(link);
+    }
+  }
+})();
