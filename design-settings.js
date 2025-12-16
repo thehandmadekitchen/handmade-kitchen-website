@@ -1,9 +1,9 @@
 const designSettings = {
   "colors": {
-    "primary": "#df330a",
+    "primary": "#7b8a66",
     "secondary": "#d3c9b2",
     "accent": "#8e7e67",
-    "background": "#ecece6",
+    "background": "#f8f2e9",
     "text": "#322c2c"
   },
   "typography": {
@@ -12,7 +12,7 @@ const designSettings = {
     "accent_font": "Lato"
   },
   "branding": {
-    "site_name": "The Handmade Kitchen",
+    "site_name": "Our Handmade Kitchen",
     "logo": null,
     "favicon": null
   },
@@ -26,5 +26,12 @@ const designSettings = {
     "use_pattern": null,
     "pattern_type": "none",
     "bg_image": null
+  },
+  "socialMedia": {
+    "pinterest": "https://www.pinterest.com/thehandmadekitchen",
+    "facebook": "https://www.facebook.com/thehandmadekitchen",
+    "instagram": "https://www.instagram.com/thehandmadekitchen",
+    "tiktok": "https://www.tiktok.com/@thehandmadekitchen",
+    "youtube": "https://www.youtube.com/@thehandmadekitchen"
   }
 };
