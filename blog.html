@@ -359,11 +359,27 @@
             };
         }
 
+        function createPinterestDescription(post) {
+            // Use excerpt if available, otherwise create from content
+            if (post.excerpt) {
+                return post.title + '. ' + post.excerpt + ' Read more at The Handmade Kitchen!';
+            }
+            
+            // Build description from available info
+            let parts = [];
+            if (post.category) {
+                parts.push(post.category);
+            }
+            parts.push('Clean eating tips, meal planning advice, and family-friendly recipes from The Handmade Kitchen.');
+            
+            return post.title + '. ' + parts.join('. ');
+        }
+
         function updateMetaTags(post) {
             document.title = `${post.title} | The Handmade Kitchen`;
             
             const url = window.location.href;
-            const description = post.excerpt || `${post.category} - ${post.title}`;
+            const description = createPinterestDescription(post);
             
             updateMetaTag('property', 'og:title', post.title);
             updateMetaTag('property', 'og:description', description);
@@ -401,6 +417,8 @@
                 }
             }
             
+            const pinterestDescription = createPinterestDescription(post);
+            
             const html = `
                 <div class="blog-header">
                     ${post.category ? `<span class="blog-category">${post.category}</span>` : ''}
@@ -424,6 +442,7 @@
                             <a data-pin-do="buttonPin" 
                                data-pin-custom="true"
                                data-pin-tall="true"
+                               data-pin-description="${pinterestDescription.replace(/"/g, '&quot;')}"
                                href="https://www.pinterest.com/pin/create/button/">
                                 Save to Pinterest
                             </a>

@@ -378,11 +378,41 @@
             };
         }
 
+        function createPinterestDescription(recipe) {
+            let ingredientsList = Array.isArray(recipe.ingredients) 
+                ? recipe.ingredients 
+                : recipe.ingredients.split('\n').filter(i => i.trim());
+            
+            let parts = [];
+            
+            // Add title and category
+            if (recipe.category) {
+                parts.push(recipe.category + ' Recipe');
+            }
+            
+            // Add time and servings
+            let meta = [];
+            if (recipe.time) meta.push(recipe.time);
+            if (recipe.servings) meta.push(recipe.servings + ' servings');
+            if (meta.length > 0) {
+                parts.push(meta.join(' • '));
+            }
+            
+            // Add first few ingredients as a teaser
+            if (ingredientsList.length > 0) {
+                const ingredientPreview = ingredientsList.slice(0, 3).join(', ');
+                parts.push('Ingredients include: ' + ingredientPreview + (ingredientsList.length > 3 ? '...' : ''));
+            }
+            
+            // Combine into description
+            return recipe.title + '. ' + parts.join('. ') + '. Get the full recipe at The Handmade Kitchen!';
+        }
+
         function updateMetaTags(recipe) {
             document.title = `${recipe.title} | The Handmade Kitchen`;
             
             const url = window.location.href;
-            const description = `${recipe.category} recipe: ${recipe.title}. ${recipe.time ? 'Ready in ' + recipe.time + '.' : ''} ${recipe.servings ? 'Serves ' + recipe.servings + '.' : ''}`;
+            const description = createPinterestDescription(recipe);
             
             updateMetaTag('property', 'og:title', recipe.title);
             updateMetaTag('property', 'og:description', description);
@@ -411,6 +441,7 @@
                 : recipe.instructions.split('\n').filter(i => i.trim());
             
             const currentUrl = window.location.href;
+            const pinterestDescription = createPinterestDescription(recipe);
             
             const html = `
                 <div class="recipe-header">
@@ -440,6 +471,7 @@
                             <a data-pin-do="buttonPin" 
                                data-pin-custom="true"
                                data-pin-tall="true"
+                               data-pin-description="${pinterestDescription.replace(/"/g, '&quot;')}"
                                href="https://www.pinterest.com/pin/create/button/">
                                 Save to Pinterest
                             </a>
