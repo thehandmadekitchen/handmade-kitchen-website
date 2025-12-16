@@ -18,7 +18,7 @@
     <!-- YAML Parser -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     
-    <!-- Pinterest SDK -->
+    <!-- Pinterest Save Button Script -->
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     
     <style>
@@ -155,36 +155,33 @@
             display: block;
         }
         
-        .pin-button {
+        /* Pinterest Save Button Container */
+        .pinterest-button-container {
             position: absolute;
             top: 15px;
             right: 15px;
+            z-index: 10;
+        }
+        
+        /* Style Pinterest's button to match our design */
+        .pinterest-button-container a {
+            display: inline-block;
             background: #E60023;
             color: white;
-            border: none;
             padding: 12px 20px;
             border-radius: 25px;
             font-family: 'Lato', sans-serif;
             font-weight: 600;
             font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            text-decoration: none;
             box-shadow: 0 4px 12px rgba(230, 0, 35, 0.3);
             transition: all 0.3s;
-            z-index: 10;
         }
         
-        .pin-button:hover {
+        .pinterest-button-container a:hover {
             background: #BD081C;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(230, 0, 35, 0.4);
-        }
-        
-        .pin-icon {
-            width: 20px;
-            height: 20px;
         }
         
         .recipe-content {
@@ -282,11 +279,6 @@
             
             .recipe-image {
                 height: 250px;
-            }
-            
-            .pin-button {
-                padding: 10px 16px;
-                font-size: 13px;
             }
         }
     </style>
@@ -386,47 +378,15 @@
             };
         }
 
-        function optimizeImageForPinterest(url) {
-            if (!url) return url;
-            
-            // Make absolute if relative
-            if (!url.startsWith('http://') && !url.startsWith('https://')) {
-                if (url.startsWith('//')) {
-                    url = 'https:' + url;
-                } else if (url.startsWith('/')) {
-                    url = window.location.origin + url;
-                } else {
-                    url = window.location.origin + '/' + url;
-                }
-            }
-            
-            // Optimize Unsplash URLs for Pinterest
-            if (url.includes('images.unsplash.com')) {
-                // Parse URL
-                const urlObj = new URL(url);
-                
-                // Add or update query parameters for optimal Pinterest display
-                urlObj.searchParams.set('w', '1200');  // Width for Pinterest
-                urlObj.searchParams.set('q', '85');    // Quality
-                urlObj.searchParams.set('auto', 'format');  // Auto format
-                urlObj.searchParams.set('fit', 'crop');  // Crop to fit
-                
-                return urlObj.toString();
-            }
-            
-            return url;
-        }
-
         function updateMetaTags(recipe) {
             document.title = `${recipe.title} | The Handmade Kitchen`;
             
             const url = window.location.href;
-            const optimizedImageUrl = optimizeImageForPinterest(recipe.image);
             const description = `${recipe.category} recipe: ${recipe.title}. ${recipe.time ? 'Ready in ' + recipe.time + '.' : ''} ${recipe.servings ? 'Serves ' + recipe.servings + '.' : ''}`;
             
             updateMetaTag('property', 'og:title', recipe.title);
             updateMetaTag('property', 'og:description', description);
-            updateMetaTag('property', 'og:image', optimizedImageUrl);
+            updateMetaTag('property', 'og:image', recipe.image);
             updateMetaTag('property', 'og:url', url);
             updateMetaTag('name', 'description', description);
         }
@@ -451,7 +411,6 @@
                 : recipe.instructions.split('\n').filter(i => i.trim());
             
             const currentUrl = window.location.href;
-            const optimizedImageUrl = optimizeImageForPinterest(recipe.image);
             
             const html = `
                 <div class="recipe-header">
@@ -477,12 +436,14 @@
                 ${recipe.image ? `
                     <div class="recipe-image-container">
                         <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image" onerror="this.style.display='none'">
-                        <button class="pin-button" onclick="pinRecipe()">
-                            <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/>
-                            </svg>
-                            Pin
-                        </button>
+                        <div class="pinterest-button-container">
+                            <a data-pin-do="buttonPin" 
+                               data-pin-custom="true"
+                               data-pin-tall="true"
+                               href="https://www.pinterest.com/pin/create/button/">
+                                Save to Pinterest
+                            </a>
+                        </div>
                     </div>
                 ` : ''}
 
@@ -516,30 +477,10 @@
             
             document.getElementById('recipe-content').innerHTML = html;
             
-            // Store recipe data globally for the pin button
-            window.currentRecipe = {
-                title: recipe.title,
-                image: optimizedImageUrl,
-                url: currentUrl
-            };
-        }
-
-        function pinRecipe() {
-            if (!window.currentRecipe) {
-                alert('Recipe data not loaded yet. Please try again.');
-                return;
+            // Re-initialize Pinterest buttons after content loads
+            if (window.PinUtils) {
+                window.PinUtils.build();
             }
-            
-            const { image, title, url } = window.currentRecipe;
-            
-            // Build Pinterest URL - don't double-encode
-            const pinterestUrl = 'https://www.pinterest.com/pin/create/button/' +
-                '?url=' + encodeURIComponent(url) +
-                '&media=' + encodeURIComponent(image) +
-                '&description=' + encodeURIComponent(title);
-            
-            // Open Pinterest in popup
-            window.open(pinterestUrl, 'pinterest-share', 'width=750,height=550');
         }
         
         // Load social media icons
