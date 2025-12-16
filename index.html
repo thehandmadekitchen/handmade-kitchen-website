@@ -76,6 +76,7 @@
             font-family: 'Karla', sans-serif;
             font-weight: 600;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         .nav-links a:hover {
@@ -152,38 +153,59 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            z-index: 10;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
         
         .carousel-content h1 {
-            font-size: 3.5rem;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
         
         .carousel-content p {
-            font-size: 1.3rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size: 1.25rem;
             margin-bottom: 2rem;
         }
         
         .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--olive);
+            background: var(--gold);
             color: white;
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 50px;
             font-family: 'Karla', sans-serif;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: background 0.3s;
+            display: inline-block;
         }
         
         .cta-button:hover {
-            background: var(--sage);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: var(--olive);
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.7);
+            border: none;
+            font-size: 2rem;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-arrow:hover {
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+        
+        .carousel-arrow.next {
+            right: 20px;
         }
         
         .carousel-dots {
@@ -209,126 +231,92 @@
             background: white;
         }
         
-        /* Carousel Arrows */
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.3);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10;
-            transition: background 0.3s;
-        }
-        
-        .carousel-arrow:hover {
-            background: rgba(255,255,255,0.5);
-        }
-        
-        .carousel-arrow.prev {
-            left: 20px;
-        }
-        
-        .carousel-arrow.next {
-            right: 20px;
-        }
-        
-        /* Section Styles */
+        /* Sections */
         .section {
-            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 4rem 2rem;
         }
         
         .section-title {
-            text-align: center;
             font-size: 2.5rem;
+            text-align: center;
             margin-bottom: 3rem;
+            color: var(--olive);
         }
         
         /* Recipe Grid */
         .recipe-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
-            align-items: stretch;
         }
         
         .recipe-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
         
         .recipe-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         
         .recipe-card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
         
         .recipe-info {
             padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
         }
         
         .recipe-category {
-            color: var(--sage);
-            font-size: 0.9rem;
+            background: var(--sage);
+            color: white;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 0.75rem;
             font-family: 'Karla', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
         .recipe-title {
-            font-size: 1.5rem;
-            margin: 0.5rem 0;
-            flex-shrink: 0;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--olive);
         }
         
         .recipe-description {
-            color: #666;
             font-size: 0.95rem;
-            margin-top: auto;
+            color: #666;
+            line-height: 1.5;
         }
         
-        /* Category Cards */
+        /* Category Grid */
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .category-card {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 2.5rem 1.5rem;
+            border-radius: 15px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
             cursor: pointer;
-            transition: all 0.3s;
         }
         
         .category-card:hover {
-            background: var(--olive);
-            color: white;
             transform: translateY(-5px);
         }
         
@@ -341,26 +329,23 @@
             font-family: 'Karla', sans-serif;
             font-weight: 600;
             font-size: 1.1rem;
+            color: var(--olive);
         }
         
         /* Blog Grid */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
-            align-items: stretch;
         }
         
         .blog-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
             transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            cursor: pointer;
         }
         
         .blog-card:hover {
@@ -373,41 +358,11 @@
             object-fit: cover;
         }
         
-        /* Shop Grid */
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            align-items: stretch;
-        }
-        
-        .shop-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .shop-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .shop-price {
-            font-size: 2rem;
-            color: var(--olive);
-            font-weight: 700;
-            margin: 1rem 0;
-        }
-        
-        /* Newsletter Section */
+        /* Newsletter */
         .newsletter-section {
-            background: var(--olive);
-            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--olive) 0%, var(--sage) 100%);
+            color: white;
+            padding: 4rem 2rem;
             text-align: center;
         }
         
@@ -416,82 +371,95 @@
             margin: 0 auto;
         }
         
-        .newsletter-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .newsletter-container h2 {
             color: white;
+            margin-bottom: 1rem;
+            font-size: 2rem;
         }
         
-        .newsletter-section p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-        
-        .newsletter-form-container {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        .newsletter-container p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
         }
         
         .newsletter-disclaimer {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            opacity: 0.9;
             margin-top: 1.5rem;
         }
         
         /* Footer */
         footer {
-            background: var(--charcoal);
+            background: var(--olive);
             color: white;
             padding: 3rem 2rem;
             text-align: center;
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .carousel {
-                height: 300px;
-            }
-            
-            .carousel-content h1 {
-                font-size: 2rem;
-            }
-            
-            .carousel-content p {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .recipe-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .shop-grid {
-                grid-template-columns: 1fr;
-            }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Shop Grid */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .shop-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .shop-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .shop-card h3 {
+            margin-bottom: 1rem;
+            color: var(--olive);
+        }
+        
+        .shop-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .shop-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--olive);
+            margin-bottom: 1.5rem;
+        }
+        
+        .shop-button {
+            background: var(--gold);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+            font-family: 'Karla', sans-serif;
+            font-weight: 600;
+        }
+        
+        .shop-button:hover {
+            background: var(--olive);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">The Handmade Kitchen</a>
@@ -500,23 +468,23 @@
                 <li class="dropdown">
                     <a href="#recipes">Recipes ▾</a>
                     <div class="dropdown-content">
-                        <a href="#recipes">Kid Snacks</a>
-                        <a href="#recipes">Breakfasts</a>
-                        <a href="#recipes">Lunches</a>
-                        <a href="#recipes">Dinners</a>
-                        <a href="#recipes">Appetizers</a>
-                        <a href="#recipes">Desserts</a>
-                        <a href="#recipes">All Recipes</a>
+                        <a href="#recipes" onclick="filterRecipes('Kid Snacks'); return false;">Kid Snacks</a>
+                        <a href="#recipes" onclick="filterRecipes('Breakfasts'); return false;">Breakfasts</a>
+                        <a href="#recipes" onclick="filterRecipes('Lunches'); return false;">Lunches</a>
+                        <a href="#recipes" onclick="filterRecipes('Dinners'); return false;">Dinners</a>
+                        <a href="#recipes" onclick="filterRecipes('Appetizers'); return false;">Appetizers</a>
+                        <a href="#recipes" onclick="filterRecipes('Desserts'); return false;">Desserts</a>
+                        <a href="#recipes" onclick="filterRecipes(null); return false;">All Recipes</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="#blog">Blog ▾</a>
                     <div class="dropdown-content">
-                        <a href="#blog">Meal Planning</a>
-                        <a href="#blog">Kitchen Tips</a>
-                        <a href="#blog">Clean Eating</a>
-                        <a href="#blog">Family Life</a>
-                        <a href="#blog">All Posts</a>
+                        <a href="#blog" onclick="filterBlog('Meal Planning'); return false;">Meal Planning</a>
+                        <a href="#blog" onclick="filterBlog('Kitchen Tips'); return false;">Kitchen Tips</a>
+                        <a href="#blog" onclick="filterBlog('Clean Eating'); return false;">Clean Eating</a>
+                        <a href="#blog" onclick="filterBlog('Family Life'); return false;">Family Life</a>
+                        <a href="#blog" onclick="filterBlog(null); return false;">All Posts</a>
                     </div>
                 </li>
                 <li><a href="shop.html">Shop</a></li>
@@ -529,20 +497,11 @@
     <!-- Hero Carousel -->
     <div class="carousel">
         <div class="carousel-slide active">
-            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d" alt="Fresh ingredients">
+            <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af" alt="Fresh ingredients">
             <div class="carousel-content">
                 <h1>Clean Eating Made Simple</h1>
-                <p>Real food. Real flavor. Real results.</p>
+                <p>Real food. Real families. Real results.</p>
                 <a href="#recipes" class="cta-button">Explore Recipes</a>
-            </div>
-        </div>
-        
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1556910096-6f5e72db6803" alt="Family cooking">
-            <div class="carousel-content">
-                <h1>Meals Your Family Will Love</h1>
-                <p>No refined sugar. No seed oils. All delicious.</p>
-                <a href="#recipes" class="cta-button">Get Started</a>
             </div>
         </div>
         
@@ -561,6 +520,15 @@
                 <h1>Tools to Make Life Easier</h1>
                 <p>Meal plans, guides, and more</p>
                 <a href="shop.html" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+        
+        <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564" alt="Family dinner">
+            <div class="carousel-content">
+                <h1>Nourish Your Family</h1>
+                <p>Wholesome meals everyone will love</p>
+                <a href="#recipes" class="cta-button">Get Started</a>
             </div>
         </div>
         
@@ -587,27 +555,27 @@
     <section class="section">
         <h2 class="section-title">Browse by Category</h2>
         <div class="category-grid">
-            <div class="category-card" onclick="window.location.href='#recipes'">
+            <div class="category-card" onclick="filterRecipes('Kid Snacks'); scrollToRecipes();">
                 <div class="category-emoji">🍪</div>
                 <div class="category-name">Kid Snacks</div>
             </div>
-            <div class="category-card" onclick="window.location.href='#recipes'">
+            <div class="category-card" onclick="filterRecipes('Breakfasts'); scrollToRecipes();">
                 <div class="category-emoji">🥞</div>
                 <div class="category-name">Breakfasts</div>
             </div>
-            <div class="category-card" onclick="window.location.href='#recipes'">
+            <div class="category-card" onclick="filterRecipes('Lunches'); scrollToRecipes();">
                 <div class="category-emoji">🥗</div>
                 <div class="category-name">Lunches</div>
             </div>
-            <div class="category-card" onclick="window.location.href='#recipes'">
+            <div class="category-card" onclick="filterRecipes('Dinners'); scrollToRecipes();">
                 <div class="category-emoji">🍗</div>
                 <div class="category-name">Dinners</div>
             </div>
-            <div class="category-card" onclick="window.location.href='#recipes'">
+            <div class="category-card" onclick="filterRecipes('Appetizers'); scrollToRecipes();">
                 <div class="category-emoji">🧀</div>
                 <div class="category-name">Appetizers</div>
             </div>
-            <div class="category-card" onclick="window.location.href='#recipes'">
+            <div class="category-card" onclick="filterRecipes('Desserts'); scrollToRecipes();">
                 <div class="category-emoji">🍰</div>
                 <div class="category-name">Desserts</div>
             </div>
@@ -748,8 +716,10 @@
         }
         
         function initCarousel() {
-            setInterval(() => showSlide(currentSlide + 1), 5000);
-            dots.forEach(dot => dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.slide))));
+            setInterval(() => changeSlide(1), 5000);
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
         }
         
         // Load content
@@ -762,7 +732,10 @@
         
         function loadSocialMediaIcons() {
             const container = document.getElementById('social-media-links');
-            if (!container) return;
+            if (!container) {
+                console.log('Social media container not found');
+                return;
+            }
             
             const socialMedia = (typeof designSettings !== 'undefined' && designSettings.socialMedia) ? designSettings.socialMedia : {
                 pinterest: '',
@@ -771,6 +744,8 @@
                 tiktok: '',
                 youtube: ''
             };
+            
+            console.log('Loading social media icons:', socialMedia);
             
             const icons = {
                 pinterest: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>`,
@@ -800,15 +775,49 @@
             
             if (links.length > 0) {
                 container.innerHTML = links.join('');
+                console.log('Social media icons loaded:', links.length);
             } else {
                 container.style.display = 'none';
+                console.log('No social media links configured');
             }
         }
         
-        function loadLatestRecipes() {
+        // Category filtering
+        let currentRecipeFilter = null;
+        let currentBlogFilter = null;
+        
+        function filterRecipes(category) {
+            currentRecipeFilter = category;
+            loadLatestRecipes(category);
+        }
+        
+        function filterBlog(category) {
+            currentBlogFilter = category;
+            loadLatestBlog(category);
+        }
+        
+        function scrollToRecipes() {
+            document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function loadLatestRecipes(category = null) {
             const container = document.getElementById('latest-recipes');
-            const recipes = contentData.recipes.slice(0, 4);
-            container.innerHTML = recipes.map(r => `
+            let recipes = contentData.recipes;
+            
+            // Filter by category if specified
+            if (category) {
+                recipes = recipes.filter(r => r.category === category);
+            }
+            
+            // Show first 12 recipes (or all if filtered)
+            const displayRecipes = category ? recipes : recipes.slice(0, 12);
+            
+            if (displayRecipes.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">No recipes found in this category yet.</p>';
+                return;
+            }
+            
+            container.innerHTML = displayRecipes.map(r => `
                 <div class="recipe-card" onclick="window.location.href='recipe.html?recipe=${r.slug || r.id}'">
                     <img src="${r.image}" alt="${r.title}">
                     <div class="recipe-info">
@@ -820,16 +829,30 @@
             `).join('');
         }
         
-        function loadLatestBlog() {
+        function loadLatestBlog(category = null) {
             const container = document.getElementById('latest-blog');
-            const posts = contentData.blogPosts.slice(0, 3);
-            container.innerHTML = posts.map(p => `
+            let posts = contentData.blogPosts;
+            
+            // Filter by category if specified
+            if (category) {
+                posts = posts.filter(p => p.category === category);
+            }
+            
+            // Show first 9 posts (or all if filtered)
+            const displayPosts = category ? posts : posts.slice(0, 9);
+            
+            if (displayPosts.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">No blog posts found in this category yet.</p>';
+                return;
+            }
+            
+            container.innerHTML = displayPosts.map(p => `
                 <div class="blog-card" onclick="window.location.href='blog.html?post=${p.slug || p.id}'">
                     <img src="${p.image}" alt="${p.title}">
                     <div class="recipe-info">
                         <div class="recipe-category">${p.category}</div>
                         <h3 class="recipe-title">${p.title}</h3>
-                        <p class="recipe-description">${p.excerpt}</p>
+                        <p class="recipe-description">${p.description}</p>
                     </div>
                 </div>
             `).join('');
@@ -837,13 +860,33 @@
         
         function loadShopProducts() {
             const container = document.getElementById('shop-products');
-            container.innerHTML = contentData.shopItems.map(item => `
+            const products = [
+                {
+                    title: "Weekly Meal Planner",
+                    description: "Plan your family's meals with ease using our printable weekly planner",
+                    price: "$7",
+                    link: "shop.html"
+                },
+                {
+                    title: "Clean Eating Guide",
+                    description: "Complete guide to clean eating with shopping lists and tips",
+                    price: "$12",
+                    link: "shop.html"
+                },
+                {
+                    title: "30-Day Challenge",
+                    description: "Transform your eating habits in just 30 days",
+                    price: "$15",
+                    link: "shop.html"
+                }
+            ];
+            
+            container.innerHTML = products.map(p => `
                 <div class="shop-card">
-                    <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                    <h3>${item.title}</h3>
-                    <p style="color: #666; margin: 1rem 0;">${item.description}</p>
-                    <div class="shop-price">${item.price}</div>
-                    <a href="${item.link}" class="cta-button">Get It Now</a>
+                    <h3>${p.title}</h3>
+                    <p>${p.description}</p>
+                    <div class="shop-price">${p.price}</div>
+                    <a href="${p.link}" class="shop-button">Learn More</a>
                 </div>
             `).join('');
         }
