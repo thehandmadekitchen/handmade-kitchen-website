@@ -9,6 +9,16 @@
     <script src="design-settings.js"></script>
     
     <style>
+        /* Prevent FOUC (Flash of Unstyled Content) */
+        body {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -109,32 +119,22 @@
         }
         
         /* Hero Carousel */
-        .carousel {
+        
+        /* Hero Section */
+        .hero {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px;
             overflow: hidden;
         }
         
-        .carousel-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        
-        .carousel-slide.active {
-            opacity: 1;
-        }
-        
-        .carousel-slide img {
+        .hero img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        .carousel-content {
+        .hero-content {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -142,15 +142,17 @@
             text-align: center;
             color: white;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            width: 90%;
+            max-width: 800px;
         }
         
-        .carousel-content h1 {
+        .hero-content h1 {
             color: white;
             font-size: 3rem;
             margin-bottom: 1rem;
         }
         
-        .carousel-content p {
+        .hero-content p {
             font-size: 1.25rem;
             margin-bottom: 2rem;
         }
@@ -169,54 +171,6 @@
         
         .cta-button:hover {
             background: var(--olive);
-        }
-        
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.7);
-            border: none;
-            font-size: 2rem;
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            z-index: 10;
-        }
-        
-        .carousel-arrow:hover {
-            background: rgba(255,255,255,0.9);
-        }
-        
-        .carousel-arrow.prev {
-            left: 20px;
-        }
-        
-        .carousel-arrow.next {
-            right: 20px;
-        }
-        
-        .carousel-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .dot.active {
-            background: white;
         }
         
         /* Sections */
@@ -650,52 +604,13 @@
         </div>
     </nav>
 
-    <!-- Hero Carousel -->
-    <div class="carousel">
-        <div class="carousel-slide active">
-            <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af" alt="Fresh ingredients">
-            <div class="carousel-content">
-                <h1>Clean Eating Made Simple</h1>
-                <p>Real food. Real families. Real results.</p>
-                <a href="recipes.html" class="cta-button">Explore Recipes</a>
-            </div>
-        </div>
-        
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1505935428862-770b6f24f629" alt="Meal prep">
-            <div class="carousel-content">
-                <h1>Simplify Your Meal Planning</h1>
-                <p>Save time without sacrificing health</p>
-                <a href="blogs.html" class="cta-button">Read Tips</a>
-            </div>
-        </div>
-        
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f" alt="Kitchen tools">
-            <div class="carousel-content">
-                <h1>Tools to Make Life Easier</h1>
-                <p>Meal plans, guides, and more</p>
-                <a href="shop.html" class="cta-button">Shop Now</a>
-            </div>
-        </div>
-        
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564" alt="Family dinner">
-            <div class="carousel-content">
-                <h1>Nourish Your Family</h1>
-                <p>Wholesome meals everyone will love</p>
-                <a href="recipes.html" class="cta-button">Get Started</a>
-            </div>
-        </div>
-        
-        <button class="carousel-arrow prev" onclick="changeSlide(-1)">‹</button>
-        <button class="carousel-arrow next" onclick="changeSlide(1)">›</button>
-        
-        <div class="carousel-dots">
-            <span class="dot active" data-slide="0"></span>
-            <span class="dot" data-slide="1"></span>
-            <span class="dot" data-slide="2"></span>
-            <span class="dot" data-slide="3"></span>
+    <!-- Hero Section -->
+    <div class="hero" id="hero-section">
+        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af" alt="Hero image" id="hero-image">
+        <div class="hero-content">
+            <h1 id="hero-title">Clean Eating Made Simple</h1>
+            <p id="hero-subtitle">Real food. Real families. Real results.</p>
+            <a href="recipes.html" class="cta-button" id="hero-button">Explore Recipes</a>
         </div>
     </div>
 
@@ -886,27 +801,31 @@
         }
         
         // Carousel
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
         
-        function showSlide(n) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-        
-        function changeSlide(direction) {
-            showSlide(currentSlide + direction);
-        }
-        
-        function initCarousel() {
-            setInterval(() => changeSlide(1), 5000);
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => showSlide(index));
-            });
+        // Load hero content from design settings
+        function loadHeroContent() {
+            if (typeof designSettings !== 'undefined' && designSettings.hero) {
+                const heroImage = document.getElementById('hero-image');
+                const heroTitle = document.getElementById('hero-title');
+                const heroSubtitle = document.getElementById('hero-subtitle');
+                const heroButton = document.getElementById('hero-button');
+                
+                if (designSettings.hero.image) {
+                    heroImage.src = designSettings.hero.image;
+                }
+                if (designSettings.hero.title) {
+                    heroTitle.textContent = designSettings.hero.title;
+                }
+                if (designSettings.hero.subtitle) {
+                    heroSubtitle.textContent = designSettings.hero.subtitle;
+                }
+                if (designSettings.hero.button_text) {
+                    heroButton.textContent = designSettings.hero.button_text;
+                }
+                if (designSettings.hero.button_link) {
+                    heroButton.href = designSettings.hero.button_link;
+                }
+            }
         }
         
         // Load content
@@ -1044,8 +963,11 @@
             });
             
             applyDesignSettings();
+            loadHeroContent();
             loadHomepageContent();
-            initCarousel();
+            
+            // Prevent FOUC - show body after everything is loaded
+            document.body.classList.add('loaded');
         });
     </script>
 </body>

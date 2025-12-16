@@ -12,6 +12,9 @@
     <script src="design-settings.js"></script>
     
     <style>
+        /* Prevent FOUC */
+        body { opacity: 0; transition: opacity 0.3s ease-in; }
+        body.loaded { opacity: 1; }
         * {
             margin: 0;
             padding: 0;
@@ -153,13 +156,71 @@
             line-height: 1.8;
         }
         
-        /* Footer */
-        footer {
-            background: var(--charcoal);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--olive);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: fixed;
+                top: 70px;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                width: 250px;
+                height: calc(100vh - 70px);
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                padding: 2rem 0;
+                z-index: 1000;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 0;
+            }
+            
+            nav ul a {
+                display: block;
+                padding: 1rem 2rem;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background: #f5f5f5;
+                margin-top: 0;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                padding: 2rem 1rem;
+            }
         }
     </style>
 </head>
@@ -167,34 +228,35 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">The Handmade Kitchen</a>
+            <a href="index.html" class="logo">Our Handmade Kitchen</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="recipe-detail.html">Recipes ▾</a>
+                    <a href="recipes.html" class="dropdown-toggle">Recipes ▾</a>
                     <div class="dropdown-content">
-                        <a href="recipe-detail.html?category=Kid%20Snacks">Kid Snacks</a>
-                        <a href="recipe-detail.html?category=Breakfasts">Breakfasts</a>
-                        <a href="recipe-detail.html?category=Lunches">Lunches</a>
-                        <a href="recipe-detail.html?category=Dinners">Dinners</a>
-                        <a href="recipe-detail.html?category=Appetizers">Appetizers</a>
-                        <a href="recipe-detail.html?category=Desserts">Desserts</a>
-                        <a href="recipe-detail.html">All Recipes</a>
+                        <a href="recipes.html?category=Kid Snacks">Kid Snacks</a>
+                        <a href="recipes.html?category=Breakfasts">Breakfasts</a>
+                        <a href="recipes.html?category=Lunches">Lunches</a>
+                        <a href="recipes.html?category=Dinners">Dinners</a>
+                        <a href="recipes.html?category=Appetizers">Appetizers</a>
+                        <a href="recipes.html?category=Desserts">Desserts</a>
+                        <a href="recipes.html">All Recipes</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="blog-post.html">Blog ▾</a>
+                    <a href="blogs.html" class="dropdown-toggle">Blog ▾</a>
                     <div class="dropdown-content">
-                        <a href="blog-post.html?category=Meal%20Planning">Meal Planning</a>
-                        <a href="blog-post.html?category=Kitchen%20Tips">Kitchen Tips</a>
-                        <a href="blog-post.html?category=Clean%20Eating">Clean Eating</a>
-                        <a href="blog-post.html?category=Family%20Life">Family Life</a>
-                        <a href="blog-post.html">All Posts</a>
+                        <a href="blogs.html?category=Meal Planning">Meal Planning</a>
+                        <a href="blogs.html?category=Kitchen Tips">Kitchen Tips</a>
+                        <a href="blogs.html?category=Clean Eating">Clean Eating</a>
+                        <a href="blogs.html?category=Family Life">Family Life</a>
+                        <a href="blogs.html">All Posts</a>
                     </div>
                 </li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -282,7 +344,31 @@
             }
         }
         
-        document.addEventListener('DOMContentLoaded', applyDesignSettings);
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        toggle.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+            
+            applyDesignSettings();
+            
+            // Prevent FOUC
+            document.body.classList.add('loaded');
+        });
     </script>
 </body>
 </html>

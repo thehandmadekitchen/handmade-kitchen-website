@@ -16,6 +16,13 @@ const designSettings = {
     "logo": null,
     "favicon": null
   },
+  "hero": {
+    "image": "/images/uploads/lauren-gray-zqh5l1jws5m-unsplash.jpg",
+    "title": "Clean Eating Made Simple",
+    "subtitle": "Real food. Real families. Real results.",
+    "button_text": "Explore Recipes",
+    "button_link": "recipes.html"
+  },
   "carousel": {
     "slide1_image": "/images/uploads/lauren-gray-zqh5l1jws5m-unsplash.jpg",
     "slide2_image": null,

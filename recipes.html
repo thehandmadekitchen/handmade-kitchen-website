@@ -8,6 +8,9 @@
     <script src="design-settings.js"></script>
     
     <style>
+        /* Prevent FOUC */
+        body { opacity: 0; transition: opacity 0.3s ease-in; }
+        body.loaded { opacity: 1; }
         * {
             margin: 0;
             padding: 0;
@@ -483,6 +486,9 @@
             applyDesignSettings();
             loadRecipes();
             loadSocialMediaIcons();
+            
+            // Prevent FOUC
+            document.body.classList.add('loaded');
         });
     </script>
 </body>
