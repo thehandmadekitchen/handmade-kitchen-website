@@ -364,6 +364,16 @@
                 });
             });
             
+            // Close mobile menu when clicking any navigation link (except dropdowns)
+            const allNavLinks = document.querySelectorAll('.nav-links a:not(.dropdown-toggle)');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            
             applyDesignSettings();
             
             // Prevent FOUC
