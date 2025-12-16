@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Post | The Handmade Kitchen</title>
+    
+    <!-- Pinterest Rich Pins Meta Tags (will be populated dynamically) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Handmade Kitchen">
+    <meta name="pinterest-rich-pin" content="true">
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Merriweather:wght@400;600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Design Settings -->
@@ -14,6 +20,9 @@
     
     <!-- Markdown Parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    
+    <!-- Pinterest Save Button Script -->
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     
     <style>
         * {
@@ -137,12 +146,46 @@
             border-left: 3px solid var(--accent);
         }
         
+        .blog-image-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
         .blog-image {
             width: 100%;
             height: 400px;
             object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 40px;
+        }
+        
+        /* Pinterest Save Button Container */
+        .pinterest-button-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+        }
+        
+        /* Style Pinterest's button to match our design */
+        .pinterest-button-container a {
+            display: inline-block;
+            background: #E60023;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(230, 0, 35, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .pinterest-button-container a:hover {
+            background: #BD081C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(230, 0, 35, 0.4);
         }
         
         .blog-content {
@@ -277,6 +320,7 @@
                 const markdownText = await response.text();
                 const post = parseMarkdown(markdownText);
                 displayBlogPost(post);
+                updateMetaTags(post);
                 
             } catch (error) {
                 console.error('Error loading blog post:', error);
@@ -315,9 +359,30 @@
             };
         }
 
-        function displayBlogPost(post) {
+        function updateMetaTags(post) {
             document.title = `${post.title} | The Handmade Kitchen`;
             
+            const url = window.location.href;
+            const description = post.excerpt || `${post.category} - ${post.title}`;
+            
+            updateMetaTag('property', 'og:title', post.title);
+            updateMetaTag('property', 'og:description', description);
+            updateMetaTag('property', 'og:image', post.image);
+            updateMetaTag('property', 'og:url', url);
+            updateMetaTag('name', 'description', description);
+        }
+
+        function updateMetaTag(attr, key, content) {
+            let element = document.querySelector(`meta[${attr}="${key}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute(attr, key);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        }
+
+        function displayBlogPost(post) {
             // Convert Markdown body to HTML
             const htmlContent = marked.parse(post.body);
             
@@ -353,7 +418,17 @@
                 </div>
 
                 ${post.image ? `
-                    <img src="${post.image}" alt="${post.title}" class="blog-image" onerror="this.style.display='none'">
+                    <div class="blog-image-container">
+                        <img src="${post.image}" alt="${post.title}" class="blog-image" onerror="this.style.display='none'">
+                        <div class="pinterest-button-container">
+                            <a data-pin-do="buttonPin" 
+                               data-pin-custom="true"
+                               data-pin-tall="true"
+                               href="https://www.pinterest.com/pin/create/button/">
+                                Save to Pinterest
+                            </a>
+                        </div>
+                    </div>
                 ` : ''}
 
                 <div class="blog-content">
@@ -362,6 +437,11 @@
             `;
             
             document.getElementById('blog-content').innerHTML = html;
+            
+            // Re-initialize Pinterest buttons after content loads
+            if (window.PinUtils) {
+                window.PinUtils.build();
+            }
         }
         
         // Load social media icons
