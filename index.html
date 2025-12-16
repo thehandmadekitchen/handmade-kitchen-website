@@ -19,11 +19,11 @@
         }
         
         :root {
-            --olive: #7b8a66;
-            --sage: #d3c9b2;
-            --gold: #8e7e67;
-            --off-white: #f8f2e9;
-            --charcoal: #322c2c;
+            --olive: #2c5f4f;
+            --sage: #8fa893;
+            --gold: #d4a574;
+            --off-white: #fafaf9;
+            --charcoal: #2d2d2d;
         }
         
         body {
@@ -456,6 +456,88 @@
         .shop-button:hover {
             background: var(--olive);
         }
+        
+        /* Contact Section */
+        .contact-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--olive);
+        }
+        
+        .contact-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--olive);
+            font-family: 'Karla', sans-serif;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--sage);
+            border-radius: 8px;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--olive);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--gold);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Karla', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .submit-btn:hover {
+            background: var(--olive);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -488,7 +570,7 @@
                 </li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -606,6 +688,43 @@
                 ✨ Free forever. Unsubscribe anytime. We respect your inbox.
             </p>
         </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2>Get in Touch</h2>
+        <p class="contact-intro">Have a question about a recipe? Want to share your cooking success? Or just want to say hi? We'd love to hear from you!</p>
+        
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            
+            <!-- Honeypot for spam protection -->
+            <p style="display:none;">
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+            
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
     </section>
 
     <!-- Footer -->
