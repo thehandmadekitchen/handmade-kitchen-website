@@ -7,14 +7,12 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Our Handmade Kitchen">
     <meta name="pinterest-rich-pin" content="true">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="design-settings.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --olive: #2c5f4f; --sage: #8fa893; --gold: #d4a574; --off-white: #fafaf9; --charcoal: #2d2d2d; }
         body { font-family: 'Lora', serif; line-height: 1.6; color: var(--charcoal); background: var(--off-white); }
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--olive); }
         header { background: white; padding: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
@@ -188,7 +186,24 @@
             if (socialMedia.youtube && socialMedia.youtube.trim()) links.push('<a href="' + socialMedia.youtube + '" target="_blank" rel="noopener" style="color: white; transition: opacity 0.3s;" onmouseover="this.style.opacity=\'0.7\'" onmouseout="this.style.opacity=\'1\'" title="Follow us on YouTube">' + icons.youtube + '</a>');
             if (links.length > 0) container.innerHTML = links.join('');
         }
-        document.addEventListener('DOMContentLoaded', loadSocialMediaIcons);
+        function applyDesignSettings() {
+            if (typeof designSettings === 'undefined') return;
+            var root = document.documentElement;
+            if (designSettings.colors) {
+                if (designSettings.colors.primary) root.style.setProperty('--olive', designSettings.colors.primary);
+                if (designSettings.colors.secondary) root.style.setProperty('--sage', designSettings.colors.secondary);
+                if (designSettings.colors.accent) root.style.setProperty('--gold', designSettings.colors.accent);
+                if (designSettings.colors.background) root.style.setProperty('--off-white', designSettings.colors.background);
+                if (designSettings.colors.text) root.style.setProperty('--charcoal', designSettings.colors.text);
+            }
+            if (designSettings.typography && designSettings.typography.headingFont) {
+                document.querySelectorAll('h1, h2, h3, .logo, .blog-title').forEach(function(el) { el.style.fontFamily = designSettings.typography.headingFont; });
+            }
+            if (designSettings.typography && designSettings.typography.bodyFont) {
+                document.body.style.fontFamily = designSettings.typography.bodyFont;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() { applyDesignSettings(); loadSocialMediaIcons(); });
     </script>
 </body>
 </html>
