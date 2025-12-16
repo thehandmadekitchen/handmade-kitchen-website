@@ -76,7 +76,6 @@
             font-family: 'Karla', sans-serif;
             font-weight: 600;
             transition: color 0.3s;
-            cursor: pointer;
         }
         
         .nav-links a:hover {
@@ -466,25 +465,25 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="#recipes">Recipes ▾</a>
+                    <a href="recipes.html">Recipes ▾</a>
                     <div class="dropdown-content">
-                        <a href="javascript:void(0);" onclick="filterRecipes('Kid Snacks'); scrollToRecipes();">Kid Snacks</a>
-                        <a href="javascript:void(0);" onclick="filterRecipes('Breakfasts'); scrollToRecipes();">Breakfasts</a>
-                        <a href="javascript:void(0);" onclick="filterRecipes('Lunches'); scrollToRecipes();">Lunches</a>
-                        <a href="javascript:void(0);" onclick="filterRecipes('Dinners'); scrollToRecipes();">Dinners</a>
-                        <a href="javascript:void(0);" onclick="filterRecipes('Appetizers'); scrollToRecipes();">Appetizers</a>
-                        <a href="javascript:void(0);" onclick="filterRecipes('Desserts'); scrollToRecipes();">Desserts</a>
-                        <a href="javascript:void(0);" onclick="filterRecipes(null); scrollToRecipes();">All Recipes</a>
+                        <a href="recipes.html?category=Kid Snacks">Kid Snacks</a>
+                        <a href="recipes.html?category=Breakfasts">Breakfasts</a>
+                        <a href="recipes.html?category=Lunches">Lunches</a>
+                        <a href="recipes.html?category=Dinners">Dinners</a>
+                        <a href="recipes.html?category=Appetizers">Appetizers</a>
+                        <a href="recipes.html?category=Desserts">Desserts</a>
+                        <a href="recipes.html">All Recipes</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#blog">Blog ▾</a>
+                    <a href="blogs.html">Blog ▾</a>
                     <div class="dropdown-content">
-                        <a href="javascript:void(0);" onclick="filterBlog('Meal Planning'); scrollToBlog();">Meal Planning</a>
-                        <a href="javascript:void(0);" onclick="filterBlog('Kitchen Tips'); scrollToBlog();">Kitchen Tips</a>
-                        <a href="javascript:void(0);" onclick="filterBlog('Clean Eating'); scrollToBlog();">Clean Eating</a>
-                        <a href="javascript:void(0);" onclick="filterBlog('Family Life'); scrollToBlog();">Family Life</a>
-                        <a href="javascript:void(0);" onclick="filterBlog(null); scrollToBlog();">All Posts</a>
+                        <a href="blogs.html?category=Meal Planning">Meal Planning</a>
+                        <a href="blogs.html?category=Kitchen Tips">Kitchen Tips</a>
+                        <a href="blogs.html?category=Clean Eating">Clean Eating</a>
+                        <a href="blogs.html?category=Family Life">Family Life</a>
+                        <a href="blogs.html">All Posts</a>
                     </div>
                 </li>
                 <li><a href="shop.html">Shop</a></li>
@@ -501,7 +500,7 @@
             <div class="carousel-content">
                 <h1>Clean Eating Made Simple</h1>
                 <p>Real food. Real families. Real results.</p>
-                <a href="#recipes" class="cta-button">Explore Recipes</a>
+                <a href="recipes.html" class="cta-button">Explore Recipes</a>
             </div>
         </div>
         
@@ -510,7 +509,7 @@
             <div class="carousel-content">
                 <h1>Simplify Your Meal Planning</h1>
                 <p>Save time without sacrificing health</p>
-                <a href="#blog" class="cta-button">Read Tips</a>
+                <a href="blogs.html" class="cta-button">Read Tips</a>
             </div>
         </div>
         
@@ -528,7 +527,7 @@
             <div class="carousel-content">
                 <h1>Nourish Your Family</h1>
                 <p>Wholesome meals everyone will love</p>
-                <a href="#recipes" class="cta-button">Get Started</a>
+                <a href="recipes.html" class="cta-button">Get Started</a>
             </div>
         </div>
         
@@ -555,27 +554,27 @@
     <section class="section">
         <h2 class="section-title">Browse by Category</h2>
         <div class="category-grid">
-            <div class="category-card" onclick="filterRecipes('Kid Snacks'); scrollToRecipes();">
+            <div class="category-card" onclick="window.location.href='recipes.html?category=Kid Snacks'">
                 <div class="category-emoji">🍪</div>
                 <div class="category-name">Kid Snacks</div>
             </div>
-            <div class="category-card" onclick="filterRecipes('Breakfasts'); scrollToRecipes();">
+            <div class="category-card" onclick="window.location.href='recipes.html?category=Breakfasts'">
                 <div class="category-emoji">🥞</div>
                 <div class="category-name">Breakfasts</div>
             </div>
-            <div class="category-card" onclick="filterRecipes('Lunches'); scrollToRecipes();">
+            <div class="category-card" onclick="window.location.href='recipes.html?category=Lunches'">
                 <div class="category-emoji">🥗</div>
                 <div class="category-name">Lunches</div>
             </div>
-            <div class="category-card" onclick="filterRecipes('Dinners'); scrollToRecipes();">
+            <div class="category-card" onclick="window.location.href='recipes.html?category=Dinners'">
                 <div class="category-emoji">🍗</div>
                 <div class="category-name">Dinners</div>
             </div>
-            <div class="category-card" onclick="filterRecipes('Appetizers'); scrollToRecipes();">
+            <div class="category-card" onclick="window.location.href='recipes.html?category=Appetizers'">
                 <div class="category-emoji">🧀</div>
                 <div class="category-name">Appetizers</div>
             </div>
-            <div class="category-card" onclick="filterRecipes('Desserts'); scrollToRecipes();">
+            <div class="category-card" onclick="window.location.href='recipes.html?category=Desserts'">
                 <div class="category-emoji">🍰</div>
                 <div class="category-name">Desserts</div>
             </div>
@@ -768,46 +767,10 @@
             }
         }
         
-        // Category filtering
-        let currentRecipeFilter = null;
-        let currentBlogFilter = null;
-        
-        function filterRecipes(category) {
-            currentRecipeFilter = category;
-            loadLatestRecipes(category);
-        }
-        
-        function filterBlog(category) {
-            currentBlogFilter = category;
-            loadLatestBlog(category);
-        }
-        
-        function scrollToRecipes() {
-            document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function scrollToBlog() {
-            document.getElementById('blog').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function loadLatestRecipes(category = null) {
+        function loadLatestRecipes() {
             const container = document.getElementById('latest-recipes');
-            let recipes = contentData.recipes;
-            
-            // Filter by category if specified
-            if (category) {
-                recipes = recipes.filter(r => r.category === category);
-            }
-            
-            // Show first 12 recipes (or all if filtered)
-            const displayRecipes = category ? recipes : recipes.slice(0, 12);
-            
-            if (displayRecipes.length === 0) {
-                container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">No recipes found in this category yet.</p>';
-                return;
-            }
-            
-            container.innerHTML = displayRecipes.map(r => `
+            const recipes = contentData.recipes.slice(0, 4);
+            container.innerHTML = recipes.map(r => `
                 <div class="recipe-card" onclick="window.location.href='recipe.html?recipe=${r.slug || r.id}'">
                     <img src="${r.image}" alt="${r.title}">
                     <div class="recipe-info">
@@ -819,24 +782,10 @@
             `).join('');
         }
         
-        function loadLatestBlog(category = null) {
+        function loadLatestBlog() {
             const container = document.getElementById('latest-blog');
-            let posts = contentData.blogPosts;
-            
-            // Filter by category if specified
-            if (category) {
-                posts = posts.filter(p => p.category === category);
-            }
-            
-            // Show first 9 posts (or all if filtered)
-            const displayPosts = category ? posts : posts.slice(0, 9);
-            
-            if (displayPosts.length === 0) {
-                container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">No blog posts found in this category yet.</p>';
-                return;
-            }
-            
-            container.innerHTML = displayPosts.map(p => `
+            const posts = contentData.blogPosts.slice(0, 3);
+            container.innerHTML = posts.map(p => `
                 <div class="blog-card" onclick="window.location.href='blog.html?post=${p.slug || p.id}'">
                     <img src="${p.image}" alt="${p.title}">
                     <div class="recipe-info">

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | The Handmade Kitchen</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="design-settings.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --olive: #2c5f4f;
+            --sage: #8fa893;
+            --gold: #d4a574;
+            --off-white: #fafaf9;
+            --charcoal: #2d2d2d;
+        }
+        
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--off-white);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--olive);
+        }
+        
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--olive);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-family: 'Karla', sans-serif;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--olive);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            margin-top: 0;
+            z-index: 1001;
+        }
+        
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--off-white);
+            color: var(--olive);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--olive) 0%, var(--sage) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-filters {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .category-filter-btn {
+            background: white;
+            border: 2px solid var(--sage);
+            color: var(--olive);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Karla', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-filter-btn:hover,
+        .category-filter-btn.active {
+            background: var(--olive);
+            color: white;
+            border-color: var(--olive);
+        }
+        
+        .blog-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-info {
+            padding: 1.5rem;
+        }
+        
+        .blog-category {
+            background: var(--sage);
+            color: white;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            font-family: 'Karla', sans-serif;
+        }
+        
+        .blog-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--olive);
+        }
+        
+        .blog-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        footer {
+            background: var(--olive);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">The Handmade Kitchen</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="recipes.html">Recipes ▾</a>
+                    <div class="dropdown-content">
+                        <a href="recipes.html?category=Kid Snacks">Kid Snacks</a>
+                        <a href="recipes.html?category=Breakfasts">Breakfasts</a>
+                        <a href="recipes.html?category=Lunches">Lunches</a>
+                        <a href="recipes.html?category=Dinners">Dinners</a>
+                        <a href="recipes.html?category=Appetizers">Appetizers</a>
+                        <a href="recipes.html?category=Desserts">Desserts</a>
+                        <a href="recipes.html">All Recipes</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="blogs.html">Blog ▾</a>
+                    <div class="dropdown-content">
+                        <a href="blogs.html?category=Meal Planning">Meal Planning</a>
+                        <a href="blogs.html?category=Kitchen Tips">Kitchen Tips</a>
+                        <a href="blogs.html?category=Clean Eating">Clean Eating</a>
+                        <a href="blogs.html?category=Family Life">Family Life</a>
+                        <a href="blogs.html">All Posts</a>
+                    </div>
+                </li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1 id="page-title">All Blog Posts</h1>
+    </div>
+
+    <div class="category-filters">
+        <button class="category-filter-btn active" onclick="filterCategory(null)">All Posts</button>
+        <button class="category-filter-btn" onclick="filterCategory('Meal Planning')">📋 Meal Planning</button>
+        <button class="category-filter-btn" onclick="filterCategory('Kitchen Tips')">🔪 Kitchen Tips</button>
+        <button class="category-filter-btn" onclick="filterCategory('Clean Eating')">🥗 Clean Eating</button>
+        <button class="category-filter-btn" onclick="filterCategory('Family Life')">👨‍👩‍👧‍👦 Family Life</button>
+    </div>
+
+    <div class="blog-grid" id="blog-container">
+        <!-- Blog posts loaded dynamically -->
+    </div>
+
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div id="social-media-links" style="display: flex; justify-content: center; gap: 25px; margin-bottom: 25px;"></div>
+            <p>&copy; 2024 The Handmade Kitchen. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Clean eating recipes | No refined sugar | No seed oils</p>
+        </div>
+    </footer>
+
+    <script src="full-content-data.js"></script>
+    <script>
+        let currentCategory = null;
+        
+        // Get category from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        
+        if (categoryParam) {
+            currentCategory = categoryParam;
+            document.getElementById('page-title').textContent = categoryParam;
+            
+            // Update active button
+            document.querySelectorAll('.category-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = Array.from(document.querySelectorAll('.category-filter-btn')).find(btn => 
+                btn.textContent.includes(categoryParam)
+            );
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+        
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Update URL
+            if (category) {
+                window.history.pushState({}, '', `?category=${encodeURIComponent(category)}`);
+                document.getElementById('page-title').textContent = category;
+            } else {
+                window.history.pushState({}, '', 'blogs.html');
+                document.getElementById('page-title').textContent = 'All Blog Posts';
+            }
+            
+            // Update active button
+            document.querySelectorAll('.category-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadBlogs();
+        }
+        
+        function loadBlogs() {
+            const container = document.getElementById('blog-container');
+            let posts = contentData.blogPosts;
+            
+            if (currentCategory) {
+                posts = posts.filter(p => p.category === currentCategory);
+            }
+            
+            if (posts.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666; grid-column: 1/-1;">No blog posts found in this category yet.</p>';
+                return;
+            }
+            
+            container.innerHTML = posts.map(p => `
+                <div class="blog-card" onclick="window.location.href='blog.html?post=${p.slug || p.id}'">
+                    <img src="${p.image}" alt="${p.title}">
+                    <div class="blog-info">
+                        <div class="blog-category">${p.category}</div>
+                        <h3 class="blog-title">${p.title}</h3>
+                        <p class="blog-description">${p.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function loadSocialMediaIcons() {
+            const container = document.getElementById('social-media-links');
+            if (!container) return;
+            
+            const socialMedia = (typeof designSettings !== 'undefined' && designSettings.socialMedia) ? designSettings.socialMedia : {};
+            
+            const icons = {
+                pinterest: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>`,
+                facebook: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>`,
+                instagram: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`,
+                tiktok: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>`,
+                youtube: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`
+            };
+            
+            const links = [];
+            if (socialMedia.pinterest && socialMedia.pinterest.trim()) links.push(`<a href="${socialMedia.pinterest}" target="_blank" rel="noopener" style="color: white; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" title="Follow us on Pinterest">${icons.pinterest}</a>`);
+            if (socialMedia.facebook && socialMedia.facebook.trim()) links.push(`<a href="${socialMedia.facebook}" target="_blank" rel="noopener" style="color: white; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" title="Follow us on Facebook">${icons.facebook}</a>`);
+            if (socialMedia.instagram && socialMedia.instagram.trim()) links.push(`<a href="${socialMedia.instagram}" target="_blank" rel="noopener" style="color: white; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" title="Follow us on Instagram">${icons.instagram}</a>`);
+            if (socialMedia.tiktok && socialMedia.tiktok.trim()) links.push(`<a href="${socialMedia.tiktok}" target="_blank" rel="noopener" style="color: white; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" title="Follow us on TikTok">${icons.tiktok}</a>`);
+            if (socialMedia.youtube && socialMedia.youtube.trim()) links.push(`<a href="${socialMedia.youtube}" target="_blank" rel="noopener" style="color: white; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" title="Follow us on YouTube">${icons.youtube}</a>`);
+            
+            if (links.length > 0) container.innerHTML = links.join('');
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBlogs();
+            loadSocialMediaIcons();
+        });
+    </script>
+</body>
+</html>
