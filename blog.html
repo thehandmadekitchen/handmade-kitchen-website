@@ -44,17 +44,30 @@
         .blog-content ul, .blog-content ol { margin-bottom: 20px; padding-left: 30px; }
         .blog-content li { margin-bottom: 8px; }
         footer { background: var(--olive); color: white; padding: 2rem 0; margin-top: 4rem; text-align: center; }
-        @media (max-width: 768px) { .blog-title { font-size: 2em; } .blog-image { height: 250px; } }
+        .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--olive); cursor: pointer; padding: 0.5rem; }
+        @media (max-width: 768px) { 
+            .mobile-menu-toggle { display: block; }
+            nav ul { display: none; position: fixed; top: 70px; right: 0; background: white; flex-direction: column; width: 250px; height: calc(100vh - 70px); box-shadow: -2px 0 10px rgba(0,0,0,0.1); padding: 2rem 0; z-index: 1000; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 0; padding: 0; }
+            nav ul a { display: block; padding: 1rem 2rem; }
+            .dropdown-content { position: static; box-shadow: none; background: #f5f5f5; margin-top: 0; display: none; }
+            .dropdown.active .dropdown-content { display: block; }
+            .blog-title { font-size: 2em; } 
+            .blog-image { height: 250px; }
+            .blog-content { font-size: 1em; }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <a href="index.html" class="logo">Our Handmade Kitchen</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="recipes.html">Recipes</a>
+                    <a href="recipes.html" class="dropdown-toggle">Recipes</a>
                     <div class="dropdown-content">
                         <a href="recipes.html?category=Kid Snacks">Kid Snacks</a>
                         <a href="recipes.html?category=Breakfasts">Breakfasts</a>
@@ -66,7 +79,7 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="blogs.html">Blog</a>
+                    <a href="blogs.html" class="dropdown-toggle">Blog</a>
                     <div class="dropdown-content">
                         <a href="blogs.html?category=Meal Planning">Meal Planning</a>
                         <a href="blogs.html?category=Kitchen Tips">Kitchen Tips</a>
@@ -203,7 +216,24 @@
                 document.body.style.fontFamily = designSettings.typography.body_font;
             }
         }
-        document.addEventListener('DOMContentLoaded', function() { applyDesignSettings(); loadSocialMediaIcons(); });
+        document.addEventListener('DOMContentLoaded', function() { 
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('nav ul');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() { navLinks.classList.toggle('active'); });
+            }
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        toggle.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+            applyDesignSettings(); 
+            loadSocialMediaIcons(); 
+        });
     </script>
 </body>
 </html>
