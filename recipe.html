@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe | The Handmade Kitchen</title>
+    <title>Recipe | Our Handmade Kitchen</title>
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="The Handmade Kitchen">
+    <meta property="og:site_name" content="Our Handmade Kitchen">
     <meta name="pinterest-rich-pin" content="true">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Merriweather:wght@400;600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="design-settings.js"></script>
@@ -51,7 +51,7 @@
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">The Handmade Kitchen</a>
+            <a href="index.html" class="logo">Our Handmade Kitchen</a>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
@@ -89,7 +89,7 @@
     <footer>
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <div id="social-media-links" style="display: flex; justify-content: center; gap: 25px; margin-bottom: 25px;"></div>
-            <p>&copy; 2024 The Handmade Kitchen. All rights reserved.</p>
+            <p>&copy; 2024 Our Handmade Kitchen. All rights reserved.</p>
             <p style="margin-top: 1rem; font-size: 0.9rem;">Clean eating recipes | No refined sugar | No seed oils</p>
         </div>
     </footer>
@@ -134,10 +134,10 @@
                 const ingredientPreview = ingredientsList.slice(0, 3).join(', ');
                 parts.push('Ingredients include: ' + ingredientPreview + (ingredientsList.length > 3 ? '...' : ''));
             }
-            return recipe.title + '. ' + parts.join('. ') + '. Get the full recipe at The Handmade Kitchen!';
+            return recipe.title + '. ' + parts.join('. ') + '. Get the full recipe at Our Handmade Kitchen!';
         }
         function updateMetaTags(recipe) {
-            document.title = \`\${recipe.title} | The Handmade Kitchen\`;
+            document.title = \`\${recipe.title} | Our Handmade Kitchen\`;
             const description = createPinterestDescription(recipe);
             updateMetaTag('property', 'og:title', recipe.title);
             updateMetaTag('property', 'og:description', description);

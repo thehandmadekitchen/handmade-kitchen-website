@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Handmade Kitchen - Clean Eating Recipes & Meal Planning</title>
+    <title>Our Handmade Kitchen - Clean Eating Recipes & Meal Planning</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
@@ -300,7 +300,7 @@
         /* Category Grid */
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -461,7 +461,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">The Handmade Kitchen</a>
+            <a href="index.html" class="logo">Our Handmade Kitchen</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
@@ -555,27 +555,21 @@
         <h2 class="section-title">Browse by Category</h2>
         <div class="category-grid">
             <div class="category-card" onclick="window.location.href='recipes.html?category=Kid Snacks'">
-                <div class="category-emoji">🍪</div>
                 <div class="category-name">Kid Snacks</div>
             </div>
             <div class="category-card" onclick="window.location.href='recipes.html?category=Breakfasts'">
-                <div class="category-emoji">🥞</div>
                 <div class="category-name">Breakfasts</div>
             </div>
             <div class="category-card" onclick="window.location.href='recipes.html?category=Lunches'">
-                <div class="category-emoji">🥗</div>
                 <div class="category-name">Lunches</div>
             </div>
             <div class="category-card" onclick="window.location.href='recipes.html?category=Dinners'">
-                <div class="category-emoji">🍗</div>
                 <div class="category-name">Dinners</div>
             </div>
             <div class="category-card" onclick="window.location.href='recipes.html?category=Appetizers'">
-                <div class="category-emoji">🧀</div>
                 <div class="category-name">Appetizers</div>
             </div>
             <div class="category-card" onclick="window.location.href='recipes.html?category=Desserts'">
-                <div class="category-emoji">🍰</div>
                 <div class="category-name">Desserts</div>
             </div>
         </div>
@@ -622,7 +616,7 @@
                 <!-- Icons will be populated by JavaScript -->
             </div>
             
-            <p>&copy; 2024 The Handmade Kitchen. All rights reserved.</p>
+            <p>&copy; 2024 Our Handmade Kitchen. All rights reserved.</p>
             <p style="margin-top: 1rem; font-size: 0.9rem;">
                 Clean eating recipes | No refined sugar | No seed oils
             </p>
@@ -769,7 +763,7 @@
         
         function loadLatestRecipes() {
             const container = document.getElementById('latest-recipes');
-            const recipes = contentData.recipes.slice(0, 4);
+            const recipes = contentData.recipes.slice(0, 3);
             container.innerHTML = recipes.map(r => `
                 <div class="recipe-card" onclick="window.location.href='recipe.html?recipe=${r.slug || r.id}'">
                     <img src="${r.image}" alt="${r.title}">

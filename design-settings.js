@@ -12,7 +12,7 @@ const designSettings = {
     "accent_font": "Lato"
   },
   "branding": {
-    "site_name": "The Handmade Kitchen",
+    "site_name": "Our Handmade Kitchen",
     "logo": null,
     "favicon": null
   },
