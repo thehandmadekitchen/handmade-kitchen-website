@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Our Handmade Kitchen - Blog</title>
+    <link>https://ourhandmadekitchen.com</link>
+    <description>Clean eating tips, meal planning advice, and family-friendly kitchen wisdom</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Dec 2024 10:00:00 GMT</lastBuildDate>
+    <atom:link href="https://ourhandmadekitchen.com/blog-feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <!-- Sample Blog Post Item - Replace with your actual blog posts -->
+    <item>
+      <title>5 Meal Prep Tips for Busy Families</title>
+      <link>https://ourhandmadekitchen.com/blog.html?blog=meal-prep-tips</link>
+      <description>Make weeknight dinners easier with these simple meal prep strategies that save time and reduce stress.</description>
+      <pubDate>Mon, 16 Dec 2024 09:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://ourhandmadekitchen.com/blog.html?blog=meal-prep-tips</guid>
+      <category>Meal Planning</category>
+      <author>Our Handmade Kitchen</author>
+      <enclosure url="https://ourhandmadekitchen.com/images/meal-prep.jpg" type="image/jpeg"/>
+    </item>
+    
+    <item>
+      <title>Why We Avoid Seed Oils</title>
+      <link>https://ourhandmadekitchen.com/blog.html?blog=seed-oils</link>
+      <description>Learn about the health concerns around seed oils and what we use instead for cooking and baking.</description>
+      <pubDate>Fri, 13 Dec 2024 08:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://ourhandmadekitchen.com/blog.html?blog=seed-oils</guid>
+      <category>Clean Eating</category>
+      <author>Our Handmade Kitchen</author>
+      <enclosure url="https://ourhandmadekitchen.com/images/cooking-oils.jpg" type="image/jpeg"/>
+    </item>
+    
+    <!-- Add more blog post items here as you publish them -->
+    
+  </channel>
+</rss>

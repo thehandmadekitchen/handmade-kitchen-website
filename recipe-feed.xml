@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Our Handmade Kitchen - Recipes</title>
+    <link>https://ourhandmadekitchen.com</link>
+    <description>Clean eating recipes - no refined sugar, no seed oils. Real food for real families.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Dec 2024 10:00:00 GMT</lastBuildDate>
+    <atom:link href="https://ourhandmadekitchen.com/recipe-feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <!-- Sample Recipe Item - Replace with your actual recipes -->
+    <item>
+      <title>Healthy Banana Bread</title>
+      <link>https://ourhandmadekitchen.com/recipe.html?recipe=banana-bread</link>
+      <description>Delicious sugar-free banana bread made with wholesome ingredients. Perfect for breakfast or a healthy snack!</description>
+      <pubDate>Mon, 16 Dec 2024 08:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://ourhandmadekitchen.com/recipe.html?recipe=banana-bread</guid>
+      <category>Breakfasts</category>
+      <enclosure url="https://ourhandmadekitchen.com/images/banana-bread.jpg" type="image/jpeg"/>
+    </item>
+    
+    <item>
+      <title>Quinoa Power Bowl</title>
+      <link>https://ourhandmadekitchen.com/recipe.html?recipe=quinoa-bowl</link>
+      <description>Nutrient-packed quinoa bowl with roasted vegetables and a tahini dressing. Easy meal prep for busy weekdays!</description>
+      <pubDate>Sun, 15 Dec 2024 10:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://ourhandmadekitchen.com/recipe.html?recipe=quinoa-bowl</guid>
+      <category>Lunches</category>
+      <enclosure url="https://ourhandmadekitchen.com/images/quinoa-bowl.jpg" type="image/jpeg"/>
+    </item>
+    
+    <!-- Add more recipe items here as you publish them -->
+    
+  </channel>
+</rss>
