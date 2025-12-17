@@ -1,6 +1,6 @@
 ---
 colors:
-  primary: "#df330a"
+  primary: "#7b8a66"
   secondary: "#d3c9b2"
   accent: "#8e7e67"
   background: "#ecece6"
@@ -14,7 +14,7 @@ branding:
   logo: ""
   favicon: ""
 carousel:
-  slide1_image: /images/uploads/lauren-gray-zqh5l1jws5m-unsplash.jpg
+  slide1_image: /images/uploads/priscilla-du-preez-su5jshu1pk8-unsplash.jpg
   slide2_image: ""
   slide3_image: ""
   slide4_image: ""
@@ -22,4 +22,10 @@ background:
   use_pattern: false
   pattern_type: none
   bg_image: ""
+socialMedia:
+  instagram: " https://www.instagram.com/ourhandmadekitchen"
+  tiktok: https://www.tiktok.com/@ourhandmadekitchen
+  youtube: https://www.youtube.com/@ourhandmadekitchen
+  facebook: https://www.facebook.com/ourhandmadekitchen
+  pinterest: https://www.pinterest.com/ourhandmadekitchen
 ---
