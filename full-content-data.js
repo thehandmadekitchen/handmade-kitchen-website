@@ -33,16 +33,16 @@ const contentData = {
     {
       "id": "apple-nachos",
       "title": "Apple Nachos with Almond Butter Drizzle",
-      "description": "A fun and healthy after-school snack! Crispy apple slices topped with nut butter, granola, and naturally sweet toppings.",
-      "image": "https://images.unsplash.com/photo-1569870499705-504209102861",
-      "category": "Kid Snacks",
+      "description": "A fun and healthy after-school snack! Crispy apple slices topped",
+      "image": "/images/uploads/apple-nachos.jpg",
+      "category": "Easy Kid Snacks",
       "prepTime": "10 minutes",
       "cookTime": "0 minutes",
       "totalTime": "10 minutes",
       "servings": "4 servings",
       "ingredients": {},
       "instructions": {},
-      "notes": "Prevent Browning: Toss apple slices in a little lemon juice to keep them from browning if making ahead. Customizable: Let kids top their own! Set out bowls of different toppings and let them create. Other Topping Ideas: Raisins, chopped dates, chia seeds, hemp hearts, or crushed nuts. Quick Tip: This is perfect for after school or a fun weekend snack that feels like a treat but is actually nutritious!"
+      "notes": "\"Prevent Browning: Toss apple slices in a little lemon juice to keep them"
     },
     {
       "id": "bacon-wrapped-dates",
