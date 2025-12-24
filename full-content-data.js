@@ -895,8 +895,8 @@ const contentData = {
     {
       "id": "sweet-potato-brownies",
       "title": "Fudgy Sweet Potato Brownies",
-      "description": "Nobody will guess these rich, chocolatey brownies are packed with sweet potatoes! Naturally sweetened and made with almond flour for a healthier treat.",
-      "image": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62",
+      "description": "Nobody will guess these rich, chocolatey brownies are packed with",
+      "image": "/images/uploads/sweet-potatoes.jpg",
       "category": "Kid Snacks",
       "prepTime": "15 minutes",
       "cookTime": "25 minutes",
@@ -904,7 +904,7 @@ const contentData = {
       "servings": "16 brownies",
       "ingredients": {},
       "instructions": {},
-      "notes": "Meal Prep: Bake on Sunday and store in an airtight container for easy lunchbox treats all week. They freeze beautifully too! Storage: Keep in fridge for up to 5 days or freeze for 3 months. Pro Tip: Let them cool completely before cutting for cleaner squares. If they're too soft, pop them in the fridge for 30 minutes first!"
+      "notes": "\"Meal Prep: Bake on Sunday and store in an airtight container for easy"
     },
     {
       "id": "sweet-potato-toast",
