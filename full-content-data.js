@@ -967,8 +967,8 @@ const contentData = {
     {
       "id": "veggie-nuggets",
       "title": "Hidden Veggie Chicken Nuggets",
-      "description": "Crispy homemade chicken nuggets with sneaky veggies baked right in! These are way better than store-bought and freeze perfectly.",
-      "image": "https://images.unsplash.com/photo-1562967914-608f82629710",
+      "description": "Crispy homemade chicken nuggets with sneaky veggies baked right in!",
+      "image": "/images/uploads/chicken-nuggets.jpg",
       "category": "Kid Snacks",
       "prepTime": "20 minutes",
       "cookTime": "20 minutes",
@@ -976,7 +976,7 @@ const contentData = {
       "servings": "24 nuggets",
       "ingredients": {},
       "instructions": {},
-      "notes": "Freezer Friendly: These freeze beautifully! After baking and cooling, freeze in a single layer, then transfer to a freezer bag. Reheat from frozen at 350°F for 15 minutes. Meal Prep: Make a double batch on Sunday for easy lunchbox additions all week. Picky Eater Tip: The veggies are so finely grated that even veggie-haters won't notice them! Storage: Refrigerate for up to 4 days or freeze for up to 3 months."
+      "notes": "\"Freezer Friendly: These freeze beautifully! After baking and cooling,"
     },
     {
       "id": "white-bean-dip",
