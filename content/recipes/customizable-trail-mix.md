@@ -27,7 +27,7 @@ instructions:
   - Store in airtight container for up to 2 weeks.
   - Grab a bag whenever you need a quick snack!
 total_time: 10 minutes
-image: /images/uploads/dates.jpg
+image: /images/uploads/trail-mix.jpg
 date: 2025-12-24T04:57:43.452Z
 description: Way better than store-bought! Mix and match ingredients for endless
   snack combinations. Perfect for lunchboxes and road trips.
