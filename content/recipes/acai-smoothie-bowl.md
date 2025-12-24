@@ -9,7 +9,7 @@ notes: "The Secret to Thickness: Use frozen fruit and minimal liquid! It should
   patterns for beautiful presentation."
 title: Acai Smoothie Bowl (Like Juice Bar, But Cheaper!)
 category: Breakfasts
-time: NA
+time: 10 min
 ingredients:
   - 2 packets frozen acai puree (or 1/2 cup frozen blueberries as substitute)
   - 2 frozen bananas, broken into chunks
