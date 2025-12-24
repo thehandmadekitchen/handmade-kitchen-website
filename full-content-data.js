@@ -405,8 +405,8 @@ const contentData = {
     {
       "id": "customizable-trail-mix",
       "title": "Build-Your-Own Trail Mix (6 Flavor Combos)",
-      "description": "Way better than store-bought! Mix and match ingredients for endless snack combinations. Perfect for lunchboxes and road trips.",
-      "image": "https://images.unsplash.com/photo-1599599810769-bcde5a160d32",
+      "description": "Way better than store-bought! Mix and match ingredients for endless",
+      "image": "/images/uploads/dates.jpg",
       "category": "Kid Snacks",
       "prepTime": "10 minutes",
       "cookTime": "0 minutes",
@@ -414,7 +414,7 @@ const contentData = {
       "servings": "8 cups",
       "ingredients": {},
       "instructions": {},
-      "notes": "6 Flavor Combinations: CLASSIC - Almonds, raisins, chocolate chips, pretzels. TROPICAL - Cashews, dried pineapple, coconut, macadamias. SWEET & SALTY - Peanuts, M&Ms, pretzels, popcorn. FALL HARVEST - Pecans, dried cranberries, pumpkin seeds, cinnamon chips. CHOCOLATE LOVERS - All nuts, chocolate chips, cocoa puffs cereal. ALLERGY-FRIENDLY - Sunflower seeds, dried fruit, coconut, chocolate chips (no nuts!). Budget Tip: Buy nuts and dried fruit in bulk! Store in freezer for freshness. School-Safe: Use sunflower seeds instead of nuts for nut-free zones. Storage: Individual portions last 2 weeks. Bulk mix lasts 1 month in airtight container."
+      "notes": "\"6 Flavor Combinations: CLASSIC - Almonds, raisins, chocolate chips,"
     },
     {
       "id": "date-caramels",
