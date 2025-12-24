@@ -505,8 +505,8 @@ const contentData = {
     {
       "id": "healthy-rice-crispy-treats",
       "title": "Healthier Rice Crispy Treats (With Honey!)",
-      "description": "Classic treat made better! Using honey instead of marshmallows and adding a protein boost. Kids can't tell the difference!",
-      "image": "https://images.unsplash.com/photo-1626200419199-391ae4be7a41",
+      "description": "Classic treat made better! Using honey instead of marshmallows and",
+      "image": "/images/uploads/rice-krispy-treats.jpg",
       "category": "Kid Snacks",
       "prepTime": "10 minutes",
       "cookTime": "5 minutes",
@@ -516,7 +516,7 @@ const contentData = {
         "- \"Optional": "1/2 cup mini chocolate chips\""
       },
       "instructions": {},
-      "notes": "Press Firmly: The key to treats that hold together is REALLY pressing the mixture down hard! Variations: Add dried fruit, swap chocolate chips for butterscotch, use crunchy peanut butter for texture. Make It Fun: Press into shaped cookie cutters instead of squares for special occasions! Storage: Store in airtight container at room temperature for 5 days, or refrigerate for crispier treats. Nut-Free: Use sunflower seed butter instead of almond/peanut butter. Why It's Better: Honey instead of processed marshmallows, almond butter adds protein, brown rice cereal has more fiber!"
+      "notes": "\"Press Firmly: The key to treats that hold together is REALLY pressing"
     },
     {
       "id": "homemade-granola",
