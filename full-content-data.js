@@ -3,8 +3,8 @@ const contentData = {
     {
       "id": "acai-smoothie-bowl",
       "title": "Acai Smoothie Bowl (Like Juice Bar, But Cheaper!)",
-      "description": "Thick, creamy, Instagram-worthy breakfast bowls. Way cheaper than buying at a juice bar!",
-      "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733",
+      "description": "Thick, creamy, Instagram-worthy breakfast bowls. Way cheaper than",
+      "image": "/images/uploads/julia-topp-cu8cboesqio-unsplash.jpg",
       "category": "Breakfasts",
       "prepTime": "10 minutes",
       "cookTime": "0 minutes",
@@ -14,7 +14,7 @@ const contentData = {
         "- \"TOPPINGS": "granola, fresh fruit, coconut flakes, chia seeds, honey drizzle\""
       },
       "instructions": {},
-      "notes": "The Secret to Thickness: Use frozen fruit and minimal liquid! It should be thick enough to eat with a spoon. Where to Find Acai: Frozen section at health food stores or order online. Or substitute frozen blueberries! Topping Ideas: Get creative! Sliced banana, berries, granola, almond butter drizzle, bee pollen, cacao nibs, coconut. Make It a Meal: Add protein powder or Greek yogurt to the blend for more protein. Cost Savings: Juice bar bowl = $12. Homemade = $3. Make your own! Instagram Perfect: Arrange toppings in rows or patterns for beautiful presentation."
+      "notes": "\"The Secret to Thickness: Use frozen fruit and minimal liquid! It should"
     },
     {
       "id": "almond-flour-cookies",
