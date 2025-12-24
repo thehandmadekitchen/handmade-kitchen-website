@@ -406,7 +406,7 @@ const contentData = {
       "id": "customizable-trail-mix",
       "title": "Build-Your-Own Trail Mix (6 Flavor Combos)",
       "description": "Way better than store-bought! Mix and match ingredients for endless",
-      "image": "/images/uploads/dates.jpg",
+      "image": "/images/uploads/trail-mix.jpg",
       "category": "Kid Snacks",
       "prepTime": "10 minutes",
       "cookTime": "0 minutes",
