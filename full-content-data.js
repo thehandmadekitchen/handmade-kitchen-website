@@ -419,8 +419,8 @@ const contentData = {
     {
       "id": "date-caramels",
       "title": "3-Ingredient Date Caramels",
-      "description": "These taste like real caramel candies but are made with just dates, almond butter, and sea salt! A naturally sweet treat that kids absolutely love.",
-      "image": "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf",
+      "description": "These taste like real caramel candies but are made with just dates,",
+      "image": "/images/uploads/dates.jpg",
       "category": "Kid Snacks",
       "prepTime": "10 minutes",
       "cookTime": "0 minutes",
@@ -428,7 +428,7 @@ const contentData = {
       "servings": "20 caramels",
       "ingredients": {},
       "instructions": {},
-      "notes": "Make Ahead: These keep for 2 weeks in the fridge! Make a double batch. Pro Tip: If dates are too dry, soak in warm water for 10 minutes first, then drain well. Variations: Roll into balls and coat with cocoa powder for 'truffle' caramels, or add a pinch of vanilla extract. Storage: Keep refrigerated in an airtight container. They can also be frozen!"
+      "notes": "\"Make Ahead: These keep for 2 weeks in the fridge! Make a double batch."
     },
     {
       "id": "egg-muffins",
