@@ -787,8 +787,8 @@ const contentData = {
     {
       "id": "rainbow-fruit-kabobs",
       "title": "Rainbow Fruit Kabobs with Honey Yogurt Dip",
-      "description": "Making fruit fun! These colorful skewers turn ordinary fruit into an exciting snack. Perfect for parties or picky eaters.",
-      "image": "https://images.unsplash.com/photo-1556909212-d5b604d0c90d",
+      "description": "Making fruit fun! These colorful skewers turn ordinary fruit into",
+      "image": "/images/uploads/fruit-kababs.jpg",
       "category": "Kid Snacks",
       "prepTime": "15 minutes",
       "cookTime": "0 minutes",
@@ -798,10 +798,10 @@ const contentData = {
         "- \"YOGURT DIP": "1 cup Greek yogurt, 2 tbsp honey, 1/2 tsp vanilla\""
       },
       "instructions": {
-        "- \"Thread fruit onto skewers in rainbow order": "strawberry, pineapple, kiwi, green grape, blueberry. Repeat!\"",
+        "- \"Thread fruit onto skewers in rainbow order": "strawberry, pineapple, kiwi,",
         "- \"Make dip": "Mix yogurt, honey, and vanilla in a small bowl.\""
       },
-      "notes": "Kid Involvement: Let kids make their own kabobs! They'll eat way more fruit this way. Safety Tip: For young kids, use blunt coffee stirrers or thick straws instead of pointy skewers. Fruit Flexibility: Use whatever fruit is in season! Melon, mango, oranges, raspberries all work. Party Perfect: Make these for birthday parties - kids love the rainbow colors! Make Ahead: Assemble kabobs 2-3 hours ahead, cover with damp paper towel, and refrigerate. Leftover Fruit: Chop and mix into yogurt parfaits or oatmeal!"
+      "notes": "\"Kid Involvement: Let kids make their own kabobs! They'll eat way more"
     },
     {
       "id": "sheet-pan-chicken-veggies",
