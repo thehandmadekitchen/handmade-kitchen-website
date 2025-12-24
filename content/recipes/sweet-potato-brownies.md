@@ -1,30 +1,43 @@
 ---
-title: "Fudgy Sweet Potato Brownies"
-description: "Nobody will guess these rich, chocolatey brownies are packed with sweet potatoes! Naturally sweetened and made with almond flour for a healthier treat."
-category: "Kid Snacks"
-image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62"
-prep_time: "15 minutes"
-cook_time: "25 minutes"
-total_time: "40 minutes"
-servings: "16 brownies"
+notes: "Meal Prep: Bake on Sunday and store in an airtight container for easy
+  lunchbox treats all week. They freeze beautifully too! Storage: Keep in fridge
+  for up to 5 days or freeze for 3 months. Pro Tip: Let them cool completely
+  before cutting for cleaner squares. If they're too soft, pop them in the
+  fridge for 30 minutes first!"
+title: Fudgy Sweet Potato Brownies
+category: Kid Snacks
+time: 60 min
 ingredients:
-  - "1 cup mashed sweet potato (about 1 large sweet potato)"
-  - "1/2 cup natural almond butter"
-  - "1/3 cup honey or maple syrup"
-  - "2 eggs"
-  - "1/3 cup cocoa powder"
-  - "1/4 cup almond flour"
-  - "1 teaspoon vanilla extract"
-  - "1/2 teaspoon baking soda"
-  - "1/4 teaspoon salt"
-  - "1/2 cup dark chocolate chips (optional)"
+  - 1 cup mashed sweet potato (about 1 large sweet potato)
+  - 1/2 cup natural almond butter
+  - 1/3 cup honey or maple syrup
+  - 2 eggs
+  - 1/3 cup cocoa powder
+  - 1/4 cup almond flour
+  - 1 teaspoon vanilla extract
+  - 1/2 teaspoon baking soda
+  - 1/4 teaspoon salt
+  - 1/2 cup dark chocolate chips (optional)
+cook_time: 25 minutes
+servings: 16 brownies
 instructions:
-  - "Preheat oven to 350°F and line an 8x8 baking pan with parchment paper."
-  - "Pierce sweet potato with a fork and microwave for 5-7 minutes until soft. Let cool, then peel and mash until smooth (or use pre-cooked sweet potato)."
-  - "In a large bowl, mix sweet potato, almond butter, honey, eggs, and vanilla until smooth and creamy."
-  - "Add cocoa powder, almond flour, baking soda, and salt. Stir until just combined - don't overmix!"
-  - "Pour batter into prepared pan and smooth the top. Sprinkle chocolate chips on top if using."
-  - "Bake for 20-25 minutes until edges are set but center is still slightly soft (they'll firm up as they cool)."
-  - "Let cool completely in the pan before cutting into 16 squares."
-notes: "Meal Prep: Bake on Sunday and store in an airtight container for easy lunchbox treats all week. They freeze beautifully too! Storage: Keep in fridge for up to 5 days or freeze for 3 months. Pro Tip: Let them cool completely before cutting for cleaner squares. If they're too soft, pop them in the fridge for 30 minutes first!"
+  - Preheat oven to 350°F and line an 8x8 baking pan with parchment paper.
+  - Pierce sweet potato with a fork and microwave for 5-7 minutes until soft.
+    Let cool, then peel and mash until smooth (or use pre-cooked sweet potato).
+  - In a large bowl, mix sweet potato, almond butter, honey, eggs, and vanilla
+    until smooth and creamy.
+  - Add cocoa powder, almond flour, baking soda, and salt. Stir until just
+    combined - don't overmix!
+  - Pour batter into prepared pan and smooth the top. Sprinkle chocolate chips
+    on top if using.
+  - Bake for 20-25 minutes until edges are set but center is still slightly soft
+    (they'll firm up as they cool).
+  - Let cool completely in the pan before cutting into 16 squares.
+total_time: 40 minutes
+image: /images/uploads/sweet-potatoes.jpg
+date: 2025-12-24T05:09:05.657Z
+description: Nobody will guess these rich, chocolatey brownies are packed with
+  sweet potatoes! Naturally sweetened and made with almond flour for a healthier
+  treat.
+prep_time: 15 minutes
 ---
