@@ -303,8 +303,8 @@ const contentData = {
     {
       "id": "chocolate-peanut-butter-protein-balls",
       "title": "Chocolate Peanut Butter Protein Balls",
-      "description": "These no-bake energy balls taste like cookie dough but pack protein and fiber! Perfect pre-sports snack.",
-      "image": "https://images.unsplash.com/photo-1625944525533-473f1a48ff03",
+      "description": "These no-bake energy balls taste like cookie dough but pack protein",
+      "image": "/images/uploads/anacristina-smith-9icqzxefum8-unsplash.jpg",
       "category": "Kid Snacks",
       "prepTime": "15 minutes",
       "cookTime": "0 minutes",
@@ -312,7 +312,7 @@ const contentData = {
       "servings": "20 balls",
       "ingredients": {},
       "instructions": {},
-      "notes": "Perfect for: Pre-game snack, after-school treat, breakfast on-the-go, hiking/camping. Protein Power: Each ball has about 4g protein plus healthy fats and fiber. Keeps you full! Customization Ideas: Swap cocoa for cinnamon, add dried cranberries, use almond butter, roll in coconut flakes. Make-Ahead: Make a double batch on Sunday! They keep for 2 weeks refrigerated. Freezer-Friendly: Freeze for up to 3 months. Thaw 10 minutes before eating. No Flax?: Use wheat germ or more oats instead."
+      "notes": "\"Perfect for: Pre-game snack, after-school treat, breakfast on-the-go,"
     },
     {
       "id": "cinnamon-french-toast",
