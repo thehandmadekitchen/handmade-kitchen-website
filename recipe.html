@@ -138,7 +138,7 @@
                 try { frontmatter = jsyaml.load(parts[1]); } catch (e) {}
             }
             var body = parts.length >= 3 ? parts.slice(2).join('---').trim() : '';
-            return { title: frontmatter.title || 'Recipe', category: frontmatter.category || '', time: frontmatter.time || '', servings: frontmatter.servings || '', image: frontmatter.image || '', ingredients: frontmatter.ingredients || [], instructions: frontmatter.instructions || [], body: body };
+            return { title: frontmatter.title || 'Recipe', category: frontmatter.category || '', time: frontmatter.time || '', servings: frontmatter.servings || '', image: frontmatter.image || '', ingredients: frontmatter.ingredients || [], instructions: frontmatter.instructions || [], notes: frontmatter.notes || '', body: body };
         }
         function createPinterestDescription(recipe) {
             var ingredientsList = Array.isArray(recipe.ingredients) ? recipe.ingredients : recipe.ingredients.split('\n').filter(function(i) { return i.trim(); });
