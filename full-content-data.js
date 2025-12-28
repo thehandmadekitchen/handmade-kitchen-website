@@ -1245,7 +1245,7 @@ const contentData = {
       "title": "The Handmade Kitchen Cookbook",
       "description": ">+",
       "price": "$24.99",
-      "image": "",
+      "image": "/images/uploads/extra-virgin-olive-oil-avocado-oil-coconut-oil-1-.png",
       "link": "https://our-handmade-kitchen.kit.com/products/cookbook"
     }
   ]
