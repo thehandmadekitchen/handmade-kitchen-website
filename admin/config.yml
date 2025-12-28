@@ -48,8 +48,9 @@ collections:
       - {label: "Product Type", name: "type", widget: "string", hint: "e.g., Digital Planner, eBook"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Price", name: "price", widget: "string", hint: "e.g., $27"}
-      - {label: "Product Icon", name: "icon", widget: "string", hint: "Emoji like 📋 or 📚"}
-      - {label: "Buy Link", name: "link", widget: "string", hint: "Your Gumroad or product link"}
+      - {label: "Product Image", name: "image", widget: "image", required: false, hint: "Upload a product photo or cover image"}
+      - {label: "Product Icon", name: "icon", widget: "string", required: false, hint: "Emoji like 📋 or 📚 (optional if using image)"}
+      - {label: "Buy Link", name: "link", widget: "string", hint: "Your Kit Commerce or product link"}
       - {label: "Featured", name: "featured", widget: "boolean", default: false}
 
   # SITE SETTINGS
