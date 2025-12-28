@@ -46,6 +46,9 @@
         .instructions-section ol { counter-reset: step-counter; list-style: none; }
         .instructions-section li { counter-increment: step-counter; margin-bottom: 20px; padding-left: 40px; position: relative; }
         .instructions-section li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; width: 30px; height: 30px; background: var(--sage); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .notes-section { background: #faf8f3; padding: 30px; border-radius: 10px; margin-top: 40px; border-left: 4px solid var(--sage); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .notes-section h2 { font-family: 'Playfair Display', serif; color: var(--olive); margin-bottom: 20px; font-size: 1.5em; }
+        .notes-section .notes-content { line-height: 1.8; color: #4a4a4a; white-space: pre-line; }
         footer { background: var(--olive); color: white; padding: 2rem 0; margin-top: 4rem; text-align: center; }
         .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--olive); cursor: pointer; padding: 0.5rem; }
         @media (max-width: 768px) { 
@@ -188,7 +191,8 @@
                 '<div class="recipe-content">' +
                     '<div class="ingredients-section"><h2>Ingredients</h2><ul>' + ingredientsList.map(function(ingredient) { return '<li>' + ingredient + '</li>'; }).join('') + '</ul></div>' +
                     '<div class="instructions-section"><h2>Instructions</h2><ol>' + instructionsList.map(function(instruction) { return '<li>' + instruction + '</li>'; }).join('') + '</ol></div>' +
-                '</div>';
+                '</div>' +
+                (recipe.notes && recipe.notes.trim() ? '<div class="notes-section"><h2>💡 Notes & Tips</h2><div class="notes-content">' + recipe.notes + '</div></div>' : '');
             document.getElementById('recipe-content').innerHTML = html;
             if (window.PinUtils) window.PinUtils.build();
         }
