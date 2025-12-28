@@ -7,6 +7,8 @@ description: >+
   ingredient lists or constant shopping trips. Perfect for beginners and busy
   families!
 
+
+
 price: $24.99
 image: /images/uploads/extra-virgin-olive-oil-avocado-oil-coconut-oil-1-.png
 icon: ""
