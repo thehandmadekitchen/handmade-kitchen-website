@@ -459,22 +459,6 @@ const contentData = {
       "notes": ""
     },
     {
-      "id": "frozen-banana-bites",
-      "title": "Chocolate-Covered Frozen Banana Bites",
-      "description": "These frozen treats taste like ice cream but are just fruit and chocolate! Perfect summer snack.",
-      "image": "https://images.unsplash.com/photo-1481391319762-47dff72954d9",
-      "category": "Desserts",
-      "prepTime": "15 minutes",
-      "cookTime": "0 minutes",
-      "totalTime": "15 minutes + freezing",
-      "servings": "About 30 bites",
-      "ingredients": {
-        "- \"Toppings": "chopped nuts, sprinkles, coconut flakes, crushed cookies\""
-      },
-      "instructions": {},
-      "notes": "Kid Activity - This is SO fun to make with kids! Let them choose toppings. Topping Ideas: Crushed graham crackers, chopped peanuts, coconut, mini chocolate chips, crushed pretzels. Storage: Keep in freezer in airtight container for up to 3 months. Party Perfect: Make ahead for parties! Set up a \"build your own\" station. Healthier Treat: Just fruit and dark chocolate! Way better than ice cream. Quick Snack: Grab from freezer whenever you need a sweet treat!"
-    },
-    {
       "id": "fudgy-black-bean-brownies",
       "title": "Fudgy Black Bean Brownies (No One Will Know!)",
       "description": "These brownies are rich, fudgy, and made with black beans! Seriously. No one can tell, and they're actually good for you!",
