@@ -1,11 +1,11 @@
 {
-  "name": "handmade-kitchen",
+  "name": "handmade-kitchen-website",
   "version": "1.0.0",
-  "description": "The Handmade Kitchen - Clean eating recipe blog",
+  "description": "The Handmade Kitchen website build scripts",
   "scripts": {
-    "sync": "node sync-cms-content.js"
+    "build": "node generate-content-data.js"
   },
-  "keywords": ["recipes", "blog", "clean-eating"],
-  "author": "The Handmade Kitchen",
-  "license": "MIT"
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  }
 }
