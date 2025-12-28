@@ -22,5 +22,5 @@ instructions:
   - "Remove frozen bananas from freezer. Working quickly, dip each in chocolate to coat. Let excess drip off."
   - "Immediately sprinkle with toppings before chocolate hardens."
   - "Return to freezer for 10 minutes to set chocolate. Store in freezer!"
-notes: "Kid Activity: This is SO fun to make with kids! Let them choose toppings. Topping Ideas: Crushed graham crackers, chopped peanuts, coconut, mini chocolate chips, crushed pretzels. Storage: Keep in freezer in airtight container for up to 3 months. Party Perfect: Make ahead for parties! Set up a "build your own" station. Healthier Treat: Just fruit and dark chocolate! Way better than ice cream. Quick Snack: Grab from freezer whenever you need a sweet treat!"
+notes: "Kid Activity - This is SO fun to make with kids! Let them choose toppings. Topping Ideas: Crushed graham crackers, chopped peanuts, coconut, mini chocolate chips, crushed pretzels. Storage: Keep in freezer in airtight container for up to 3 months. Party Perfect: Make ahead for parties! Set up a "build your own" station. Healthier Treat: Just fruit and dark chocolate! Way better than ice cream. Quick Snack: Grab from freezer whenever you need a sweet treat!"
 ---
