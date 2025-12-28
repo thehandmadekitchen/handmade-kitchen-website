@@ -23,17 +23,28 @@ function readMarkdownFiles(dir) {
 
 // Parse markdown file and extract frontmatter
 function parseMarkdownFile(filePath) {
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const parsed = matter(fileContent);
-  
-  // Create slug from filename
-  const slug = path.basename(filePath, '.md');
-  
-  return {
-    id: slug,
-    ...parsed.data,
-    content: parsed.content
-  };
+  try {
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const parsed = matter(fileContent);
+    
+    // Create slug from filename
+    const slug = path.basename(filePath, '.md');
+    
+    return {
+      id: slug,
+      ...parsed.data,
+      content: parsed.content
+    };
+  } catch (error) {
+    console.warn(`⚠️  Warning: Could not parse ${path.basename(filePath)}: ${error.message}`);
+    // Return a minimal valid object so the build doesn't fail completely
+    return {
+      id: path.basename(filePath, '.md'),
+      title: path.basename(filePath, '.md').replace(/-/g, ' '),
+      description: '',
+      content: ''
+    };
+  }
 }
 
 // Generate the content data object
