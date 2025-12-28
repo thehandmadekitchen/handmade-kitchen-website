@@ -8,7 +8,8 @@ description: >+
   families!
 
 price: $24.99
-icon: 📚
+image: /images/uploads/extra-virgin-olive-oil-avocado-oil-coconut-oil-1-.png
+icon: ""
 link: https://our-handmade-kitchen.kit.com/products/cookbook
 featured: true
 ---
