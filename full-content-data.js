@@ -472,7 +472,7 @@ const contentData = {
         "- \"Toppings": "chopped nuts, sprinkles, coconut flakes, crushed cookies\""
       },
       "instructions": {},
-      "notes": "Kid Activity: This is SO fun to make with kids! Let them choose toppings. Topping Ideas: Crushed graham crackers, chopped peanuts, coconut, mini chocolate chips, crushed pretzels. Storage: Keep in freezer in airtight container for up to 3 months. Party Perfect: Make ahead for parties! Set up a \"build your own\" station. Healthier Treat: Just fruit and dark chocolate! Way better than ice cream. Quick Snack: Grab from freezer whenever you need a sweet treat!"
+      "notes": "Kid Activity - This is SO fun to make with kids! Let them choose toppings. Topping Ideas: Crushed graham crackers, chopped peanuts, coconut, mini chocolate chips, crushed pretzels. Storage: Keep in freezer in airtight container for up to 3 months. Party Perfect: Make ahead for parties! Set up a \"build your own\" station. Healthier Treat: Just fruit and dark chocolate! Way better than ice cream. Quick Snack: Grab from freezer whenever you need a sweet treat!"
     },
     {
       "id": "fudgy-black-bean-brownies",
