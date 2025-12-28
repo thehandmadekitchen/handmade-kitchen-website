@@ -1239,6 +1239,14 @@ const contentData = {
       "price": "$19",
       "image": "",
       "link": "NA"
+    },
+    {
+      "id": "the-handmade-kitchen-cookbook",
+      "title": "The Handmade Kitchen Cookbook",
+      "description": ">+",
+      "price": "$24.99",
+      "image": "",
+      "link": "https://our-handmade-kitchen.kit.com/products/cookbook"
     }
   ]
 };
