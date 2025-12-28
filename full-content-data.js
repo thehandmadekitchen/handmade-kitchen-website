@@ -1219,7 +1219,7 @@ const contentData = {
     {
       "id": "meal-planning-system",
       "title": "The Simple Meal Planning System",
-      "description": "The exact framework to plan meals without losing your mind. Includes templates, shopping lists, and rotation system.",
+      "description": "The exact framework to plan meals without losing your mind.",
       "price": "$27",
       "image": "",
       "link": "https://your-gumroad-link.com"
