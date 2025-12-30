@@ -12,7 +12,7 @@ typography:
 branding:
   site_name: The Handmade Kitchen
   logo: ""
-  favicon: ""
+  favicon: /images/uploads/favicon.ico
 carousel:
   slide1_image: /images/uploads/priscilla-du-preez-su5jshu1pk8-unsplash.jpg
   slide2_image: ""
