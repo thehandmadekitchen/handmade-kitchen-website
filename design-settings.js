@@ -14,7 +14,7 @@ const designSettings = {
   "branding": {
     "site_name": "The Handmade Kitchen",
     "logo": null,
-    "favicon": "/images/uploads/favicon.ico"
+    "favicon": "/images/uploads/favicon-32x32.png"
   },
   "carousel": {
     "slide1_image": "/images/uploads/priscilla-du-preez-su5jshu1pk8-unsplash.jpg",
